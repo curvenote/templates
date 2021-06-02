@@ -1,0 +1,8 @@
+metadata:
+  tags:
+    - curvenote
+    - paper
+    - inline-title
+options:
+  base: article
+  h1: section
