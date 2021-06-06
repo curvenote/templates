@@ -15,7 +15,7 @@ jobs:
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - name: Processing action step
         id: processing
-        uses: actions/process-templates-action@v1
+        uses: ./.github/actions/process-templates-action
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
