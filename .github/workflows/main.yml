@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Process templates and push to Curvenote
     steps:
+      - run: echo "action triggered by a ${{ github.event_name }} event."
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - name: Processing action step
         id: processing
-        uses: actions/hello-world-docker-action@v1
+        uses: actions/process-templates-action@v1
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
