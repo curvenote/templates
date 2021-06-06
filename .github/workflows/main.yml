@@ -12,13 +12,11 @@ jobs:
       - run: echo "action triggered by a ${{ github.event_name }} event."
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}  ${{ github.event.after }})" >> $GITHUB_ENV
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - name: Processing action step
         id: processing
         uses: ./.github/actions/process-templates-action
-        with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      # step - commit updated repo
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+
