@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - master
+      - ci-setup*
+
+jobs:
+  process_templates:
+    runs-on: ubuntu-latest
+    name: Process templates and push to Curvenote
+    steps:
+      - name: Processing action step
+        id: processing
+        uses: actions/hello-world-docker-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+      # Use the output from the `hello` step
+      # step - commit updated repo
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"

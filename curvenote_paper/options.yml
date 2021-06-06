@@ -1,8 +1,20 @@
 metadata:
+  name: Curvenote Paper
+  author: Curvenote
+  # url:
+  license: CC-BY-SA
   tags:
     - curvenote
     - paper
     - inline-title
+# fixed parameters that should be enforced in the final latex build when using this template
+configuration:
+  base-class: article
+
+# parameters - data that should be rendered from Curvenote on template stub generation
+parameters:
+
+# options that can be offerd to users to customise this template
 options:
-  base: article
   h1: section
+  stop-page-breaks: code, callouts

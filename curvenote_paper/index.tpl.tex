@@ -1,0 +1,44 @@
+∞ option - base-class
+\documentclass{article}
+
+\usepackage[oxalink=\VAR{oxalink}]{curvenote_paper}
+
+\usepackage[x11names, svgnames]{xcolor}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{adjustbox}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[short, nodayofweek]{datetime}
+\graphicspath{{assets/}}
+\bibliographystyle{abbrvnat}
+\setcitestyle{authoryear,open={(},close={)},comma,aysep={,}}
+\usepackage[normalem]{ulem}
+\usepackage{minted}
+\usemintedstyle{friendly}
+\surroundwithmdframed[linewidth=1pt,leftmargin=20,rightmargin=20,hidealllines=true, backgroundcolor=GhostWhite]{minted}
+\usepackage{enumitem}
+
+%
+\title{\VAR{main_title}}
+\author{
+  \BLOCK{ for author in main_author_list }
+  \VAR{author}\BLOCK{ if not loop.last } \and \BLOCK{ endif }
+  \BLOCK{ endfor }
+}
+\newdate{articleDate}{\VAR{main_day}}{\VAR{main_month}}{\VAR{main_year}}
+\date{\displaydate{articleDate}}
+
+\begin{document}
+\maketitle
+\BLOCK{ for article_path in article_paths }
+\input{\VAR{article_path}}
+\BLOCK{ endfor }
+
+
+\bibliography{main}
+\end{document}
