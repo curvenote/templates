@@ -12,11 +12,19 @@ jobs:
       - run: echo "action triggered by a ${{ github.event_name }} event."
       - name: Check out repository code
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - run: echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}  ${{ github.event.after }})" >> $GITHUB_ENV
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "The repository is located at ${{ github.workspace }}"
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
       - name: Processing action step
         id: processing
         uses: ./.github/actions/process-templates-action
+        env:
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
 

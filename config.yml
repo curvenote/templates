@@ -1,0 +1,4 @@
+action:
+  rebuild-all: false
+  # rebuild:
+  #  - curvenote_paper
