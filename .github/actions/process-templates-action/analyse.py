@@ -10,12 +10,12 @@ def analyse(repo_path: str, prev_listing: Union[Dict, None]):
   process_all = False
 
   # 1 - load previous listing
-  prev_listing = {}
   existing_templates = {}
   if prev_listing and 'all' in prev_listing:
     existing_templates = prev_listing['all']
   else:
     logging.warning("Could not read/parse previous listing file, processing all templates")
+    prev_listing = {}
     existing_templates = {}
     process_all = True
 
@@ -60,7 +60,7 @@ def analyse(repo_path: str, prev_listing: Union[Dict, None]):
   if process_all:
     logging.info(f"All templates will be processed and pushed to the bucket")
   else:
-    logging.info(f"{len(to_process)} tempaltes will be processed and pushed to the bucket")
+    logging.info(f"{len(to_process)} templates will be processed and pushed to the bucket")
   for p in to_process:
     logging.info(f" +{p}")
 

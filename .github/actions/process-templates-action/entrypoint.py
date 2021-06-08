@@ -6,8 +6,11 @@ import tempfile
 from analyse import analyse
 from shutil import make_archive
 from TemplateStorage import TemplateStorage
+from TemplateAssets import TemplateAssets
 import yaml
 import subprocess
+from google.cloud import storage as gcp_storage
+from typing import Dict
 
 
 import logging
@@ -25,7 +28,7 @@ def main(repo_path: str):
     # EARLY CHECK for bucket permissions
     try:
       storage  = TemplateStorage(
-        environ["GCP_PROJECT_ID"],
+        gcp_storage.Client(environ["GCP_PROJECT_ID"]),
         environ['BUCKET_NAME'],
         tmp_folder
         )
@@ -40,7 +43,7 @@ def main(repo_path: str):
 
     # process assets ready for update
     logging.info("Start processing...")
-    assets = {}
+    processed_assets: List[TemplateAssets] = []
     for tmpl in to_process:
     # run procesing steps on each template; zip
       logging.info(f"processing: {tmpl}")
@@ -57,31 +60,33 @@ def main(repo_path: str):
           json.dump(options, ojson, indent=4)
       logging.info(f"created options.json {zip_filepath}")
 
-      assets[tmpl] = dict(zipfile=zip_filepath, options=options_json_filepath)
+      processed_assets.append(TemplateAssets(tmpl, zip_filepath, options_json_filepath))
     logging.info("Processing complete")
 
     # push new templates
-    logging.info("Start uploading...")
-    for tmpl in to_process:
-      storage.push_template_assets(assets[tmpl])
-    logging.info("Upload complete")
+    if len(processed_assets):
+      logging.info("Start uploading processed assets...")
+      for assets in processed_assets:
+        storage.push_template_asset(assets)
+        logging.info(f"{assets.name} uploaded")
+      logging.info("Upload complete")
 
-    logging.info("Removing deleted templates...")
-    # delete removed templates
-    for tmpl in to_remove_from_bucket:
-      storage.delete_template_assets(assets[tmpl])
-    logging.info("Removal complete")
+    if len(to_remove_from_bucket):
+      logging.info("Removing deleted templates...")
+      # delete removed templates
+      for tmpl in to_remove_from_bucket:
+        storage.delete_template_asset(processed_assets[tmpl])
+      logging.info("Removal complete")
 
     # TODO: commit to git - if needed
 
-    githash = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'])
-
-    # update listing and lastrun files
-    new_listing = dict(
-      all=all_templates,
-      lastrun=dict(commit=githash)
-    )
-    storage.push_listing(new_listing)
+    # update listings and lastrun commit hash
+    gitsha = subprocess.check_output('git rev-parse --short HEAD', shell=True, encoding="utf-8")
+    logging.info(f"Logging this run with current git sha {gitsha}")
+    storage.push_listing({
+      "all": all_templates,
+      "lastrun": { "commit": gitsha.strip() }
+    })
 
     # TODO: git push - id needed
 
