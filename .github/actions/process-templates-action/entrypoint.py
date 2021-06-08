@@ -75,7 +75,8 @@ def main(repo_path: str):
       logging.info("Removing deleted templates...")
       # delete removed templates
       for tmpl in to_remove_from_bucket:
-        storage.delete_template_asset(processed_assets[tmpl])
+        logging.info(f"Removing {tmpl}")
+        storage.delete_template_asset(tmpl)
       logging.info("Removal complete")
 
     # TODO: commit to git - if needed
