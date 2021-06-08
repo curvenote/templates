@@ -1,0 +1,6 @@
+# action.yml
+name: 'Process LaTeX Templates'
+description: 'Scan the repo and process all templates as requried'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

@@ -1,0 +1,4 @@
+pyyaml
+typer
+google-cloud
+google-cloud-storage
