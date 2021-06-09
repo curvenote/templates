@@ -1,7 +1,8 @@
 metadata:
   title: Curvenote Paper
   description: A clean looking paper format
-  author: Curvenote
+  author:
+    name: Steve Purves
     github: stevejpurves
     twitter: @stevejpurves
   affiliation: Curvenote
