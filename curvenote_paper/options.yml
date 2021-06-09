@@ -1,12 +1,21 @@
 metadata:
-  name: Curvenote Paper
+  title: Curvenote Paper
+  description: A clean looking paper format
   author: Curvenote
-  # url:
+    github: stevejpurves
+    twitter: @stevejpurves
+  affiliation: Curvenote
+  url: http://curvenote.com/latex
+  version: 1.5
   license: CC-BY-SA
   tags:
-    - curvenote
+    - thesis
     - paper
+    - report
     - inline-title
+    - two-column
+  # archive: true
+    
 # fixed parameters that should be enforced in the final latex build when using this template
 configuration:
   base-class: article
