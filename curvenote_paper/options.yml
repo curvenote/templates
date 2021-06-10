@@ -7,7 +7,7 @@ metadata:
     twitter: stevejpurves
   affiliation: Curvenote
   url: http://curvenote.com/latex
-  version: 1.5
+  version: 0.1.0
   license: CC-BY-SA
   tags:
     - article
