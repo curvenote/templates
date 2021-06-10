@@ -10,10 +10,9 @@ metadata:
   version: 1.5
   license: CC-BY-SA
   tags:
-    - thesis
+    - article
     - paper
     - report
-    - inline-title
     - two-column
   # archive: true
 

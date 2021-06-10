@@ -10,12 +10,15 @@ from TemplateAssets import TemplateAssets
 import yaml
 import subprocess
 from google.cloud import storage as gcp_storage
-from typing import Dict
+from typing import Dict, List
 
 
 import logging
 logging.getLogger().setLevel(logging.INFO)
 
+def get_local_options(repo_path: str, tmpl: str):
+  with open(path.join(repo_path, tmpl, 'options.yml')) as oyml:
+    return yaml.load(oyml, Loader=yaml.FullLoader)
 
 def main(repo_path: str):
   logging.info(f"repo_path set to {repo_path}")
@@ -54,10 +57,9 @@ def main(repo_path: str):
       logging.info(f"created zipfile {zip_filepath}")
 
       options_json_filepath = path.join(tmp_folder, tmpl, 'options.json')
-      with open(path.join(repo_path, tmpl, 'options.yml')) as oyml:
-        with open(options_json_filepath, 'w') as ojson:
-          options = yaml.load(oyml, Loader=yaml.FullLoader)
-          json.dump(options, ojson, indent=4)
+      options = get_local_options(repo_path, tmpl)
+      with open(options_json_filepath, 'w') as ojson:
+        json.dump(options, ojson, indent=4)
       logging.info(f"created options.json {zip_filepath}")
 
       processed_assets.append(TemplateAssets(tmpl, zip_filepath, options_json_filepath))
@@ -81,12 +83,21 @@ def main(repo_path: str):
 
     # TODO: commit to git - if needed
 
+    # get current git sha for tagging
+    gitsha = subprocess.check_output(
+      'git rev-parse --short HEAD', shell=True, encoding="utf-8").strip()
+
+    # update listings and refresh metadata
+    all = []
+    for tmpl in all_templates:
+      options = get_local_options(repo_path, tmpl)
+      all.append(dict(name=tmpl, commit=gitsha, **options['metadata']))
+
     # update listings and lastrun commit hash
-    gitsha = subprocess.check_output('git rev-parse --short HEAD', shell=True, encoding="utf-8")
     logging.info(f"Logging this run with current git sha {gitsha}")
     storage.push_listing({
-      "all": all_templates,
-      "lastrun": { "commit": gitsha.strip() }
+      "all": all,
+      "lastrun": { "commit": gitsha }
     })
 
     # TODO: git push - id needed
