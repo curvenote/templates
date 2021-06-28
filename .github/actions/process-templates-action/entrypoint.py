@@ -2,12 +2,12 @@ from os import path, mkdir, environ
 import pathlib
 import json
 import typer
+import yaml
 import tempfile
 from analyse import analyse
 from shutil import make_archive
 from TemplateStorage import TemplateStorage
 from TemplateAssets import TemplateAssets
-import yaml
 import subprocess
 from google.cloud import storage as gcp_storage
 from typing import Dict, List
@@ -17,7 +17,7 @@ import logging
 logging.getLogger().setLevel(logging.INFO)
 
 def get_local_options(repo_path: str, tmpl: str):
-  with open(path.join(repo_path, tmpl, 'options.yml')) as oyml:
+  with open(path.join(repo_path, 'latex', tmpl, 'template.yml')) as oyml:
     return yaml.load(oyml, Loader=yaml.FullLoader)
 
 def main(repo_path: str):
