@@ -6,7 +6,7 @@ import logging
 from Differ import Differ
 
 
-def analyse(repo_path: str, prev_listing: Union[Dict, None]):
+def analyse(latex_path: str, prev_listing: Union[Dict, None]):
   process_all = False
 
   # 1 - load previous listing
@@ -21,7 +21,7 @@ def analyse(repo_path: str, prev_listing: Union[Dict, None]):
 
 
   # 2 - find folders that have been removed and need to be removed from the bucket
-  p = pathlib.Path(path.join(repo_path, 'latex'))
+  p = pathlib.Path(latex_path)
   current_templates = [f.parts[-1] for f in p.iterdir() if f.is_dir()]
   current_templates = [c for c in current_templates if not c.startswith(".") and not c.startswith("__")]
   to_remove_from_bucket = [existing for existing in existing_templates if existing not in current_templates]

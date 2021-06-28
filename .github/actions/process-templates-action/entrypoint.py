@@ -16,14 +16,17 @@ from typing import Dict, List
 import logging
 logging.getLogger().setLevel(logging.INFO)
 
-def get_local_options(repo_path: str, tmpl: str):
-  with open(path.join(repo_path, 'latex', tmpl, 'template.yml')) as oyml:
+def get_local_options(latex_path: str, tmpl: str):
+  with open(path.join(latex_path, tmpl, 'template.yml')) as oyml:
     return yaml.load(oyml, Loader=yaml.FullLoader)
 
 def main(repo_path: str):
   logging.info(f"repo_path set to {repo_path}")
   if not path.exists(repo_path):
     raise IOError(f"Repo not found at {repo_path}")
+
+  latex_path = path.join(repo_path, 'latex')
+  logging.info(f"Looking for latex template in {latex_path}")
 
   with tempfile.TemporaryDirectory() as tmp_folder:
     logging.info("Created Temporary Folder")
@@ -42,7 +45,7 @@ def main(repo_path: str):
     # pull the previous listing down
     prev_listing = storage.get_listing()
     # Analyse the repo contents, listing and diff since last processing pass
-    all_templates, to_process, to_remove_from_bucket = analyse(repo_path, prev_listing)
+    all_templates, to_process, to_remove_from_bucket = analyse(latex_path, prev_listing)
 
     # process assets ready for update
     logging.info("Start processing...")
@@ -53,11 +56,11 @@ def main(repo_path: str):
       mkdir(path.join(tmp_folder, tmpl))
 
       zip_filepath = make_archive(
-        path.join(tmp_folder, tmpl, 'latex.template'), 'zip', path.join(repo_path, tmpl))
+        path.join(tmp_folder, tmpl, 'latex.template'), 'zip', path.join(latex_path, tmpl))
       logging.info(f"created zipfile {zip_filepath}")
 
       options_json_filepath = path.join(tmp_folder, tmpl, 'options.json')
-      options = get_local_options(repo_path, tmpl)
+      options = get_local_options(latex_path, tmpl)
       with open(options_json_filepath, 'w') as ojson:
         json.dump(options, ojson, indent=4)
       logging.info(f"created options.json {zip_filepath}")
@@ -90,7 +93,7 @@ def main(repo_path: str):
     # update listings and refresh metadata
     all = []
     for tmpl in all_templates:
-      options = get_local_options(repo_path, tmpl)
+      options = get_local_options(latex_path, tmpl)
       all.append(dict(id=tmpl, commit=gitsha, **options['metadata']))
 
     # update listings and lastrun commit hash
