@@ -1,0 +1,17 @@
+metadata:
+  title: Basic
+  description: A minimal template for vanilla LaTeX exports, without custom environments and commands
+  author:
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
+  source: Curvenote
+  version: 0.1.0
+  license: CC-BY
+  tags:
+    - article
+    - paper
+  links:
+    github: github.com/curvenote/templates/basic
+    source: curvenote.com

@@ -1,0 +1,18 @@
+metadata:
+  title: EAGE Annual 2022
+  description: Extended abstract template for the 2022 Annual Conference
+  author:
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
+  source: EAGE
+  version: 1.0.0
+  license: CC-BY
+  tags:
+    - article
+    - paper
+    - eage
+  links:
+    github: http://curvenote.com/latex/curvenote_paper
+    source: https://eage.eventsair.com/eageannual2021/submission-instructions

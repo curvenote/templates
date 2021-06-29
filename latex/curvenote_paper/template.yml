@@ -1,6 +1,6 @@
 metadata:
   title: Curvenote Paper
-  description: A styled paper template using the Curvenote Schema and styles
+  description: A clean looking paper format template using the Curvenote schema and visuals styles
   author:
     name: Curvenote
     github: curvenote
@@ -13,7 +13,6 @@ metadata:
     - article
     - paper
     - report
-    - one-column
   links:
     github: http://curvenote.com/latex/curvenote_paper
     source: http://curvenote.com
