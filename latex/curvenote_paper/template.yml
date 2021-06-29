@@ -1,32 +1,54 @@
 metadata:
   title: Curvenote Paper
-  description: A clean looking paper format
+  description: A styled paper template using the Curvenote Schema and styles
   author:
-    name: Steve Purves
-    github: stevejpurves
-    twitter: stevejpurves
-  affiliation: Curvenote
-  url: http://curvenote.com/latex
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
+  source: Curvenote
   version: 0.1.0
   license: CC-BY-SA
   tags:
     - article
     - paper
     - report
-    - two-column
-  # archive: true
+    - one-column
+  links:
+    url: http://curvenote.com/latex/curvenote_paper
+    source: http://curvenote.com
 
+# options that can be offered to users to customise how this template is rendered
+config:
+  build:
+    layout: compact
 
-# fixed parameters that should be enforced in the final latex build when using this template
-configuration:
-  base-class: article
+  schema:
+    aside: callout
+    callout: callout
+    code: minted
+    raggedbottom: true
+    sloppy: true
+    hidelinks: true
 
+  tagged:
+    abstract:
+      required: false
+    abstract_fr:
+      required: false
+    preface:
+      required: false
+    acknowledgements:
+      required: false
 
-# parameters - data that should be rendered from Curvenote on template stub generation
-parameters:
-
-
-# options that can be offerd to users to customise this template
-options:
-  h1: section
-  stop-page-breaks: code, callouts
+  options:
+    watermark:
+      type: bool
+      default: true
+      required: false
+    corresponding_email:
+      type: str
+      required: true
+    draft:
+      type: bool
+      required: false
