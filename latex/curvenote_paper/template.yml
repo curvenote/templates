@@ -15,7 +15,7 @@ metadata:
     - report
     - one-column
   links:
-    url: http://curvenote.com/latex/curvenote_paper
+    github: http://curvenote.com/latex/curvenote_paper
     source: http://curvenote.com
 
 # options that can be offered to users to customise how this template is rendered
