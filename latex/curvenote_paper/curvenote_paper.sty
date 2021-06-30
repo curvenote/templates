@@ -1,16 +1,20 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{curvenotepaper}[2021/05/18 Curvenote Default Paper Format]
+\ProvidesPackage{curvenote_paper}[2021/05/18 Curvenote Default Paper Format]
 
-% CURVENOTE CUSTOMISATION -- START
-\RequirePackage{xkeyval}
-\RequirePackage{mdframed}
+\PassOptionsToPackage{english}{babel}
+\PassOptionsToPackage{babel=true}{microtype}
+\PassOptionsToPackage{verbose=true,letterpaper}{geometry}
 
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+
+\usepackage{xkeyval}
+\usepackage{mdframed}
+\usepackage{inputenc}
+\usepackage{babel}
 \usepackage{lmodern}
-\usepackage[babel=true]{microtype}
-\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
+\usepackage{graphbox}
 
+\renewcommand{\familydefault}{\sfdefault}
 \renewcommand{\marginpar}[1]{
   \begin{callout}
     #1
@@ -21,20 +25,13 @@
 \DeclareOptionX*{\PackageWarning{curvenotepaper}{Unknown ‘\CurrentOption’}}
 \ProcessOptionsX\relax
 %
-\newmdenv[linewidth=2pt,linecolor=CornflowerBlue,topline=false,bottomline=false,rightline=false,leftline=true,skipabove=20,skipbelow=20,leftmargin=20,rightmargin=20]{callout}
+
 \newcommand{\headeright}{
-  \href{\oxalink}{\includegraphics[width=2cm]{logo-horizontal-dark.png}}
+  \href{\oxalink}{\includegraphics[width=2cm]{curvenote.png}}
 }
-% CURVENOTE CUSTOMISATION -- END
-
-% fonts
-% \renewcommand{\rmdefault}{ptm}
-% \renewcommand{\sfdefault}{phv}
-
-\usepackage{graphbox}
 
 % set page geometry
-\usepackage[verbose=true,letterpaper]{geometry}
+\usepackage{geometry}
 \AtBeginDocument{
   \newgeometry{
     textheight=9in,
@@ -48,16 +45,7 @@
 
 \widowpenalty=10000
 \clubpenalty=10000
-\raggedbottom
-\sloppy
 
-
-
-% \newcommand{\headeright}{Created in Curvenote}
-\newcommand{\headeright}{
-  \href{\oxalink}{\includegraphics[width=2cm]{logo-horizontal-dark.png}}
-}
-% \newcommand{\undertitle}{Created in Curvenote}
 \newcommand{\shorttitle}{\@title}
 
 \usepackage{fancyhdr}
@@ -76,30 +64,7 @@
 \def\and{\ifhmode\unskip\nobreak\fi\ $\cdot$
 }\noindent\keywordname\enspace\ignorespaces#1\par}}
 
-% font sizes with reduced leading
-% \renewcommand{\normalsize}{%
-%   \@setfontsize\normalsize\@xpt\@xipt
-%   \abovedisplayskip      7\p@ \@plus 2\p@ \@minus 5\p@
-%   \abovedisplayshortskip \z@ \@plus 3\p@
-%   \belowdisplayskip      \abovedisplayskip
-%   \belowdisplayshortskip 4\p@ \@plus 3\p@ \@minus 3\p@
-% }
 \normalsize
-% \renewcommand{\small}{%
-%   \@setfontsize\small\@ixpt\@xpt
-%   \abovedisplayskip      6\p@ \@plus 1.5\p@ \@minus 4\p@
-%   \abovedisplayshortskip \z@  \@plus 2\p@
-%   \belowdisplayskip      \abovedisplayskip
-%   \belowdisplayshortskip 3\p@ \@plus 2\p@   \@minus 2\p@
-% }
-% \renewcommand{\footnotesize}{\@setfontsize\footnotesize\@ixpt\@xpt}
-% \renewcommand{\scriptsize}{\@setfontsize\scriptsize\@viipt\@viiipt}
-% \renewcommand{\tiny}{\@setfontsize\tiny\@vipt\@viipt}
-% \renewcommand{\large}{\@setfontsize\large\@xiipt{14}}
-% \renewcommand{\Large}{\@setfontsize\Large\@xivpt{16}}
-% \renewcommand{\LARGE}{\@setfontsize\LARGE\@xviipt{20}}
-% \renewcommand{\huge}{\@setfontsize\huge\@xxpt{23}}
-% \renewcommand{\Huge}{\@setfontsize\Huge\@xxvpt{28}}
 
 % sections with less space
 \providecommand{\section}{}
@@ -267,13 +232,13 @@
       \setlength{\tabcolsep}{1pt}
       \begin{tabular}{cc}
 
-        \text{created in} & \href{\oxalink}{\includegraphics[align=c, width=0.85in]{logo-horizontal-dark.png}}
+        \text{created in} & \href{\oxalink}{\includegraphics[align=c, width=0.85in]{curvenote.png}}
       \end{tabular}
     \end{flushright}
     \@bottomtitlebar
   }
 }
-% CURVENOTE CUSTOMISATION -- END
+
 
 % add conference notice to bottom of first page
 \newcommand{\ftype@noticebox}{8}

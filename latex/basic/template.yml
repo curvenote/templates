@@ -1,17 +1,33 @@
 metadata:
-  title: Basic
-  description: A minimal template for vanilla LaTeX exports, without custom environments and commands
+  title: Curvenote Basic
+  description: A minimal template that renders Curvenote content
+  version: 1.0.0
+  license: CC-BY-SA
+  source: Curvenote
   author:
-    name: Curvenote
+    name: Steve Purves
     github: curvenote
     twitter: curvenote
     affiliation: Curvenote
-  source: Curvenote
-  version: 0.1.0
-  license: CC-BY
   tags:
     - article
     - paper
+    - vanilla
   links:
-    github: github.com/curvenote/templates/basic
-    source: curvenote.com
+    github: https://github.com/curvenote/templates/tree/main/latex/basic
+    source: https://curvenote.com
+
+# options that can be offered to users to customise how this template is rendered
+config:
+  build:
+    layout: compact
+    vanilla: true
+
+  schema:
+    raggedbottom: true
+    sloppy: true
+    hidelinks: true
+
+  # tagged:
+
+  # options:

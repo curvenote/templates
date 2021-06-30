@@ -1,18 +1,19 @@
 metadata:
   title: Curvenote Paper
-  description: A clean looking paper format template using the Curvenote schema and visuals styles
+  description: A styled paper template using the Curvenote Schema and styles
   author:
     name: Curvenote
     github: curvenote
     twitter: curvenote
     affiliation: Curvenote
   source: Curvenote
-  version: 0.1.0
+  version: 0.2.0
   license: CC-BY
   tags:
     - article
     - paper
     - report
+    - one-column
   links:
     github: http://curvenote.com/latex/curvenote_paper
     source: http://curvenote.com
@@ -25,7 +26,7 @@ config:
   schema:
     aside: callout
     callout: callout
-    code: minted
+    code: highlight
     raggedbottom: true
     sloppy: true
     hidelinks: true
