@@ -1,6 +1,6 @@
 <img src="https://storage.googleapis.com/iooxa-prod-1-wordpress/1/2020/09/logo-horizontal-dark.png" width="200" />
 
-# latex-templates
+# templates
 
 A community curated collection of Curvenote compatible LaTeX templates.
 
@@ -11,3 +11,33 @@ We're developing a template mini-language based on Jinja that allows us to creat
 - expose user options in the Curvenote UI to allow an end user to configure the template on export
 
 The min-language is still in beta but we'll publish a link to docs here soon. In the meantime, if you want to add a template open and issue or let us know on the Curvenote [Community Slack](http://slack.curvenote.dev) and we'll configure it for you!
+
+# Building a Compatible Template
+
+Template folders should be placed in the `latex/` folder. The contents of a template folder should be:
+
+- `template.yml` - The template specification file
+- `template.tex` - The main template file with Curvenote template directives
+- `content.tex` - Example content, usually taken from the original template
+
+## template specification (template.yml)
+
+### metadata
+
+The following are valid fields. Descriptions provided where needed.
+
+- `title`
+- `description`
+- `author` - details the person who contributed the Curvenote port of this template
+  - `name`
+  - `github` - github username
+  - `twitter` - twitter handle
+  - `affiliation`
+- `source` - the name of the original source of the template, possibly a publishing body
+- `version` - freeform semantic version of the port of the template
+- `license` - a recognized license name e.g. MIT, CC-BY, CC-BY-SA
+- `tag` - a list of tags
+  - `tagname`
+  - `tagname`
+- `links`
+  - `source` - a download link to the source of the original tex, class, styles
