@@ -41,3 +41,18 @@ The following are valid fields. Descriptions provided where needed.
   - `tagname`
 - `links` (required)
   - `source` - a download link to the source of the original tex, class, styles
+
+### tagged
+
+- abstract
+- appendix
+- acknowledgements
+
+### options
+
+#### builtins
+
+- doc_class
+- start_page
+- page_numbers
+- backlink
