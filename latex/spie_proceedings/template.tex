@@ -19,10 +19,13 @@
 \affil[ [[alphabet[loop.index]]] ]{[[author.affiliation]]}
 [# endfor #]
 
+% \authorinfo{Further author information: your@emaildomain.com}
 \authorinfo{Further author information: http://curvenote.com/@[[doc.authors[0].username]]}
 
 % Option to view page numbers
+% \pagestyle{empty} or \pagestyle{plain} to show page numbers
 [# if options.page_numbers #]\pagestyle{plain}[# else #]\pagestyle{empty}[# endif #]
+% \setcounter{page}{301}
 [# if options.start_page #]\setcounter{page}{[[options.start_page]]}[# endif #]
 
 \begin{document}
