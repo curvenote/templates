@@ -26,18 +26,18 @@ Template folders should be placed in the `latex/` folder. The contents of a temp
 
 The following are valid fields. Descriptions provided where needed.
 
-- `title`
-- `description`
-- `author` - details the person who contributed the Curvenote port of this template
-  - `name`
+- `title` (required)
+- `description` (required)
+- `author` (required) - details the person who contributed the Curvenote port of this template
+  - `name` (required)
   - `github` - github username
   - `twitter` - twitter handle
   - `affiliation`
 - `source` - the name of the original source of the template, possibly a publishing body
-- `version` - freeform semantic version of the port of the template
-- `license` - a recognized license name e.g. MIT, CC-BY, CC-BY-SA
-- `tag` - a list of tags
+- `version` (required) - freeform semantic version of the port of the template
+- `license` (required) - a recognized license name e.g. MIT, CC-BY, CC-BY-SA
+- `tag` (required) - a list of tags
+  - `tagname` (required)
   - `tagname`
-  - `tagname`
-- `links`
+- `links` (required)
   - `source` - a download link to the source of the original tex, class, styles

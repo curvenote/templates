@@ -1,4 +1,4 @@
-\documentclass[[[options.docclass]]]{spie}  %>>> use for US letter paper
+\documentclass[ [[options.doc_class]] ]{spie}  %>>> use for US letter paper
 %\documentclass[a4paper]{spie}  %>>> use this instead for A4 paper
 %\documentclass[nocompress]{spie}  %>>> to avoid compression of citations
 
@@ -10,18 +10,20 @@
 
 \title{[[doc.title]]}
 
+[# set alphabet=' abcdefghijklmnopqrstuvwxyz' #]
+
 [# for author in doc.authors #]
-\author[[[loop.index]]]{[[author.name]]}
+\author[ [[alphabet[loop.index]]] ]{[[author.name]]}
 [# endfor #]
 [# for author in doc.authors #]
-\affil[[[loop.index]]]{[[author.affiliation]]}
+\affil[ [[alphabet[loop.index]]] ]{[[author.affiliation]]}
 [# endfor #]
 
 \authorinfo{Further author information: http://curvenote.com/@[[doc.authors[0].username]]}
 
 % Option to view page numbers
-\pagestyle{empty} % change to \pagestyle{plain} for page numbers
-\setcounter{page}{301} % Set start page numbering at e.g. 301
+[# if options.page_numbers #]\pagestyle{plain}[# else #]\pagestyle{empty}[# endif #]
+[# if options.start_page #]\setcounter{page}{[[options.start_page]]}[# endif #]
 
 \begin{document}
 \maketitle
@@ -31,9 +33,15 @@
 
 % Include a list of keywords after the abstract
 % \keywords{Manuscript format, template, SPIE Proceedings, LaTeX}
-[# if doc.tags #]\keywords{[[doc.tags]]}[# endif #]
+[# if doc.tags #]\keywords{[[", ".join(doc.tags)]]}[# endif #]
 
 [[CONTENT]]
+
+% Include appendix
+[# if tagged.appendix #]
+\apendix
+[[tagged.appendix]]
+[# endif #]
 
 % Include acknowledgments
 [# if tagged.acknowledgments #]
