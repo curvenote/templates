@@ -44,9 +44,10 @@
 [# endif #]
 
 % Include acknowledgments
-[# if tagged.acknowledgments #]
+[# if tagged.acknowledgments or options.backlink#]
 \acknowledgments
 [[tagged.acknowledgments]]
+[# if options.backlink #]\href{[[doc.oxalink]]}{View this paper online.}[# endif #]
 [# endif #]
 
 % References
