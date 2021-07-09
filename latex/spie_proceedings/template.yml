@@ -3,9 +3,8 @@ metadata:
   description: A template using the styles provided by the SPIE for publications in their proceedings
   author:
     name: SPIE
-    twitter: curvenote
     affiliation: SPIE
-  source: Overleaf
+  source: SPIE
   version: 3.40.0
   license: CC-BY-4.0
   tags:
@@ -13,7 +12,7 @@ metadata:
     - proceedings
   links:
     github: https://github.com/curvenote/templates/tree/main/latex/spie_proceedings
-    source: https://www.overleaf.com/latex/templates/spie-proceedings-style-template-and-guidelines-for-authors/qpkhfttzvnhz
+    source: https://spie.org/Documents/Publications/spie-proceedings-style.zip
 
 # options that can be offered to users to customise how this template is rendered
 config:
@@ -27,6 +26,7 @@ config:
     raggedbottom: false
     sloppy: false
     hidelinks: false
+    citep: false
 
   tagged:
     abstract:
