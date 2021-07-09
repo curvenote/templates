@@ -5,7 +5,7 @@ import typer
 import yaml
 import tempfile
 from analyse import analyse
-from shutil import make_archive
+from shutil import make_archive, move
 from TemplateStorage import TemplateStorage
 from TemplateAssets import TemplateAssets
 import subprocess
@@ -55,9 +55,19 @@ def main(repo_path: str):
       logging.info(f"processing: {tmpl}")
       mkdir(path.join(tmp_folder, tmpl))
 
+      has_original = False
+      if path.exists(path.join(latex_path, tmpl, 'original')):
+        has_original = True
+        logging.info(f"Found original directory for {tmpl}, moving")
+        move(path.join(latex_path, tmpl, 'original'), path.join(tmp_folder, 'original'))
+
       zip_filepath = make_archive(
         path.join(tmp_folder, tmpl, 'latex.template'), 'zip', path.join(latex_path, tmpl))
       logging.info(f"created zipfile {zip_filepath}")
+
+      if has_original:
+        logging.info(f"Moving original back to template folder")
+        move(path.join(tmp_folder, 'original'), path.join(latex_path, tmpl, 'original'))
 
       options_json_filepath = path.join(tmp_folder, tmpl, 'options.json')
       options = get_local_options(latex_path, tmpl)
