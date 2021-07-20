@@ -1,6 +1,6 @@
 metadata:
-  title: Curvenote Paper
-  description: A styled paper template using the Curvenote Schema and styles
+  title: Curvenote Default
+  description: A paper styled template using the custom environments and styling to match Curvenote Web
   author:
     name: Curvenote
     github: curvenote
@@ -12,8 +12,6 @@ metadata:
   tags:
     - article
     - paper
-    - report
-    - one-column
   links:
     github: https://github.com/curvenote/templates/tree/main/latex/curvenote_paper
     source: http://curvenote.com
@@ -33,10 +31,6 @@ config:
 
   tagged:
     abstract:
-      required: false
-    abstract_fr:
-      required: false
-    preface:
       required: false
     acknowledgements:
       required: false

@@ -1,6 +1,6 @@
 metadata:
-  title: Curvenote Basic
-  description: A minimal template that renders Curvenote content
+  title: Plain Latex
+  description: A minimal template that only uses vanilla LaTeX commands and environments
   version: 1.0.0
   license: CC-BY-SA
   source: Curvenote
