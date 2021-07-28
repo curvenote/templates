@@ -4,7 +4,9 @@ metadata:
   author:
     name: SPIE
     affiliation: SPIE
-  source: SPIE
+  contributor:
+    name: Curvenote
+    affiliation: curvenote
   version: 3.40.0
   license: CC-BY-4.0
   tags:

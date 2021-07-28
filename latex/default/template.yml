@@ -6,14 +6,18 @@ metadata:
     github: curvenote
     twitter: curvenote
     affiliation: Curvenote
-  source: Curvenote
+  contributor:
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
   version: 0.2.0
   license: CC-BY
   tags:
     - article
     - paper
   links:
-    github: https://github.com/curvenote/templates/tree/main/latex/curvenote_paper
+    github: https://github.com/curvenote/templates/tree/main/latex/default
     source: http://curvenote.com
 
 # options that can be offered to users to customise how this template is rendered
