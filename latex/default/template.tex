@@ -17,8 +17,24 @@
 \date{\displaydate{articleDate}}
 
 \begin{document}
+
 \maketitle
-[# if tagged.abstract #]\begin{abstract}[[tagged.abstract]]\end{abstract}[# endif #]
+
+[# if doc.tags #]
+\keywords{[[", ".join(doc.tags)]]}
+
+[# endif #]
+
+[# if tagged.abstract #]
+\begin{abstract}
+  [[tagged.abstract]]
+\end{abstract}
+
+[# endif #]
+
+
 [[CONTENT]]
+
+
 \bibliography{main}
 \end{document}
