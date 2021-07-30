@@ -7,7 +7,7 @@ import tempfile
 from analyse import analyse
 from shutil import make_archive, move
 from TemplateStorage import TemplateStorage
-from TemplateAssets import TemplateAssets
+from TemplateAssets import TemplateAssets, Asset
 import subprocess
 from google.cloud import storage as gcp_storage
 from typing import Dict, List
@@ -47,6 +47,13 @@ def main(repo_path: str):
     # Analyse the repo contents, listing and diff since last processing pass
     all_templates, to_process, to_remove_from_bucket = analyse(latex_path, prev_listing)
 
+    # check for rebuild all flag
+    with open(path.join(repo_path, 'config.yml'), 'r') as file:
+      base_config = yaml.load(file, Loader=yaml.FullLoader)
+
+    if base_config.rebuild:
+      to_process = all_templates
+
     # process assets ready for update
     logging.info("Start processing...")
     processed_assets: List[TemplateAssets] = []
@@ -75,7 +82,14 @@ def main(repo_path: str):
         json.dump(options, ojson, indent=4)
       logging.info(f"created options.json {zip_filepath}")
 
-      processed_assets.append(TemplateAssets(tmpl, zip_filepath, options_json_filepath))
+      template_assets = TemplateAssets(tmpl)
+      template_assets.append(Asset(zip_filepath, 'template.latex.zip', 'application/zip'))
+      template_assets.append(Asset(options_json_filepath, 'options.json', 'application/json'))
+      thumbnail_filepath = path.join(latex_path, tmpl, 'thumbnail.png')
+      if path.exists(thumbnail_filepath):
+        template_assets.append(Asset(thumbnail_filepath, 'thumnail.png', 'image/png'))
+
+      processed_assets.append(template_assets)
     logging.info("Processing complete")
 
     # push new templates

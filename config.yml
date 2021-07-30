@@ -1,2 +1,2 @@
 action:
-  rebuild-all: false
+  rebuild: false

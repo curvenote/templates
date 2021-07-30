@@ -37,13 +37,13 @@ class TemplateStorage():
       logging.info(f"Opened local file {prev_listing_path}")
       return json.load(fp)
 
-  def push_template_asset(self, template: TemplateAssets):
+  def push_template_asset(self, template_assets: TemplateAssets):
     """
       Given the name of and paths to template template, this will create a 'folder'
       on storage and upload the template
     """
-    for asset in template.contents:
-      tmpl_base = f"{self.storage_path_base}/{template.name}"
+    for asset in template_assets:
+      tmpl_base = f"{self.storage_path_base}/{template_assets.name}"
       blob = self.bucket.blob(f"{tmpl_base}/{asset.storage_name}")
       blob.upload_from_filename(asset.path, asset.content_type)
 
