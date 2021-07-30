@@ -51,7 +51,7 @@ def main(repo_path: str):
     with open(path.join(repo_path, 'config.yml'), 'r') as file:
       base_config = yaml.load(file, Loader=yaml.FullLoader)
 
-    if base_config["rebuild"]:
+    if base_config["action"]["rebuild"]:
       to_process = all_templates
 
     # process assets ready for update
