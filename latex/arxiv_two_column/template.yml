@@ -1,0 +1,45 @@
+metadata:
+  title: Arxiv (Two Column - EarthArxiv)
+  description: A Two Column Arxiv Compatible Template suitable e.g for EarthArxiv
+  version: 1.0.0
+  license: CC-BY-4.0
+  author:
+    name: Brenhin Keller
+    github: https://github.com/brenhinkeller
+    affiliation: Dartmouth College
+  contributor:
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
+  tags:
+    - paper
+    - pre-print
+    - arxiv
+    - two-column
+    - eartharxiv
+  links:
+    source: https://github.com/brenhinkeller/preprint-template.tex
+
+# options that can be offered to users to customise how this template is rendered
+config:
+  build:
+    layout: compact
+
+  schema:
+    aside: framed
+    callout: framed
+    code: verbatim
+    raggedbottom: false
+    sloppy: false
+    hidelinks: false
+    citep: true
+    bibstyle: false
+
+  tagged:
+    abstract:
+      required: true
+    acknowledgements:
+      required: false
+
+  options: {}
