@@ -46,12 +46,13 @@ anchorcolor = black}
 	\end{tikzpicture}
 	\hspace{-2mm}
 }
+[# set ALPHA=" ABCDEFGHIJKLMNOPQRSTRUVWXYZ" #]
 \foreach \x in {A, ..., Z}{\expandafter\xdef\csname orcid\x\endcsname{\noexpand\href{https://orcid.org/\csname orcidauthor\x\endcsname}
 			{\noexpand\orcidicon}}
 }
 % Define the ORCID iD command for each author separately. Here done for two authors.
 [# for author in doc.authors #]
-[# if author.orcid #]\newcommand{\[[author.name.replace(" ","")]]}{author.orcid}[# endif #]
+[# if author.orcid #]\newcommand{\orcidauthor[[ALPHA[loop.index] ]]}{[[author.orcid]]}[# endif #]
 [# endfor #]
 
 %%%%%%%%%%%%%%%%   Title   %%%%%%%%%%%%%%%%
@@ -76,7 +77,7 @@ anchorcolor = black}
 % TODO add ORCID IDs
 % TODO add corresponding author \thanks{\tt{asmith@college.edu}}
 [# for author in doc.authors #]
-\author[ [[loop.index]] ]{[[author.name]]}
+\author[ [[loop.index]] ]{[[author.name]][# if author.orcid #]\orcid[[ ALPHA[loop.index] ]]{} [# endif #]}
 [# endfor #]
 [# for author in doc.authors #]
 \affil[ [[loop.index]] ]{[[author.affiliation]]}

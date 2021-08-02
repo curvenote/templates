@@ -19,3 +19,4 @@ A list of changes made when porting the original tex and styles to the Curvenote
 - Added tagged blocks for `abstract` and `acknowledgments`
 - Made `keywords` optional based on `doc.tags`
 - Added optional `\usepackage{lipsum}` for testing purposes as example content in original uses it
+- Ported ORCID ID Link support on authors

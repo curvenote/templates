@@ -11,7 +11,7 @@ A template for pre-prints based on the Arxiv submission guide, created by [Brenh
 
 ## TODO
 
-- [ ] ORCID ID Support
+- [x] ORCID ID Support
 - [ ] option - watermark
 - [ ] option - line_numbers
 - [ ] option - corresponding author
