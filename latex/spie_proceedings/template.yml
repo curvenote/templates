@@ -4,6 +4,7 @@ metadata:
   author:
     name: SPIE
     affiliation: SPIE
+    website: https://www.spie.org/
   contributor:
     name: Curvenote
     affiliation: curvenote
@@ -13,7 +14,6 @@ metadata:
     - paper
     - proceedings
   links:
-    github: https://github.com/curvenote/templates/tree/main/latex/spie_proceedings
     source: https://spie.org/Documents/Publications/spie-proceedings-style.zip
 
 # options that can be offered to users to customise how this template is rendered
@@ -34,4 +34,10 @@ config:
     abstract:
       required: true
     appendix:
+      required: true
+
+  options:
+    page_numbers:
+      type: bool
+      default: true
       required: true

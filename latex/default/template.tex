@@ -8,13 +8,19 @@
 %# the main title #%
 \title{[[doc.title]]}
 
-\author{[# for author in doc.authors #]
-[[author.name]][# if not loop.last #] \and [# endif #]
-[# endfor #]
-}
+
 
 \newdate{articleDate}{[[doc.date.day]]}{[[doc.date.month]]}{[[doc.date.year]]}
 \date{\displaydate{articleDate}}
+
+\author{[# for author in doc.authors #]
+[[author.name]]\\
+[[author.affiliation]]\\
+[# if not loop.last #]
+\and
+[# endif #]
+[# endfor #]
+}
 
 [# if options.page_numbers #]\pagestyle{plain}[# else #]\pagestyle{empty}[# endif #]
 

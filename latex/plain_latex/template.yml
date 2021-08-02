@@ -31,7 +31,8 @@ config:
     raggedbottom: true
     sloppy: true
     hidelinks: true
+    citep: true
 
-  # tagged:
+  tagged: {}
 
-  # options:
+  options: {}

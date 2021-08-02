@@ -12,7 +12,7 @@ metadata:
     twitter: curvenote
     affiliation: Curvenote
   version: 0.2.0
-  license: CC-BY
+  license: CC-BY-4.0
   tags:
     - article
     - paper
@@ -32,6 +32,7 @@ config:
     raggedbottom: true
     sloppy: true
     hidelinks: true
+    citep: true
 
   tagged:
     abstract:
@@ -42,11 +43,15 @@ config:
   options:
     watermark:
       type: bool
-      default: true
+      default: false
       required: false
     corresponding_email:
       type: str
-      required: true
+      required: false
     draft:
       type: bool
       required: false
+    page_numbers:
+      type: bool
+      default: true
+      required: true
