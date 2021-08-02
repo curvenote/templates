@@ -109,6 +109,14 @@ anchorcolor = black}
 %%%%%%%%%%%%%%%  Main text   %%%%%%%%%%%%%%%
 [# if options.line_numbers #]\linenumbers[# endif #]
 
+[# if options.backlink #]
+\footnotesize
+\href{[[doc.oxalink]]}{View online on Curvenote}
+
+\normalsize
+[# endif #]
+
+
 [[CONTENTS]]
 
 [# if tagged.acknowledgments #]
@@ -116,10 +124,12 @@ anchorcolor = black}
 \footnotesize
 \section*{Acknowledgements}
 [[ tagged.acknowledgments ]]
+
+\normalsize
 [# endif #]
 
 %%%%%%%%%%%%%%   Bibliography   %%%%%%%%%%%%%%
-\normalsize
+
 \bibliography{main}
 
 \end{document}
