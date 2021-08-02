@@ -4,6 +4,7 @@ short_title: An Arxiv Template
 authors:
   - name: George Kour
     affiliation: IBM Research & Haifa University
+    location: Israel
     curvenote: http://curvenote.com/@georgekour
 date:
   year: 2021

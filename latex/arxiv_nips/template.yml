@@ -7,7 +7,7 @@ metadata:
     name: George Kour
     github: https://github.com/kourgeorge
     twitter: https://twitter.com/georgekour
-    affiliation: IBM Research
+    affiliation: IBM Research & Haifa University
   contributor:
     name: Curvenote
     github: curvenote
@@ -32,8 +32,9 @@ config:
     raggedbottom: false
     sloppy: false
     hidelinks: false
-    citep: true
+    natbib: true
     bibstyle: false
+    citestyle: false
 
   tagged:
     abstract:

@@ -28,10 +28,15 @@ config:
     vanilla: true
 
   schema:
+    aside: marginpar
+    callout: framed
+    code: verbatim
     raggedbottom: true
     sloppy: true
     hidelinks: true
-    citep: true
+    natbib: true
+    bibstyle: true
+    citestyle: true
 
   tagged: {}
 

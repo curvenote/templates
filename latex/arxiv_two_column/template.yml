@@ -33,8 +33,9 @@ config:
     raggedbottom: false
     sloppy: false
     hidelinks: false
-    citep: true
+    natbib: true
     bibstyle: false
+    citestyle: false
 
   tagged:
     abstract:
