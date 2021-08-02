@@ -19,7 +19,8 @@
 
 \author{[# for author in doc.authors #]
 [[author.name]]\\
-[[author.affiliation]]\\
+[# if author.affiliation #][[author.affiliation]]\\[# endif #]
+[# if author.location #][[author.location]]\\[# endif #]
 [# if not loop.last #]
 \and
 [# endif #]
