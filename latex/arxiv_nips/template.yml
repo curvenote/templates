@@ -38,8 +38,6 @@ config:
   tagged:
     abstract:
       required: true
-    appendix:
-      required: true
 
   options:
     show_date:
