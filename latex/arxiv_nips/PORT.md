@@ -17,3 +17,4 @@ A list of changes made when porting the original tex and styles to the Curvenote
 - Removed the non-bibtex option for inline references and pointed `bibliography` to `main.bib`
 - Added `arxiv.sty` to root folder
 - created `content.tex` with main content from `example.tex`
+- Added optional `\usepackage{lipsum}` for testing purposes as example content in original uses it
