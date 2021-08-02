@@ -1,0 +1,66 @@
+\documentclass{article}
+
+\usepackage{arxiv}
+
+\PassOptionsToPackage{T1}{fontenc}
+\input{curvenote.def}
+
+\usepackage{fontenc}    % use 8-bit T1 fonts
+
+
+\title{[[doc.title]]}
+
+[# if options.show_date #]
+\newdate{articleDate}{[[doc.date.day]]}{[[doc.date.month]]}{[[doc.date.year]]}
+\date{\displaydate{articleDate}}
+[# else #]
+\date{}
+[# endif #]
+
+\author{[# for author in doc.authors #]
+[[author.name]]\\
+[[author.affiliation]]\\
+[# if not loop.last #]
+\and
+[# endif #]
+[# endfor #]
+}
+
+% Uncomment to override  the `A preprint' in the header
+%\renewcommand{\headeright}{Technical Report}
+%\renewcommand{\undertitle}{Technical Report}
+\renewcommand{\shorttitle}{[[doc.title]]}
+
+%%% Add PDF metadata to help others organize their library
+%%% Once the PDF is generated, you can check the metadata with
+%%% $ pdfinfo template.pdf
+\hypersetup{
+pdftitle={\@title},
+pdfsubject={[[doc.description]]},
+pdfauthor={\@author},
+pdfkeywords={[[doc.tags]]},
+}
+
+\begin{document}
+\maketitle
+
+[# if tagged.abstract #]
+\begin{abstract}
+  [[tagged.abstract]]
+\end{abstract}
+
+[# endif #]
+
+
+[# if doc.tags #]
+\keywords{[[", ".join(doc.tags)]]}
+
+[# endif #]
+
+[[CONTENT]]
+
+
+\bibliographystyle{unsrtnat}
+\bibliography{main}
+
+\end{document}
