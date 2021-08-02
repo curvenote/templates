@@ -29,7 +29,7 @@
 % Uncomment to override  the `A preprint' in the header
 %\renewcommand{\headeright}{Technical Report}
 %\renewcommand{\undertitle}{Technical Report}
-\renewcommand{\shorttitle}{[[doc.title]]}
+\renewcommand{\shorttitle}{[[doc.short_title]]}
 
 %%% Add PDF metadata to help others organize their library
 %%% Once the PDF is generated, you can check the metadata with
@@ -55,6 +55,13 @@ pdfkeywords={[[doc.tags]]},
 [# if doc.tags #]
 \keywords{[[", ".join(doc.tags)]]}
 
+[# endif #]
+
+[# if options.backlink #]
+\footnotesize
+\href{[[doc.oxalink]]}{View online on Curvenote}
+
+\normalsize
 [# endif #]
 
 [[CONTENT]]
