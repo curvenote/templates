@@ -16,6 +16,8 @@
 \newdate{articleDate}{[[doc.date.day]]}{[[doc.date.month]]}{[[doc.date.year]]}
 \date{\displaydate{articleDate}}
 
+[# if options.page_numbers #]\pagestyle{plain}[# else #]\pagestyle{empty}[# endif #]
+
 \begin{document}
 
 \maketitle
