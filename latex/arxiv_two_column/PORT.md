@@ -18,3 +18,4 @@ A list of changes made when porting the original tex and styles to the Curvenote
   - Ported Author, affiliation via loop with integer numbering
 - Added tagged blocks for `abstract` and `acknowledgments`
 - Made `keywords` optional based on `doc.tags`
+- Added optional `\usepackage{lipsum}` for testing purposes as example content in original uses it

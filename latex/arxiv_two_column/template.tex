@@ -1,8 +1,9 @@
 \documentclass[twocolumn, switch]{article} % Method A for two-column formatting
 \usepackage{preprint}
+[# if lipsum #]\usepackage{lipsum}[# endif #]
 
 \PassOptionsToPackage{natbib}{numbers,square}
-\PassOptionToPackage{fontenc}{T1} % use 8-bit T1 fonts
+\PassOptionsToPackage{fontenc}{T1} % use 8-bit T1 fonts
 % colors for hyperlinks
 \PassOptionsToPackage{hyperref}{colorlinks = true,
 linkcolor = purple,
@@ -51,7 +52,7 @@ anchorcolor = black}
 % Define the ORCID iD command for each author separately. Here done for two authors.
 [# for author in doc.authors #]
 [# if author.orcid #]\newcommand{\[[author.name.replace(" ","")]]}{author.orcid}[# endif #]
-[# forend #]
+[# endfor #]
 
 %%%%%%%%%%%%%%%%   Title   %%%%%%%%%%%%%%%%
 \title{[[doc.title]]}
@@ -117,7 +118,7 @@ anchorcolor = black}
 [# endif #]
 
 
-[[CONTENTS]]
+[[CONTENT]]
 
 [# if tagged.acknowledgments #]
 %%%%%%%%%%%%% Acknowledgements %%%%%%%%%%%%%
