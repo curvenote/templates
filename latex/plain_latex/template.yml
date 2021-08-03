@@ -33,7 +33,7 @@ config:
     code: verbatim
     raggedbottom: true
     sloppy: true
-    hidelinks: true
+    hidelinks: false
     natbib: true
     bibstyle: true
     citestyle: true
