@@ -87,7 +87,7 @@ def main(repo_path: str):
       template_assets.append(Asset(options_json_filepath, 'options.json', 'application/json'))
       thumbnail_filepath = path.join(latex_path, tmpl, 'thumbnail.png')
       if path.exists(thumbnail_filepath):
-        template_assets.append(Asset(thumbnail_filepath, 'thumnail.png', 'image/png'))
+        template_assets.append(Asset(thumbnail_filepath, 'thumbnail.png', 'image/png'))
 
       processed_assets.append(template_assets)
     logging.info("Processing complete")
