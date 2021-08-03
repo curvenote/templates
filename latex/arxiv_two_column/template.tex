@@ -2,8 +2,8 @@
 \usepackage{preprint}
 [# if lipsum #]\usepackage{lipsum}[# endif #]
 
-\PassOptionsToPackage{natbib}{numbers,square}
-\PassOptionsToPackage{fontenc}{T1} % use 8-bit T1 fonts
+\PassOptionsToPackage{numbers,square}{natbib}
+\PassOptionsToPackage{T1}{fontenc} % use 8-bit T1 fonts
 
 \input{curvenote.def}
 
@@ -99,10 +99,10 @@ anchorcolor = black}
 [# endif #]
 
 [# if doc.tags #]
-\keywords{[-", ".join(doc.tags)-]}\\
+\keywords{[-", ".join(doc.tags)-]}
 [# endif #]
 
-\vspace{0.35cm}
+\vspace{0.5cm}
 
   \end{@twocolumnfalse} % Method A for two-column formatting
 ] % Method A for two-column formatting
