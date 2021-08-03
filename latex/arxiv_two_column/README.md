@@ -11,8 +11,6 @@ A template for pre-prints based on the Arxiv submission guide, created by [Brenh
 
 ## TODO
 
-- [x] ORCID ID Support
+- [ ] option - corresponding author
 - [ ] option - watermark
 - [ ] option - line_numbers
-- [ ] option - corresponding author
-- [ ] option - bibstyle: Geology

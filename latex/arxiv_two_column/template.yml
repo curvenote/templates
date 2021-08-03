@@ -14,10 +14,9 @@ metadata:
     affiliation: Curvenote
   tags:
     - paper
+    - two-column
     - pre-print
     - arxiv
-    - two-column
-    - eartharxiv
   links:
     source: https://github.com/brenhinkeller/preprint-template.tex
 
