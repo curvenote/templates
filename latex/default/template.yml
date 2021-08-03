@@ -11,7 +11,7 @@ metadata:
     github: curvenote
     twitter: curvenote
     affiliation: Curvenote
-  version: 0.2.0
+  version: 0.2.1
   license: CC-BY-4.0
   tags:
     - article
@@ -31,7 +31,7 @@ config:
     code: highlight
     raggedbottom: true
     sloppy: true
-    hidelinks: true
+    hidelinks: false
     natbib: true
     bibstyle: true
     citestyle: true
