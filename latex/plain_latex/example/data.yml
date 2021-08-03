@@ -1,0 +1,21 @@
+doc:
+  title: Plain Latex
+  description: A minimal template that only uses vanilla LaTeX commands and environments
+  short_title: SPIE Proceedings
+  authors:
+    - name: Curve C. Note
+      affiliation: Curvenote
+      location: Address, City, Country
+      curvenote: http://curvenote.com/@curvenote
+  date:
+    year: 2021
+    month: 08
+    day: 3
+  tags:
+    - keyword1
+    - keyword2
+    - keyword3
+  oxalink: https://curvenote.com/@curvenote/getting-started
+tagged:
+  abstract: >
+    Venenatis urna cursus eget nunc scelerisque viverra. Rutrum quisque non tellus orci ac auctor augue mauris. Consequat id porta nibh venenatis cras sed. Senectus et netus et malesuada fames. Nunc scelerisque viverra mauris in aliquam sem fringilla. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla.
