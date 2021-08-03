@@ -3,19 +3,19 @@
 
 \input{curvenote.def}
 
-\usepackage[oxalink=[[doc.oxalink]]]{curvenote_default}
+\usepackage[oxalink=[-doc.oxalink-]]{curvenote_default}
 
 %# the main title #%
-\title{[[doc.title]]}
+\title{[-doc.title-]}
 
 
 
-\newdate{articleDate}{[[doc.date.day]]}{[[doc.date.month]]}{[[doc.date.year]]}
+\newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
 \date{\displaydate{articleDate}}
 
 \author{[# for author in doc.authors #]
-[[author.name]]\\
-[[author.affiliation]]\\
+[-author.name-]\\
+[-author.affiliation-]\\
 [# if not loop.last #]
 \and
 [# endif #]
@@ -29,19 +29,19 @@
 \maketitle
 
 [# if doc.tags #]
-\keywords{[[", ".join(doc.tags)]]}
+\keywords{[-", ".join(doc.tags)-]}
 
 [# endif #]
 
 [# if tagged.abstract #]
 \begin{abstract}
-  [[tagged.abstract]]
+  [-tagged.abstract-]
 \end{abstract}
 
 [# endif #]
 
 
-[[CONTENT]]
+[-CONTENT-]
 
 
 \bibliography{main}
