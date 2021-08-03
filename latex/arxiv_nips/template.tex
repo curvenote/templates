@@ -8,19 +8,19 @@
 \usepackage{fontenc}    % use 8-bit T1 fonts
 
 
-\title{[[doc.title]]}
+\title{[-doc.title-]}
 
 [# if options.show_date #]
-\newdate{articleDate}{[[doc.date.day]]}{[[doc.date.month]]}{[[doc.date.year]]}
+\newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
 \date{\displaydate{articleDate}}
 [# else #]
 \date{}
 [# endif #]
 
 \author{[# for author in doc.authors #]
-[[author.name]]\\
-[# if author.affiliation #][[author.affiliation]]\\[# endif #]
-[# if author.location #][[author.location]]\\[# endif #]
+[-author.name-]\\
+[# if author.affiliation #][-author.affiliation-]\\[# endif #]
+[# if author.location #][-author.location-]\\[# endif #]
 [# if not loop.last #]
 \and
 [# endif #]
@@ -30,16 +30,16 @@
 % Uncomment to override  the `A preprint' in the header
 %\renewcommand{\headeright}{Technical Report}
 %\renewcommand{\undertitle}{Technical Report}
-\renewcommand{\shorttitle}{[[doc.short_title]]}
+\renewcommand{\shorttitle}{[-doc.short_title-]}
 
 %%% Add PDF metadata to help others organize their library
 %%% Once the PDF is generated, you can check the metadata with
 %%% $ pdfinfo template.pdf
 \hypersetup{
 pdftitle={\@title},
-pdfsubject={[[doc.description]]},
+pdfsubject={[-doc.description-]},
 pdfauthor={\@author},
-pdfkeywords={[[doc.tags]]},
+pdfkeywords={[-doc.tags-]},
 }
 
 \begin{document}
@@ -47,25 +47,25 @@ pdfkeywords={[[doc.tags]]},
 
 [# if tagged.abstract #]
 \begin{abstract}
-  [[tagged.abstract]]
+[-tagged.abstract-]
 \end{abstract}
 
 [# endif #]
 
 
 [# if doc.tags #]
-\keywords{[[", ".join(doc.tags)]]}
+\keywords{[-", ".join(doc.tags)-]}
 
 [# endif #]
 
 [# if options.backlink #]
 \footnotesize
-\href{[[doc.oxalink]]}{View online on Curvenote}
+\href{[-doc.oxalink-]}{View online on Curvenote}
 
 \normalsize
 [# endif #]
 
-[[CONTENT]]
+[-CONTENT-]
 
 
 \bibliographystyle{unsrtnat}
