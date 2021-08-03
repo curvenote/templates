@@ -1,4 +1,4 @@
-\documentclass[ [[options.doc_class]] ]{spie}  %>>> use for US letter paper
+\documentclass[ [-options.doc_class-] ]{spie}  %>>> use for US letter paper
 %\documentclass[a4paper]{spie}  %>>> use this instead for A4 paper
 %\documentclass[nocompress]{spie}  %>>> to avoid compression of citations
 
@@ -8,51 +8,51 @@
 
 \renewcommand{\baselinestretch}{1.0} % Change to 1.65 for double spacing
 
-\title{[[doc.title]]}
+\title{[-doc.title-]}
 
 [# set alphabet=' abcdefghijklmnopqrstuvwxyz' #]
 
 [# for author in doc.authors #]
-\author[ [[alphabet[loop.index]]] ]{[[author.name]]}
+\author[[-alphabet[loop.index]-]]{[-author.name-]}
 [# endfor #]
 [# for author in doc.authors #]
-\affil[ [[alphabet[loop.index]]] ]{[[author.affiliation]]}
+\affil[[-alphabet[loop.index]-]]{[-author.affiliation-]}
 [# endfor #]
 
 % \authorinfo{Further author information: your@emaildomain.com}
-\authorinfo{Further author information: http://curvenote.com/@[[doc.authors[0].username]]}
+\authorinfo{Further author information: http://curvenote.com/@[-doc.authors[0].username-]}
 
 % Option to view page numbers
 % \pagestyle{empty} or \pagestyle{plain} to show page numbers
 [# if options.page_numbers #]\pagestyle{plain}[# else #]\pagestyle{empty}[# endif #]
 % \setcounter{page}{301}
-[# if options.start_page #]\setcounter{page}{[[options.start_page]]}[# endif #]
+[# if options.start_page #]\setcounter{page}{[-options.start_page-]}[# endif #]
 
 \begin{document}
 \maketitle
 
 % include abstract \begin{abstract} the abstract text \end{abstract}
-[# if tagged.abstract #]\begin{abstract}[[tagged.abstract]]\end{abstract}[# endif #]
+[# if tagged.abstract #]\begin{abstract}[-tagged.abstract-]\end{abstract}[# endif #]
 
 % Include a list of keywords after the abstract
 % \keywords{Manuscript format, template, SPIE Proceedings, LaTeX}
-[# if doc.tags #]\keywords{[[", ".join(doc.tags)]]}[# endif #]
+[# if doc.tags #]\keywords{[-", ".join(doc.tags)-]}[# endif #]
 
 
-[[CONTENT]]
+[-CONTENT-]
 
 
 % Include appendix
 [# if tagged.appendix #]
 \apendix
-[[tagged.appendix]]
+[-tagged.appendix-]
 [# endif #]
 
 % Include acknowledgments
 [# if tagged.acknowledgments or options.backlink#]
 \acknowledgments
-[[tagged.acknowledgments]]
-[# if options.backlink #]\href{[[doc.oxalink]]}{View this paper online.}[# endif #]
+[-tagged.acknowledgments-]
+[# if options.backlink #]\href{[-doc.oxalink-]}{View this paper online.}[# endif #]
 [# endif #]
 
 % References
