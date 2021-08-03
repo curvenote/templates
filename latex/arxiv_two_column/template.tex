@@ -52,11 +52,11 @@ anchorcolor = black}
 }
 % Define the ORCID iD command for each author separately. Here done for two authors.
 [# for author in doc.authors #]
-[# if author.orcid #]\newcommand{\orcidauthor[[ALPHA[loop.index] ]]}{[[author.orcid]]}[# endif #]
+[# if author.orcid #]\newcommand{\orcidauthor[-ALPHA[loop.index]-]}{[-author.orcid-]}[# endif #]
 [# endfor #]
 
 %%%%%%%%%%%%%%%%   Title   %%%%%%%%%%%%%%%%
-\title{[[doc.title]]}
+\title{[-doc.title-]}
 
 % Add watermark with submission status
 % Awaiting watermark support
@@ -77,10 +77,10 @@ anchorcolor = black}
 % TODO add ORCID IDs
 % TODO add corresponding author \thanks{\tt{asmith@college.edu}}
 [# for author in doc.authors #]
-\author[ [[loop.index]] ]{[[author.name]][# if author.orcid #]\orcid[[ ALPHA[loop.index] ]]{} [# endif #]}
+\author[[-loop.index-]]{[-author.name-][# if author.orcid #]\orcid[-ALPHA[loop.index]-]{}[# endif #]}
 [# endfor #]
 [# for author in doc.authors #]
-\affil[ [[loop.index]] ]{[[author.affiliation]]}
+\affil[[-loop.index-]]{[-author.affiliation-]}
 [# endfor #]
 
 %%%%%%%%%%%%%%    Front matter    %%%%%%%%%%%%%%
@@ -93,14 +93,12 @@ anchorcolor = black}
 
 [# if tagged.abstract #]
 \begin{abstract}
-  [[tagged.abstract]]
+[-tagged.abstract-]\\
 \end{abstract}
-
 [# endif #]
 
 [# if doc.tags #]
-\keywords{[[", ".join(doc.tags)]]}
-
+\keywords{[-", ".join(doc.tags)-]}\\
 [# endif #]
 
 \vspace{0.35cm}
@@ -113,19 +111,19 @@ anchorcolor = black}
 
 [# if options.backlink #]
 \footnotesize
-\href{[[doc.oxalink]]}{View online on Curvenote}
+\href{[-doc.oxalink-]}{View online on Curvenote}
 
 \normalsize
 [# endif #]
 
 
-[[CONTENT]]
+[-CONTENT-]
 
 [# if tagged.acknowledgments #]
 %%%%%%%%%%%%% Acknowledgements %%%%%%%%%%%%%
 \footnotesize
 \section*{Acknowledgements}
-[[ tagged.acknowledgments ]]
+[- tagged.acknowledgments -]
 
 \normalsize
 [# endif #]
