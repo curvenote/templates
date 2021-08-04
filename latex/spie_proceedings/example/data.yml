@@ -1,0 +1,25 @@
+doc:
+  title: "SPIE Proceedings: Style template and guidelines for authors"
+  description: "SPIE Proceedings: Style template and guidelines for authors"
+  short_title: SPIE Proceedings
+  authors:
+    - name: Anna A. Author
+      affiliation: SPIE Member
+      location: Address, City, Country
+      curvenote: http://curvenote.com/@anna_author
+    - name: Barry B. Author
+      affiliation: SPIE Member
+      location: Address, City, Country
+      curvenote: http://curvenote.com/@barry_author
+  date:
+    year: 2021
+    month: 08
+    day: 3
+  tags:
+    - keyword1
+    - keyword2
+    - keyword3
+  oxalink: https://curvenote.com/@curvenote/getting-started
+tagged:
+  abstract: >
+    This document is prepared using LaTeX2e\cite{Lamport94} and shows the desired format and appearance of a manuscript prepared for the Proceedings of the SPIE.\footnote{The basic format was developed in 1995 by Rick Hermann (SPIE) and Ken Hanson (Los Alamos National Lab.).} It contains general formatting instructions and hints about how to use LaTeX.  The LaTeX source file that produced this document, {\ttfamily article.tex} (Version 3.4), provides a template, used in conjunction with {\ttfamily spie.cls} (Version 3.4). These files are available on the Internet at \url{https://spie.org/Documents/Publications/spie-proceedings-style.zip}.  The font used throughout is the LaTeX default font, Computer Modern Roman, which is equivalent to the Times Roman font available on many systems.

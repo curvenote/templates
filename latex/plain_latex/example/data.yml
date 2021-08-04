@@ -1,0 +1,21 @@
+doc:
+  title: Plain Latex
+  description: A minimal template that only uses vanilla LaTeX commands and environments
+  short_title: SPIE Proceedings
+  authors:
+    - name: Curve C. Note
+      affiliation: Curvenote
+      location: Address, City, Country
+      curvenote: http://curvenote.com/@curvenote
+  date:
+    year: 2021
+    month: 08
+    day: 3
+  tags:
+    - science
+    - communication
+    - collaboration
+  oxalink: https://curvenote.com/@curvenote/getting-started
+tagged:
+  abstract: >
+    Write, share and communicate interactive scientific content in a collaborative environment.

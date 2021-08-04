@@ -1,0 +1,135 @@
+\documentclass[twocolumn, switch]{article} % Method A for two-column formatting
+\PassOptionsToPackage{numbers,square}{natbib}
+\PassOptionsToPackage{T1}{fontenc} % use 8-bit T1 fonts
+
+\usepackage{eartharxiv}
+[# if lipsum #]\usepackage{lipsum}[# endif #]
+\input{curvenote.def}
+
+%% Math packages
+\usepackage{amsthm}
+\usepackage{fontenc}
+\usepackage{xcolor}
+\usepackage{lineno}		% Line numbers
+\usepackage{tikz} % ORCiD insertion
+
+% colors for hyperlinks
+\hypersetup{colorlinks = true,
+linkcolor = purple,
+urlcolor  = blue,
+citecolor = cyan,
+anchorcolor = black}
+
+%% Bibliography options
+\bibliographystyle{agu}
+
+ %% Special figure caption options
+\usepackage{newfloat}
+\DeclareFloatingEnvironment[name={Supplementary Figure}]{suppfigure}
+\usepackage{sidecap}
+\sidecaptionvpos{figure}{c}
+
+% Section title spacing  options
+\usepackage{titlesec}
+\titlespacing\section{0pt}{12pt plus 3pt minus 3pt}{1pt plus 1pt minus 1pt}
+\titlespacing\subsection{0pt}{10pt plus 3pt minus 3pt}{1pt plus 1pt minus 1pt}
+\titlespacing\subsubsection{0pt}{8pt plus 3pt minus 3pt}{1pt plus 1pt minus 1pt}
+
+\definecolor{lime}{HTML}{A6CE39}
+\DeclareRobustCommand{\orcidicon}{
+	\begin{tikzpicture}
+	\draw[lime, fill=lime] (0,0)
+	circle [radius=0.16]
+	node[white] {{\fontfamily{qag}\selectfont \tiny ID}};
+	\draw[white, fill=white] (-0.0625,0.095)
+	circle [radius=0.007];
+	\end{tikzpicture}
+	\hspace{-2mm}
+}
+[# set ALPHA=" ABCDEFGHIJKLMNOPQRSTRUVWXYZ" #]
+\foreach \x in {A, ..., Z}{\expandafter\xdef\csname orcid\x\endcsname{\noexpand\href{https://orcid.org/\csname orcidauthor\x\endcsname}
+			{\noexpand\orcidicon}}
+}
+% Define the ORCID iD command for each author separately. Here done for two authors.
+[# for author in doc.authors #]
+[# if author.orcid #]\newcommand{\orcidauthor[-ALPHA[loop.index]-]}{[-author.orcid-]}[# endif #]
+[# endfor #]
+
+%%%%%%%%%%%%%%%%   Title   %%%%%%%%%%%%%%%%
+\title{[-doc.title-]}
+
+% Add watermark with submission status
+% Awaiting watermark support
+% [# if options.watermark #]
+% \usepackage{xwatermark}
+% % Left watermark
+% \newwatermark[firstpage,color=gray!60,angle=90,scale=0.32, xpos=-4.05in,ypos=0]{\href{https://doi.org/}{\color{gray}{Publication doi}}}
+% % Right watermark
+% \newwatermark[firstpage,color=gray!60,angle=90,scale=0.32, xpos=3.9in,ypos=0]{\href{https://doi.org/}{\color{gray}{Preprint doi}}}
+% % Bottom watermark
+% \newwatermark[firstpage,color=gray!90,angle=0,scale=0.28, xpos=0in,ypos=-5in]{*correspondence: \texttt{}}
+% [# endif #]
+
+%%%%%%%%%%%%%%%  Author list  %%%%%%%%%%%%%%%
+\usepackage{authblk}
+\renewcommand*{\Authfont}{\bfseries}
+
+% TODO add ORCID IDs
+% TODO add corresponding author \thanks{\tt{asmith@college.edu}}
+[# for author in doc.authors #]
+\author[[-loop.index-]]{[-author.name-][# if author.orcid #]\orcid[-ALPHA[loop.index]-]{}[# endif #]}
+[# endfor #]
+[# for author in doc.authors #]
+\affil[[-loop.index-]]{[-author.affiliation-]}
+[# endfor #]
+
+%%%%%%%%%%%%%%    Front matter    %%%%%%%%%%%%%%
+\begin{document}
+
+\twocolumn[ % Method A for two-column formatting
+  \begin{@twocolumnfalse} % Method A for two-column formatting
+
+\maketitle
+
+[# if tagged.abstract #]
+\begin{abstract}
+[-tagged.abstract-]\\
+\end{abstract}
+[# endif #]
+
+[# if doc.tags #]
+\keywords{[-", ".join(doc.tags)-]}
+[# endif #]
+
+\vspace{0.5cm}
+
+  \end{@twocolumnfalse} % Method A for two-column formatting
+] % Method A for two-column formatting
+
+%%%%%%%%%%%%%%%  Main text   %%%%%%%%%%%%%%%
+[# if options.line_numbers #]\linenumbers[# endif #]
+
+[# if options.backlink #]
+\footnotesize
+\href{[-doc.oxalink-]}{View online on Curvenote}
+
+\normalsize
+[# endif #]
+
+
+[-CONTENT-]
+
+[# if tagged.acknowledgments #]
+%%%%%%%%%%%%% Acknowledgements %%%%%%%%%%%%%
+\footnotesize
+\section*{Acknowledgements}
+[- tagged.acknowledgments -]
+
+\normalsize
+[# endif #]
+
+%%%%%%%%%%%%%%   Bibliography   %%%%%%%%%%%%%%
+
+\bibliography{main}
+
+\end{document}

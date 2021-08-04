@@ -1,20 +1,24 @@
 metadata:
-  title: SPIE Proceedings
-  description: A template using the styles provided by the SPIE for publications in their proceedings
+  title: arXiv (NIPS Style)
+  description: An arXiv compatible template based on the NIPS 2018 Style
+  version: 1.0.0
+  license: MIT
   author:
-    name: SPIE
-    affiliation: SPIE
-    website: https://www.spie.org/
+    name: George Kour
+    github: https://github.com/kourgeorge
+    twitter: https://twitter.com/georgekour
+    affiliation: IBM Research & Haifa University
   contributor:
     name: Curvenote
-    affiliation: curvenote
-  version: 3.40.0
-  license: CC-BY-4.0
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
   tags:
     - paper
-    - proceedings
+    - preprint
+    - arxiv
   links:
-    source: https://spie.org/Documents/Publications/spie-proceedings-style.zip
+    source: https://github.com/kourgeorge/arxiv-style
 
 # options that can be offered to users to customise how this template is rendered
 config:
@@ -28,18 +32,16 @@ config:
     raggedbottom: false
     sloppy: false
     hidelinks: false
-    natbib: false
+    natbib: true
     bibstyle: false
     citestyle: false
 
   tagged:
     abstract:
       required: true
-    appendix:
-      required: true
 
   options:
-    page_numbers:
+    show_date:
       type: bool
       default: true
       required: true

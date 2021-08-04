@@ -1,0 +1,45 @@
+metadata:
+  title: EarthArXiv (Two Column)
+  description: A two column preprint template for EarthArXiv with the AGU bibstyle
+  version: 1.0.0
+  license: CC-BY-4.0
+  author:
+    name: Brenhin Keller
+    github: https://github.com/brenhinkeller
+    affiliation: Dartmouth College
+  contributor:
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
+  tags:
+    - paper
+    - two-column
+    - eartharxiv
+    - preprint
+  links:
+    source: https://github.com/brenhinkeller/preprint-template.tex
+
+# options that can be offered to users to customise how this template is rendered
+config:
+  build:
+    layout: compact
+
+  schema:
+    aside: framed
+    callout: framed
+    code: verbatim
+    raggedbottom: false
+    sloppy: false
+    hidelinks: false
+    natbib: true
+    bibstyle: false
+    citestyle: false
+
+  tagged:
+    abstract:
+      required: true
+    acknowledgements:
+      required: false
+
+  options: {}

@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - dev-test*
       - ci-setup*
 
 jobs:
@@ -28,4 +29,3 @@ jobs:
           GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
           BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-

@@ -3,37 +3,48 @@
 
 \input{curvenote.def}
 
-\usepackage[oxalink=[[doc.oxalink]]]{curvenote_default}
+% colors for hyperlinks
+\hypersetup{colorlinks=true, allcolors=blue}
+
+\usepackage[oxalink=[-doc.oxalink-]]{curvenote_default}
 
 %# the main title #%
-\title{[[doc.title]]}
+\title{[-doc.title-]}
+
+
+
+\newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
+\date{\displaydate{articleDate}}
 
 \author{[# for author in doc.authors #]
-[[author.name]][# if not loop.last #] \and [# endif #]
+[-author.name-]\\
+[-author.affiliation-]\\
+[# if not loop.last #]
+\and
+[# endif #]
 [# endfor #]
 }
 
-\newdate{articleDate}{[[doc.date.day]]}{[[doc.date.month]]}{[[doc.date.year]]}
-\date{\displaydate{articleDate}}
+[# if options.page_numbers #]\pagestyle{plain}[# else #]\pagestyle{empty}[# endif #]
 
 \begin{document}
 
 \maketitle
 
 [# if doc.tags #]
-\keywords{[[", ".join(doc.tags)]]}
+\keywords{[-", ".join(doc.tags)-]}
 
 [# endif #]
 
 [# if tagged.abstract #]
 \begin{abstract}
-  [[tagged.abstract]]
+  [-tagged.abstract-]
 \end{abstract}
 
 [# endif #]
 
 
-[[CONTENT]]
+[-CONTENT-]
 
 
 \bibliography{main}

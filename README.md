@@ -18,7 +18,10 @@ Template folders should be placed in the `latex/` folder. The contents of a temp
 
 - `template.yml` - The template specification file
 - `template.tex` - The main template file with Curvenote template directives
-- `content.tex` - Example content, usually taken from the original template
+- `example/` - contents of this folder are used to test pdf builds against the template
+- `example/doc.yml` - Example DocModel data used to populate the template
+- `example/content.tex` - Example content, usually taken from the original template
+- `example/refs.bib` - Example bibligraphy, usually taken from the original template
 
 ## template specification (template.yml)
 
@@ -56,3 +59,7 @@ The following are valid fields. Descriptions provided where needed.
 - start_page
 - page_numbers
 - backlink
+
+## Development - for project maintainers
+
+- In order to test in the Curvenote development environment, make a branch starting with `dev-test*` and templates will be deployed automatically to development alone
