@@ -1,6 +1,6 @@
-# Arxiv (Two Column)
+# arXiv (Two Column)
 
-A template for pre-prints based on the Arxiv submission guide, created by [Brenhin Keller](https://github.com/brenhinkeller) and ported to a Curvenote template.
+A template for pre-prints based on the arXiv submission guide, created by [Brenhin Keller](https://github.com/brenhinkeller) and ported to a Curvenote template.
 
 ![First Page of the Example Paper](thumbnail.png)
 
