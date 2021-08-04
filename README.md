@@ -59,3 +59,7 @@ The following are valid fields. Descriptions provided where needed.
 - start_page
 - page_numbers
 - backlink
+
+## Development - for project maintainers
+
+- In order to test in the Curvenote development environment, make a branch starting with `dev-test*` and templates will be deployed automatically to development alone
