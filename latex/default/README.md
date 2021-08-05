@@ -6,3 +6,7 @@ A paper styled template using the custom environments and styling to match Curve
 
 - Author: Curvenote
 - License: CC-BY-4.0
+
+## TODO
+
+- [ ] make affiliations optional, and counts correct when missing
