@@ -1,0 +1,254 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AGUJournalTemplate.tex: this template file is for articles formatted with LaTeX
+%
+% This file includes commands and instructions
+% given in the order necessary to produce a final output that will
+% satisfy AGU requirements, including customized APA reference formatting.
+%
+% You may copy this file and give it your
+% article name, and enter your text.
+%
+%
+% Step 1: Set the \documentclass
+%
+%
+
+%% To submit your paper:
+% TODO - options - draft
+[# if options.draft #]
+\documentclass[draft]{agujournal2019}
+[# else #]
+\documentclass[draft]{agujournal2019}
+[# endif #]
+[# if lipsum #]
+\usepackage{lipsum}
+[# endif #]
+\usepackage{lineno}
+\usepackage[inline]{trackchanges} %for better track changes. final new option will compile document with changes incorporated.
+\usepackage{soul}
+\linenumbers
+\input{curvenote.def}
+%%%%%%%
+% As of 2018 we recommend use of the TrackChanges package to mark revisions.
+% The trackchanges package adds five new LaTeX commands:
+%
+%  \note[editor]{The note}
+%  \annote[editor]{Text to annotate}{The note}
+%  \add[editor]{Text to add}
+%  \remove[editor]{Text to remove}
+%  \change[editor]{Text to remove}{Text to add}
+%
+% complete documentation is here: http://trackchanges.sourceforge.net/
+%%%%%%%
+
+\draftfalse
+
+%% Enter journal name below.
+%% Choose from this list of Journals:
+%
+% JGR: Atmospheres
+% JGR: Biogeosciences
+% JGR: Earth Surface
+% JGR: Oceans
+% JGR: Planets
+% JGR: Solid Earth
+% JGR: Space Physics
+% Global Biogeochemical Cycles
+% Geophysical Research Letters
+% Paleoceanography and Paleoclimatology
+% Radio Science
+% Reviews of Geophysics
+% Tectonics
+% Space Weather
+% Water Resources Research
+% Geochemistry, Geophysics, Geosystems
+% Journal of Advances in Modeling Earth Systems (JAMES)
+% Earth's Future
+% Earth and Space Science
+% Geohealth
+%
+% ie, \journalname{Water Resources Research}
+
+[# if options.journal_name#]
+\journalname{[-options.journal_name-]}
+[# else #]
+\journalname{Geophysical Research Letters}
+[# endif #]
+
+\begin{document}
+
+%% ------------------------------------------------------------------------ %%
+%  Title
+%
+% (A title should be specific, informative, and brief. Use
+% abbreviations only if they are defined in the abstract. Titles that
+% start with general keywords then specific terms are optimized in
+% searches)
+%
+%% ------------------------------------------------------------------------ %%
+
+% Example: \title{This is a test title}
+
+\title{[-doc.title-]}
+
+%% ------------------------------------------------------------------------ %%
+%
+%  AUTHORS AND AFFILIATIONS
+%
+%% ------------------------------------------------------------------------ %%
+
+% Authors are individuals who have significantly contributed to the
+% research and preparation of the article. Group authors are allowed, if
+% each author in the group is separately identified in an appendix.)
+
+% List authors by first name or initial followed by last name and
+% separated by commas. Use \affil{} to number affiliations, and
+% \thanks{} for author notes.
+% Additional author notes should be indicated with \thanks{} (for
+% example, for current addresses).
+
+% Example: \authors{A. B. Author\affil{1}\thanks{Current address, Antartica}, B. C. Author\affil{2,3}, and D. E.
+% Author\affil{3,4}\thanks{Also funded by Monsanto.}}
+
+[# set count=[1] #]
+\authors{
+[# for author in doc.authors #]
+[-author.name-][# if author.affiliation #]\affil{[-count|length-]}[# set __ = count.append(1) #][# endif #][# if not loop.last #],[# endif #]
+[# endfor #]
+}
+
+% \affiliation{1}{First Affiliation}
+% \affiliation{2}{Second Affiliation}
+% \affiliation{3}{Third Affiliation}
+% \affiliation{4}{Fourth Affiliation}
+
+[# set count = [1] #]
+[# for author in doc.authors #]
+[# if author.affiliation #]\affiliation{[-count|length-]}{[-author.affiliation-]}[# set __ = count.append(1) #][# endif #]
+[# endfor #]
+%(repeat as many times as is necessary)
+
+%% Corresponding Author:
+% Corresponding author mailing address and e-mail address:
+
+% (include name and email addresses of the corresponding author.  More
+% than one corresponding author is allowed in this LaTeX file and for
+% publication; but only one corresponding author is allowed in our
+% editorial system.)
+
+% Example: \correspondingauthor{First and Last Name}{email@address.edu}
+
+[# if options.corresponding_author #]
+\correspondingauthor{[-options.corresponding_author.name-]}{[-options.corresponding_author.email-]}
+[# endif #]
+
+%% Keypoints, final entry on title page.
+
+%  List up to three key points (at least one is required)
+%  Key Points summarize the main points and conclusions of the article
+%  Each must be 140 characters or fewer with no special characters or punctuation and must be complete sentences
+
+% Example:
+% \begin{keypoints}
+% \item	List up to three key points (at least one is required)
+% \item	Key Points summarize the main points and conclusions of the article
+% \item	Each must be 140 characters or fewer with no special characters or punctuation and must be complete sentences
+% \end{keypoints}
+
+[# if tagged.keypoints #]
+\begin{keypoints}
+[# for keypoint in tagged.keypoints #]
+  \item [-keypoint-]
+[# endfor #]
+\end{keypoints}
+[# else #]
+\begin{keypoints}
+  \item enter point 1 here
+  \item enter point 2 here
+  \item enter point 3 here
+\end{keypoints}
+[# endif #]
+
+%% ------------------------------------------------------------------------ %%
+%
+%  ABSTRACT and PLAIN LANGUAGE SUMMARY
+%
+% A good Abstract will begin with a short description of the problem
+% being addressed, briefly describe the new data or analyses, then
+% briefly states the main conclusion(s) and how they are supported and
+% uncertainties.
+
+% The Plain Language Summary should be written for a broad audience,
+% including journalists and the science-interested public, that will not have
+% a background in your field.
+%
+% A Plain Language Summary is required in GRL, JGR: Planets, JGR: Biogeosciences,
+% JGR: Oceans, G-Cubed, Reviews of Geophysics, and JAMES.
+% see http://sharingscience.agu.org/creating-plain-language-summary/)
+%
+%% ------------------------------------------------------------------------ %%
+
+%% \begin{abstract} starts the second page
+
+[# if tagged.abstract #]
+\begin{abstract}
+  [-tagged.abstract-]
+\end{abstract}
+[# else #]
+\begin{abstract}
+  enter your Abstract here
+\end{abstract}
+[# endif #]
+
+[# if tagged.plain_language_summary #]
+\section*{Plain Language Summary}
+[-tagged.plain_language_summary-]
+[# endif #]
+
+%% ------------------------------------------------------------------------ %%
+%
+%  TEXT
+%
+%% ------------------------------------------------------------------------ %%
+
+[-CONTENT-]
+
+[# if tagged.acknowledgments #]
+\acknowledgments
+% Enter acknowledgments, including your data availability statement, here.
+[-tagged.acknowledgments-]
+[# endif #]
+
+%% ------------------------------------------------------------------------ %%
+%% References and Citations
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \bibliography{<name of your .bib file>} don't specify the file extension
+%
+% don't specify bibliographystyle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliography{main}
+
+%Reference citation instructions and examples:
+%
+% Please use ONLY \cite and \citeA for reference citations.
+% \cite for parenthetical references
+% ...as shown in recent studies (Simpson et al., 2019)
+% \citeA for in-text citations
+% ...Simpson et al. (2019) have shown...
+%
+%
+%...as shown by \citeA{jskilby}.
+%...as shown by \citeA{lewin76}, \citeA{carson86}, \citeA{bartoldy02}, and \citeA{rinaldi03}.
+%...has been shown \cite{jskilbye}.
+%...has been shown \cite{lewin76,carson86,bartoldy02,rinaldi03}.
+%... \cite <i.e.>[]{lewin76,carson86,bartoldy02,rinaldi03}.
+%...has been shown by \cite <e.g.,>[and others]{lewin76}.
+%
+% apacite uses < > for prenotes and [ ] for postnotes
+% DO NOT use other cite commands (e.g., \citet, \citep, \citeyear, \nocite, \citealp, etc.).
+%
+
+\end{document}

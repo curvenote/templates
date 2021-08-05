@@ -1,0 +1,80 @@
+metadata:
+  title: AGU Journal
+  description: The offical 2019 AGU Journal template
+  version: 1.0.0
+  license: ""
+  author:
+    name: American Geophysical Union
+    website: https://agu.org
+    affiliation: American Geophysical Union
+  contributor:
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
+  tags:
+    - paper
+    - journal
+    - agu
+  links:
+    source: https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Text-requirements
+
+# options that can be offered to users to customise how this template is rendered
+config:
+  build:
+    layout: compact
+
+  schema:
+    aside: framed
+    callout: framed
+    code: verbatim
+    raggedbottom: false
+    sloppy: false
+    hidelinks: false
+    natbib: false
+    bibstyle: false
+    citestyle: false
+
+  tagged:
+    abstract:
+      required: true
+    plain_language_summary:
+      required: false
+    acknowledgements:
+      required: false
+
+  options:
+    draft:
+      type: bool
+      required: false
+    corresponding_author:
+      type: dict
+      required: true
+      properties:
+        - index
+        - name
+        - email
+    journal_name:
+      type: choice
+      options:
+        - "JGR: Atmospheres"
+        - "JGR: Biogeosciences"
+        - "JGR: Earth Surface"
+        - "JGR: Oceans"
+        - "JGR: Planets"
+        - "JGR: Solid Earth"
+        - "JGR: Space Physics"
+        - Global Biogeochemical Cycles
+        - Geophysical Research Letters
+        - Paleoceanography and Paleoclimatology
+        - Radio Science
+        - Reviews of Geophysics
+        - Tectonics
+        - Space Weather
+        - Water Resources Research
+        - Geochemistry, Geophysics, Geosystems
+        - Journal of Advances in Modeling Earth Systems (JAMES)
+        - Earth's Future
+        - Earth and Space Science
+        - Geohealth
+      required: true
