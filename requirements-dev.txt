@@ -1,3 +1,4 @@
+curvenote-template
 google-cloud
 google-cloud-storage
 pytest
