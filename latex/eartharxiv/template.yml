@@ -14,7 +14,8 @@ metadata:
     affiliation: Curvenote
   tags:
     - paper
-    - eartharxiv
+    - geoscience
+    - earthscience
     - preprint
   links:
     source: https://github.com/brenhinkeller/preprint-template.tex
