@@ -1,0 +1,147 @@
+\documentclass[10pt,twoside,a4paper, twocolumn]{article}
+
+[# if lipsum #]\usepackage{lipsum}[# endif #]
+
+\PassOptionsToPackage{french,english}{babel}
+\PassOptionsToPackage{sectionbib,square,elide}{natbib}
+
+\input{curvenote.def}
+
+%  EDIT THIS SECTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Title}{\sc [-doc.title-]} % Manuscript title goes here
+[# if option.blind #]
+\newcommand{\Author}{}
+[# else #]
+\newcommand{\Author}{[-doc.authors[0].name-][# if len(doc.authors) > 1 #] et al.[# endif #]\xspace} % First author goes here. Leave blank if opting for blind review.
+[# endif #]
+\newcommand{\Year}{[-doc.date.year-]} % Year goes here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  DO NOT EDIT THIS SECTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO reproducible build
+% \pdftrailerid{} %Remove ID
+% \pdfsuppressptexinfo15 %Suppress PTEX.Fullbanner and info of imported PDFs
+
+\usepackage[affil-sl]{authblk}
+\setcounter{Maxaffil}{3}
+\renewcommand\Affilfont{\itshape\small}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\large \sc \bfseries}
+\titleformat*{\subsection}{}
+\titleformat*{\subsubsection}{\sl}
+\renewcommand{\thesubsubsection}{\emph{\thesubsection.\arabic{subsubsection}}}
+
+\usepackage{xcolor}
+\definecolor{maroon}{rgb}{0.5, 0.0, 0.0}
+\definecolor{PUSblue}{HTML}{005FA8}
+\usepackage{hyperref}
+\hypersetup{colorlinks = true, citecolor = PUSblue}
+
+\usepackage{fancyhdr}
+\usepackage{babel}
+
+\usepackage[utf8]{inputenc}
+\usepackage[]{kpfonts}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{siunitx}
+
+% \usepackage[sectionbib,square,elide]{natbib}
+\bibliographystyle{apalike}
+
+[# if options.watermark #]
+\usepackage{draftwatermark}
+\SetWatermarkText{\sc DRAFT}
+\SetWatermarkScale{1}
+\SetWatermarkColor[gray]{0.85}
+[# endif #]
+
+[# if options.line_numbers #]
+\usepackage{lineno}
+\linenumbers % Enable line numbers to facilitate review process.
+[# endif #]
+
+\usepackage[tmargin=1in,bmargin=1in,lmargin=0.9 in,rmargin=0.9in]{geometry}
+
+\usepackage{abstract}
+\renewcommand{\abstractnamefont}{\normalfont \large \sc \bfseries}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\Title}
+\fancyhead[RE]{\sc \Author, \ \Year}
+\rfoot{Page \thepage}
+\lfoot{\includegraphics[width=\columnwidth]{PUSbanner}}
+\fancypagestyle{firststyle}
+{
+   \fancyhf{}
+   \fancyhead{\includegraphics[width=\textwidth]{article_banner}}
+}
+\title{\Title}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  EDIT THIS SECTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[# if options.blind #]
+\author{}
+[# else #]
+\author{
+[# for author in doc.authors #]
+[-author.name-][# if author.affiliation #]\thanks{[-author.affiliation-]}[# endif #][# if author.is_corresponding #] \thanks{Corresponding author: {\texttt{[-author.email-]}}}[# endif #]
+
+[# if not loop.last #], and [# endif #]
+[# endfor #]
+}
+[# endif #]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  DO NOT EDIT THIS SECTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\date{}
+\twocolumn[
+  \begin{@twocolumnfalse}
+    \maketitle
+\thispagestyle{firststyle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\selectlanguage{english}
+[# if tagged.abstract #]
+\begin{abstract}
+  [-tagged.abstract-]
+\end{abstract}
+[# endif #]
+% \selectlanguage{french}
+% \begin{abstract}
+% A second-language abstract can go here. \textbf{No more than 150 words}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctu.
+% \end{abstract}
+\vspace{5mm}
+\vspace{5mm}
+  \end{@twocolumnfalse}
+]
+\saythanks
+
+[-CONTENT-]
+
+[# if not options.blind and tagged.acknowledgments #]
+\section*{Acknowledgements} % Please upload separately if opting for blind review.
+[-tagged.acknowledgments-]
+[# endif #]
+
+[# if not options.blind and tagged.author_contributions #]
+\section*{Author contributions} % Please upload separately if opting for blind review.
+[-tagged.author_contributions-]
+[# endif #]
+
+[# if tagged.data_availability #]
+\section*{Data availability}
+[-tagged.data_availability-]
+[# endif #]
+
+\bibliography{main} % a separate bibfile is required. Please upload this file along with the compiled manuscript and source file.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

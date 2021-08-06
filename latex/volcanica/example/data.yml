@@ -1,0 +1,42 @@
+doc:
+  title: An Example Volcanica Paper
+  description: A paper in the Volcanica journal template
+  short_title: An Example Volcanica Paper
+  authors:
+    - name: Falsa Nafn
+      affiliation: Affiliation1
+      curvenote: http://curvenote.com/@falsanafn
+      orcid: 0000-0000-0000-0001
+      is_corresponding: true
+      email: falsa.nafn@institute.org
+    - name: N. Ambardo
+      affiliation: Affiliation2
+      curvenote: http://curvenote.com/@nambardo
+      orcid: 0000-0000-0000-0002
+    - name: Una Terza
+      affiliation: Affiliation3
+      curvenote: http://curvenote.com/@unaterza
+      orcid: 0000-0000-0000-0003
+  date:
+    year: 2021
+    month: 08
+    day: 6
+  tags:
+    - keyword1
+    - keyword2
+    - keyword3
+oxalink: https://curvenote.com/@curvenote
+tagged:
+  abstract: >
+    Abstract text goes here. \textbf{No more than 150 words}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctu.
+  acknowledgments: >
+    Thank all relevant parties and acknowledge funding sources, if any.
+  author_contributions: >
+    Tell us who did what.
+  data_availability: >
+    Authors should direct readers to an open access repository such as figshare or Github, where data are made available.
+options:
+  draft: true
+  line_numbers: true
+  blind: false
+  corresponding_author: true

@@ -1,0 +1,66 @@
+metadata:
+  title: Volcanica
+  description: A template for submissions to the Volcanica journal
+  version: 1.0.0
+  license: ""
+  author:
+    name: Volcanica
+    website: https://jvolcanica.org
+    affiliation: Volcanica Journal
+  contributor:
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
+  tags:
+    - paper
+    - journal
+    - two-column
+    - geoscience
+    - earthscience
+    - A4
+  links:
+    source: http://www.jvolcanica.org/ojs/index.php/volcanica/about/submissions
+
+# options that can be offered to users to customise how this template is rendered
+config:
+  build:
+    layout: compact
+
+  schema:
+    aside: framed
+    callout: framed
+    code: verbatim
+    raggedbottom: false
+    sloppy: false
+    hidelinks: false
+    natbib: true
+    bibstyle: false
+    citestyle: false
+
+  tagged:
+    abstract:
+      required: true
+    acknowledgements:
+      required: false
+    author_contributions:
+      required: false
+    data_availability:
+      required: false
+
+  options:
+    draft:
+      type: bool
+      default: false
+      required: false
+    line_numbers:
+      type: bool
+      default: true
+      required: true
+    blind:
+      type: bool
+      default: false
+      required: false
+    corresponding_author:
+      type: corresponding_author
+      required: true
