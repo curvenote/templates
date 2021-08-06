@@ -138,9 +138,11 @@
 
 % Example: \correspondingauthor{First and Last Name}{email@address.edu}
 
-[# if options.corresponding_author #]
-\correspondingauthor{[-options.corresponding_author.name-]}{[-options.corresponding_author.email-]}
+[# for author in doc.authors #]
+[# if author.is_corresponding #]
+\correspondingauthor{[-author.name-]}{[-author.email-]}
 [# endif #]
+[# endfor #]
 
 %% Keypoints, final entry on title page.
 

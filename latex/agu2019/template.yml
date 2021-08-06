@@ -15,7 +15,8 @@ metadata:
   tags:
     - paper
     - journal
-    - agu
+    - geoscience
+    - earthscience
   links:
     source: https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Text-requirements
 
@@ -48,12 +49,8 @@ config:
       type: bool
       required: false
     corresponding_author:
-      type: dict
+      type: corresponding_author
       required: true
-      properties:
-        - index
-        - name
-        - email
     journal_name:
       type: choice
       options:
