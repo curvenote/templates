@@ -20,6 +20,12 @@ def get_local_options(latex_path: str, tmpl: str):
   with open(path.join(latex_path, tmpl, 'template.yml')) as oyml:
     return yaml.load(oyml, Loader=yaml.FullLoader)
 
+def move_folders(folders: List[str], src: str, dest: str):
+  for folder in folders:
+    if path.exists(path.join(src, folder)):
+      logging.info(f"Found folder, moving from {src} to {dest}")
+      move(path.join(src, folder), path.join(dest, folder))
+
 def main(repo_path: str):
   logging.info(f"repo_path set to {repo_path}")
   if not path.exists(repo_path):
@@ -62,19 +68,13 @@ def main(repo_path: str):
       logging.info(f"processing: {tmpl}")
       mkdir(path.join(tmp_folder, tmpl))
 
-      has_original = False
-      if path.exists(path.join(latex_path, tmpl, 'original')):
-        has_original = True
-        logging.info(f"Found original directory for {tmpl}, moving")
-        move(path.join(latex_path, tmpl, 'original'), path.join(tmp_folder, 'original'))
+      move_folders(['original','example'], path.join(latex_path, tmpl), tmp_folder)
 
       zip_filepath = make_archive(
         path.join(tmp_folder, tmpl, 'latex.template'), 'zip', path.join(latex_path, tmpl))
       logging.info(f"created zipfile {zip_filepath}")
 
-      if has_original:
-        logging.info(f"Moving original back to template folder")
-        move(path.join(tmp_folder, 'original'), path.join(latex_path, tmpl, 'original'))
+      move_folders(['original','example'], tmp_folder, path.join(latex_path, tmpl))
 
       options_json_filepath = path.join(tmp_folder, tmpl, 'options.json')
       options = get_local_options(latex_path, tmpl)
