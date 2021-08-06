@@ -2,7 +2,7 @@
 
 A paper styled template using the custom environments and styling to match Curvenote Web
 
-![First Page of the Example Paper](thumbnail.png)
+<img src="thumbnail.png" />
 
 - Author: Curvenote
 - License: CC-BY-4.0

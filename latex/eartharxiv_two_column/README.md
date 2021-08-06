@@ -3,7 +3,7 @@
 A two column template for preprints with options for AGU bibstyles and the required header text.
 Originally created by [Brenhin Keller](https://github.com/brenhinkeller), ported to a Curvenote template with modifications.
 
-![First Page of the Example Paper](thumbnail.png)
+<img src="thumbnail.png" />
 
 - Author: [Brenhin Keller](https://github.com/brenhinkeller)
 - License: CC-BY-4.0

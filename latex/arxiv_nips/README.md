@@ -2,7 +2,7 @@
 
 A template for pre-prints based on the arXiv submission guide, created by [George Kour](https://github.com/kourgeorge) and ported to a Curvenote template.
 
-![First Page of the Example Paper](thumbnail.png)
+<img src="thumbnail.png" />
 
 - Author: [George Kour](https://github.com/kourgeorge)
 - License: MIT
