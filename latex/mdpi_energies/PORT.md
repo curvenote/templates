@@ -1,0 +1,42 @@
+# Changes made during port
+
+The steps taken during the port were:
+
+- `template.tex` is based on `original/tempalte.tex` started with a copy-paste
+- `documentclass` options
+  - hard coded `set journal_name = energies` until options are available
+  - removed `pdftex` option
+  - switch between `oneauthor` and `moreauthors` based on `doc.authors` length
+- added `curvenote.def` in the block as suggested by comments
+- added fields for
+  - Title
+  - Authors
+  - Orcid
+  - Summary (optional)
+  - `chicago` style option for author citations
+  - added corresponding author via option and data from doc.authors
+  - added conditional options for journal specific content
+    - `diversity` - `lsid`
+    - `appliedsciences` - `features_application` (optional)
+    - `data` - `dataset` (optional)
+    - `data` - `dataset_license` (optional)
+    - `toxins` - `key_contribution`
+    - `encyclopedia` - `encyclopediadef` used for `tagged.abstract`
+    - `encyclopedia` - `entry_link`
+  - commented out `setcounter` as directed in comment
+  - moved out main content and added `[-CONTENT-]`
+  - added more tagged sections for:
+    - `summary`
+    - `abstract`
+    - `supplementary`
+    - `author_contributions`
+    - `funding`
+    - `institutional_review`
+    - `informed_consent`
+    - `data_availability`
+    - `acknowledgments`
+    - `conflicts`
+    - `sample_availabilty`
+    - `abbreviations`
+    - `appendix`
+  - removed inline references and added `main.bib` as expected bibtex file
