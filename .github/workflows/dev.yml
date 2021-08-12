@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - dev-test*
+      - dev-test
       - ci-setup*
 
 jobs:
