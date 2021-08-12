@@ -62,4 +62,6 @@ The following are valid fields. Descriptions provided where needed.
 
 ## Development - for project maintainers
 
-- In order to test in the Curvenote development environment, make a branch starting with `dev-test*` and templates will be deployed automatically to development alone
+- Branch off `main` in order to make changes or add a template
+- Once you are ready, test in the Curvenote development environment by pushing your branch and opening a PR against `dev-test`
+- New and changed templates will be deployed automatically to the Curvenote development servers
