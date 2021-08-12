@@ -1,0 +1,67 @@
+doc:
+  title: An paper for MDPI Energies
+  description: A paper build using the MDPI Journals Template
+  short_title: An paper for MDPI Energies
+  authors:
+    - name: Anne Geosci
+      affiliation: The Earth
+      location: Sol
+      curvenote: http://curvenote.com/@annegeosci
+      orcid: 0000-0000-0000-0001
+      is_corresponding: true
+      email: anne.g@the-earth.org
+    - name: Bert Physics
+      affiliation: The Stars
+      location: Everywhere
+      curvenote: http://curvenote.com/@bertphysics
+      orcid: 0000-0000-0000-0002
+      is_corresponding: true
+      email: bert.p@the-stars.org
+    - name: Jane Independent
+      location: Somewhere
+      curvenote: http://curvenote.com/@jane
+  date:
+    year: 2021
+    month: 08
+    day: 12
+  tags:
+    - keyword1
+    - keyword2
+    - keyword3
+oxalink: https://curvenote.com/@curvenote
+tagged:
+  abstract: >
+    Phase is a useful underlying property of the analytic trace model of seismic data that can be used as both an interpretation aid and a means to calibrate and check interpretations on a given seismic dataset. We introduce the analytical trace model and demonstrate some of its usages. We provide working code in python for computation of the Hilbert Transform using a robust FFT-based method and explore 2 use cases for such computed quantities. Jupyter notebooks used for computation and generation of the figures are included in this project.
+  summary: >
+    Phase is a useful underlying property of the analytic trace model of seismic data that can be used as both an interpretation aid and a means to calibrate and check interpretations on a given seismic dataset. We introduce the analytical trace model and demonstrate some of its usages. We provide working code in python for computation of the Hilbert Transform using a robust FFT-based method and explore 2 use cases for such computed quantities. Jupyter notebooks used for computation and generation of the figures are included in this project.
+  feature_application: >
+    Ullamcorper morbi tincidunt ornare massa eget egestas purus viverra. Congue quisque egestas diam in. Aliquam sem fringilla ut morbi tincidunt. Et netus et malesuada fames. Suspendisse interdum consectetur libero id faucibus nisl. Accumsan tortor posuere ac ut consequat semper viverra.
+  key_contribution: >
+    In nibh mauris cursus mattis molestie a. Nec dui nunc mattis enim ut tellus elementum sagittis vitae. Egestas sed tempus urna et pharetra pharetra massa massa. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. Est sit amet facilisis magna etiam tempor orci eu. Id eu nisl nunc mi.
+  supplementary: >
+    A condimentum vitae sapien pellentesque habitant morbi tristique senectus. Accumsan lacus vel facilisis volutpat est velit egestas dui. Lacus luctus accumsan tortor posuere ac ut consequat semper. Orci porta non pulvinar neque laoreet. Viverra justo nec ultrices dui sapien eget mi proin sed.
+  author_contributions: >
+    Integer eget aliquet nibh praesent tristique magna sit amet. Eget sit amet tellus cras adipiscing. Massa vitae tortor condimentum lacinia quis vel eros donec.
+  funding: >
+    Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Sed ullamcorper morbi tincidunt ornare massa eget egestas.
+  institutional_review: >
+    Nisi est sit amet facilisis magna etiam. Id diam maecenas ultricies mi eget mauris. Enim diam vulputate ut pharetra sit amet aliquam id diam. Nulla facilisi nullam vehicula ipsum a. Eget lorem dolor sed viverra.
+  data_availability: >
+    Imperdiet proin fermentum leo vel orci porta non pulvinar neque. Nisl suscipit adipiscing bibendum est. In cursus turpis massa tincidunt dui ut ornare lectus sit. Amet est placerat in egestas erat imperdiet sed euismod.
+  acknowledgments: >
+    Sit amet nisl purus in mollis nunc sed id semper. Hac habitasse platea dictumst quisque sagittis purus sit. Tortor at auctor urna nunc id cursus metus aliquam eleifend.
+  conflicts: >
+    Pellentesque nec nam aliquam sem et tortor. Amet mauris commodo quis imperdiet massa tincidunt nunc. Vitae elementum curabitur vitae nunc sed velit. Odio ut sem nulla pharetra diam sit. Tellus at urna condimentum mattis pellentesque.
+  sample_availability: >
+    Quis blandit turpis cursus in hac. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Nibh nisl condimentum id venenatis a condimentum. Sagittis id consectetur purus ut faucibus pulvinar.
+  abbreviations: >
+    This should be a TABLE. Tempus egestas sed sed risus pretium quam vulputate. Felis bibendum ut tristique et. Vulputate eu scelerisque felis imperdiet proin. Pellentesque dignissim enim sit amet venenatis urna cursus. Pellentesque habitant morbi tristique senectus et netus.
+options:
+  chicago: true
+  keywords: true
+  entry_link: "http://encyclopedia.org/my/article/link"
+  dataset: "http://doi.org/qwerty123"
+  dataset_license: CC-BY-4.0
+  lsid: "http://lsid.org/qwerty123"
+  corresponding_author: true
+  journal_name: acoustics
