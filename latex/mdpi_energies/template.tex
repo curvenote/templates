@@ -116,16 +116,20 @@
 [# endif #]
 [# endif #]
 [# endfor #]
-}[# if doc.authors|selectattr("affiliation")|list|length == 1 #][1][# endif #]
+[# if doc.authors|selectattr("affiliation")|list|length == 1 #][1][# endif #]
+}
 
 % Contact information of the corresponding author
 [# if options.corresponding_author#]
-[# for author in doc.authors #]
+[# set count = [1] #]
+[# set total = doc.authors|selectattr("is_corresponding")|list|length #]
+\corres{Correspondence: [# for author in doc.authors #]
 [# set initials = author.name.upper().split(' ')|map("list")|map("first")|join('.')+"." #]
 [# if author.is_corresponding #]
-\corres{Correspondence: [-author.email-][# if doc.authors|selectattr("is_corresponding")|list|length > 1 #]; ([-initials-])[# endif #]}
+[-author.email-][# if total > 1 #]; ([-initials-])[# if count|length < total #], [# endif #][# endif #]
+[# set __ = count.append(1) #]
 [# endif #]
-[# endfor #]
+[# endfor #]}
 [# endif #]
 % Current address and/or shared authorship
 
@@ -147,7 +151,7 @@
 [# endif #]
 
 % Keywords
-\keyword{[-doc.tags-]}
+\keyword{[-doc.tags|join("; ")-]}
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -165,7 +169,7 @@
 % Only for the journal Applied Sciences:
 % TODO if options.journal_name == "appliedsciences" and tagged.feature_application
 [# if tagged.feature_application #]
-\featuredapplication{tagged.feature_application}
+\featuredapplication{[-tagged.feature_application-]}
 [# endif #]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
