@@ -2,7 +2,7 @@ metadata:
   title: AGU Journal
   description: The offical 2019 AGU Journal template
   version: 1.0.0
-  license: ""
+  license: "GPL-3"
   author:
     name: American Geophysical Union
     website: https://agu.org
