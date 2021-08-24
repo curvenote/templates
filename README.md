@@ -1,4 +1,4 @@
-<img src="https://storage.googleapis.com/iooxa-prod-1-wordpress/1/2020/09/logo-horizontal-dark.png" width="200" />
+<img src="https://curvenote.dev/images/logo.png" width="200" />
 
 # templates
 
