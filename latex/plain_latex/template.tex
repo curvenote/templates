@@ -4,10 +4,12 @@
 % colors for hyperlinks
 \hypersetup{colorlinks=true, allcolors=blue}
 
-% We've included a Curvenote logo linking back to your online article - modify as needed
+[# if options.curvenote_logo_with_link #]
+% We've included a Curvenote logo linking back to your online article based on the options you selected
 \newcommand{\logo}{
   \href{[-doc.oxalink-]}{\includegraphics[width=2cm]{curvenote.png}}
 }
+[# endif #]
 
 \title{[-doc.title-]}
 
@@ -19,6 +21,10 @@
 
 \newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
 \date{\displaydate{articleDate}}
+[# if options.footnote_link #]
+% Optional footnote with a link back to the online version of your article
+\footnote{Online version of this article available at: \href{[-doc.oxalink-]}{[-doc.oxalink-]}}
+[# endif #]
 
 \begin{document}
 \maketitle

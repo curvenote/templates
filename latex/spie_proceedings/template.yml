@@ -33,13 +33,16 @@ config:
     citestyle: false
 
   tagged:
-    abstract:
+    - id: abstract
       required: true
-    appendix:
-      required: true
+      description: An abstract - TODO needs official notes and word limit
+      words: 500
+    - id: appendix
+      description: An appendix section - TODO needs official notes
 
   options:
-    page_numbers:
+    - id: page_numbers
       type: bool
+      description: TODO needs official notes
       default: true
       required: true

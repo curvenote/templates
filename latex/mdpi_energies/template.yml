@@ -35,122 +35,75 @@ config:
     citestyle: false
 
   tagged:
-    abstract:
+    - id: abstract
       description: >
         A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusion: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.
       required: true
-    summary:
+    - id: author_contributions
       description: >
-        A simple plain langauge summary
-      required: false
-    feature_application:
+        For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.
+      required: true
+    - id: funding
       description: >
-        Authors are encouraged to provide a concise description of the specific application or a potential application of the work. This section is not mandatory.
-      required: false
-      condition:
-        option: journal_name
-        value: appliedsciences
-    key_contribution:
+        Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.
+      required: true
+    - id: key_contribution
       description: >
         The breakthroughs or highlights of the manuscript. Authors can write one or two sentences to describe the most important part of the paper.
       required: true
       condition:
         option: journal_name
         value: toxins
-    supplementary:
-      description: >
-        Example block content: "The following are available online at https://www.mdpi.com/article/<doi>/<name>, Figure S1: title, Table S1: title, Video S1: title."
-      required: false
-    author_contributions:
-      description: >
-        For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.
-      required: true
-    funding:
-      description: >
-        Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.
-      required: true
-    institutional_review:
-      description: >
-        In this section, please add the Institutional Review Board Statement and approval number for studies involving humans or animals. Please note that the Editorial Office might ask you for further information. Please add ``The study was conducted according to the guidelines of the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).'' OR ``Ethical review and approval were waived for this study, due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans or animals. You might also choose to exclude this statement if the study did not involve humans or animals.
-      required: false
-    informed_consent:
-      description: >
-        Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans. Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.
-      required: false
-    data_availability:
-      description: >
-        In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. You might choose to exclude this statement if the study did not report any data.
-      required: false
-    acknowledgments:
+    - id: acknowledgments
       description: >
         In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).
       required: false
-    conflicts:
+    - id: summary
+      description: >
+        A simple plain langauge summary
+      required: false
+    - id: supplementary
+      description: >
+        Example block content: "The following are available online at https://www.mdpi.com/article/<doi>/<name>, Figure S1: title, Table S1: title, Video S1: title."
+      required: false
+    - id: institutional_review
+      description: >
+        In this section, please add the Institutional Review Board Statement and approval number for studies involving humans or animals. Please note that the Editorial Office might ask you for further information. Please add ``The study was conducted according to the guidelines of the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).'' OR ``Ethical review and approval were waived for this study, due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans or animals. You might also choose to exclude this statement if the study did not involve humans or animals.
+      required: false
+    - id: informed_consent
+      description: >
+        Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans. Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.
+      required: false
+    - id: data_availability
+      description: >
+        In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. You might choose to exclude this statement if the study did not report any data.
+      required: false
+    - id: conflicts
       description: >
         Declare conflicts of interest or state ``The authors declare no conflict of interest.'' Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript, or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript, or in the decision to publish the~results''.
       required: false
-    sample_availability:
+    - id: sample_availability
       description: >
         A statement on sample availability. e.g. ``Samples of the compounds ... are available from the authors.''
       required: false
-    abbreviations:
+    - id: abbreviations
       description: >
         A block containing ``The following abbreviations are used in this manuscript:'' and a table of abbreviations
       required: false
-    appendix:
+    - id: appendix
       description: >
         The appendix is an optional section that can contain details and data supplemental to the main text---for example, explanations of experimental details that would disrupt the flow of the main text but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data are shown in the main text can be added here if brief, or as Supplementary Data. Mathematical proofs of results not central to the paper can be added as an appendix.
       required: false
+    - id: feature_application
+      description: >
+        Authors are encouraged to provide a concise description of the specific application or a potential application of the work. This section is not mandatory.
+      required: false
+      condition:
+        option: journal_name
+        value: appliedsciences
 
   options:
-    chicago:
-      type: bool
-      description: >
-        Use Chicago style author citations
-      required: false
-    keywords:
-      type: keywords
-      description: >
-        Set the article block tags to include from three to ten pertinent keywords specific to the article; yet reasonably common within the subject discipline.
-      required: true
-    entry_link:
-      type: str
-      description: >
-        Link to the entry in the online Encyclopedia platform
-      required: true
-      condition:
-        option: journal_name
-        value: encyclopedia
-    dataset:
-      type: str
-      description: >
-        DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.
-      required: false
-      condition:
-        option: journal_name
-        value: data
-    dataset_license:
-      type: str
-      description: >
-        license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)
-      required: false
-      condition:
-        option: journal_name
-        value: data
-    lsid:
-      type: str
-      description: >
-        Life Science Identifier url
-      required: false
-      condition:
-        option: journal_name
-        value: diversity
-    corresponding_author:
-      type: corresponding_author
-      description: >
-        Author to mark as corresponding via email
-      required: true
-    journal_name:
+    - id: journal_name
       type: choice
       description: >
         Name of the MDPI Journal being submitted to
@@ -511,3 +464,48 @@ config:
         - wevj
         - women
         - world
+    - id: corresponding_author
+      type: corresponding_author
+      description: >
+        Author to mark as corresponding via email
+      required: true
+    - type: keywords
+      id: keywords
+      description: >
+        Include from three to ten pertinent keywords specific to the article; yet reasonably common within the subject discipline.
+      required: true
+    - type: str
+      id: entry_link
+      description: >
+        Link to the entry in the online Encyclopedia platform
+      required: true
+      condition:
+        option: journal_name
+        value: encyclopedia
+    - type: str
+      id: dataset
+      description: >
+        DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.
+      condition:
+        option: journal_name
+        value: data
+    - type: str
+      id: dataset_license
+      description: >
+        license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)
+      condition:
+        option: journal_name
+        value: data
+    - type: str
+      id: lsid
+      description: >
+        Life Science Identifier url
+      required: false
+      condition:
+        option: journal_name
+        value: diversity
+    - type: bool
+      id: chicago
+      title: Citation style
+      description: >
+        Use Chicago style author citations

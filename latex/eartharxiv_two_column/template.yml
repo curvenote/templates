@@ -38,9 +38,15 @@ config:
     citestyle: false
 
   tagged:
-    abstract:
+    - id: abstract
       required: true
-    acknowledgements:
-      required: false
+      description: An abstract - TODO description needs official notes and word limit
+      words: 500
+    - id: acknowledgements
+      description: TODO - get official notes
 
-  options: {}
+  options:
+    - id: corresponding_author
+      type: corresponding_author
+      description: TODO - get official notes
+      required: true

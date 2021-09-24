@@ -37,23 +37,20 @@ config:
     citestyle: true
 
   tagged:
-    abstract:
-      required: false
-    acknowledgements:
-      required: false
+    - id: abstract
+      description: |
+        An abstract is a short summary of your research paper or report. A good abstract will prepare readers for
+        the detailed information to follow, communicate the essence of the article and helps readers take away and
+        remember key points.
+      words: 600
+    - id: acknowledgements
+      description: |
+        You can this section to highlight support such as; collaborations, data sources, funding sources, broader
+        projects. This section will be places towards the end of the article with a subtitle - Acknowledgments.
 
   options:
-    watermark:
-      type: bool
-      default: false
-      required: false
-    corresponding_email:
-      type: str
-      required: false
-    draft:
-      type: bool
-      required: false
-    page_numbers:
-      type: bool
-      default: true
-      required: true
+    - id: corresponding_author
+      type: corresponding_author
+      description: |
+        Select one or more author as the corresponding author and provide an email address for each
+      multiple: true

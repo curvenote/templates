@@ -37,22 +37,22 @@ config:
     citestyle: false
 
   tagged:
-    abstract:
+    - id: abstract
       required: true
-    plain_language_summary:
+      description: An abstract - TODO needs official notes and word limit
+      words: 500
+    - id: summary
       required: false
-    acknowledgements:
+      description: A plain language summary - TODO needs official notes and word limit
+      words: 500
+    - id: acknowledgements
       required: false
+      description: TODO needs official notes
 
   options:
-    draft:
-      type: bool
-      required: false
-    corresponding_author:
-      type: corresponding_author
-      required: true
-    journal_name:
-      type: choice
+    - type: choice
+      id: journal_name
+      title: AGU Journal Name
       options:
         - "JGR: Atmospheres"
         - "JGR: Biogeosciences"
@@ -75,3 +75,9 @@ config:
         - Earth and Space Science
         - Geohealth
       required: true
+    - id: corresponding_author
+      type: corresponding_author
+      required: true
+    - type: bool
+      id: draft
+      description: Mark the document as draft - TODO add notes on what draft is in this format

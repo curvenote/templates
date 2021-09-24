@@ -39,11 +39,15 @@ config:
     citestyle: false
 
   tagged:
-    abstract:
+    - id: abstract
       required: true
+      description: An abstract - TODO needs official notes and word limit
+      words: 500
 
   options:
-    show_date:
+    - id: corresponding_author
+      type: corresponding_author
+      required: true
+    - id: show_date
       type: bool
       default: true
-      required: true
