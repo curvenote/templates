@@ -469,6 +469,7 @@ config:
       description: >
         Author to mark as corresponding via email
       required: true
+      multiple: true
     - type: keywords
       id: keywords
       description: >
