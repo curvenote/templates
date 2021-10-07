@@ -36,7 +36,8 @@ config:
     - id: abstract
       required: true
       description: An abstract - TODO needs official notes and word limit
-      words: 500
+      words:
+        max: 500
     - id: appendix
       description: An appendix section - TODO needs official notes
 

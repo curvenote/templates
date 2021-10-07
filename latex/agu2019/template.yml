@@ -40,11 +40,15 @@ config:
     - id: abstract
       required: true
       description: An abstract - TODO needs official notes and word limit
-      words: 500
+      words:
+        min: 50
+        max: 500
     - id: summary
       required: false
       description: A plain language summary - TODO needs official notes and word limit
-      words: 500
+      words:
+        min: 50
+        max: 500
     - id: acknowledgements
       required: false
       description: TODO needs official notes

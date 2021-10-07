@@ -42,7 +42,9 @@ config:
         An abstract is a short summary of your research paper or report. A good abstract will prepare readers for
         the detailed information to follow, communicate the essence of the article and help readers take away and
         remember key points.
-      words: 600
+      words:
+        min: 50
+        max: 500
     - id: acknowledgements
       description: |
         You can this section to highlight support such as; collaborations, data sources, funding sources, broader
@@ -56,4 +58,4 @@ config:
     - id: keywords
       type: keywords
       description: |
-        Add fro 3 to 10 keywords that descrie your article
+        Add from 3 to 10 keywords that describe your article

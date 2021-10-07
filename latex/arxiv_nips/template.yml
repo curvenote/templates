@@ -42,7 +42,9 @@ config:
     - id: abstract
       required: true
       description: An abstract - TODO needs official notes and word limit
-      words: 500
+      words:
+        min: 50
+        max: 500
 
   options:
     - id: corresponding_author
