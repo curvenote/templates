@@ -55,7 +55,3 @@ config:
       type: corresponding_author
       description: |
         Select a corresponding author and provide an email address for them
-    - id: keywords
-      type: keywords
-      description: |
-        Add 3 to 10 keywords that describe your article
