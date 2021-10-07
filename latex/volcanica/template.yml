@@ -38,28 +38,44 @@ config:
     citestyle: false
 
   tagged:
-    abstract:
+    - id: abstract
       required: true
-    acknowledgements:
+      description: |
+        No description
+    - id: acknowledgements
       required: false
-    author_contributions:
+      description: |
+        No description
+    - id: author_contributions
       required: false
-    data_availability:
+      description: |
+        No description
+    - id: data_availability
       required: false
+      description: |
+        No description
 
   options:
-    draft:
+    - id: draft
       type: bool
       default: false
       required: false
-    line_numbers:
+      description: |
+        Mark the paper as draft
+    - id: line_numbers
       type: bool
       default: true
       required: true
-    blind:
+      description: |
+        No description
+    - id: blind
       type: bool
       default: false
       required: false
-    corresponding_author:
+      description: |
+        No description
+    - id: corresponding_author
       type: corresponding_author
       required: true
+      description: |
+        No description

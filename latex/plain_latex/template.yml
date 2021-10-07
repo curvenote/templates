@@ -38,6 +38,25 @@ config:
     bibstyle: true
     citestyle: true
 
-  tagged: {}
+  tagged:
+    - id: abstract
+      description: |
+        An abstract is a short summary of your research paper or report. A good abstract will prepare readers for
+        the detailed information to follow, communicate the essence of the article and help readers take away and
+        remember key points.
+      words:
+        max: 600
 
-  options: {}
+  options:
+    - id: footnote_link
+      type: bool
+      title: Footnote Link
+      default: true
+      description: |
+        This will add a footnote containing a link back to the corresponding version of your article on Curvenote
+    - id: curvenote_logo_with_link
+      type: bool
+      default: true
+      title: Curvenote Logo
+      description: |
+        This will add a clickable Curvenote logo after the abstract with a link back to your article on Curvenote

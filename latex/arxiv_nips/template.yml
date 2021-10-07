@@ -39,11 +39,19 @@ config:
     citestyle: false
 
   tagged:
-    abstract:
+    - id: abstract
       required: true
+      description: No Description
+      words:
+        min: 50
+        max: 500
 
   options:
-    show_date:
+    - id: corresponding_author
+      type: corresponding_author
+      required: true
+      description: No Description
+    - id: show_date
       type: bool
       default: true
-      required: true
+      description: No Description

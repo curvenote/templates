@@ -33,13 +33,17 @@ config:
     citestyle: false
 
   tagged:
-    abstract:
+    - id: abstract
       required: true
-    appendix:
-      required: true
+      description: No description
+      words:
+        max: 500
+    - id: appendix
+      description: No description
 
   options:
-    page_numbers:
+    - id: page_numbers
       type: bool
+      description: No description
       default: true
       required: true
