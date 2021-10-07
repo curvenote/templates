@@ -41,19 +41,19 @@ config:
     - id: abstract
       required: true
       description: |
-        TODO: check template notes for info/requirements
+        No description
     - id: acknowledgements
       required: false
       description: |
-        TODO: check template notes for info/requirements
+        No description
     - id: author_contributions
       required: false
       description: |
-        TODO: check template notes for info/requirements
+        No description
     - id: data_availability
       required: false
       description: |
-        TODO: check template notes for info/requirements
+        No description
 
   options:
     - id: draft
@@ -66,10 +66,16 @@ config:
       type: bool
       default: true
       required: true
+      description: |
+        No description
     - id: blind
       type: bool
       default: false
       required: false
+      description: |
+        No description
     - id: corresponding_author
       type: corresponding_author
       required: true
+      description: |
+        No description

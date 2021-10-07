@@ -41,19 +41,19 @@ config:
   tagged:
     - id: abstract
       required: true
-      description: An abstract - TODO description needs official notes and word limit
+      description: No description
       words:
         min: 50
         max: 500
     - id: acknowledgements
-      description: TODO description needs official notes
+      description: No description
 
   options:
     - id: corresponding_author
       type: corresponding_author
-      description: TODO - get official notes
+      description: No description
       required: true
     - id: show_date
       type: bool
-      description: TODO - get official notes
+      description: No description
       default: true

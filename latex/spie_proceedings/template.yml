@@ -35,15 +35,15 @@ config:
   tagged:
     - id: abstract
       required: true
-      description: An abstract - TODO needs official notes and word limit
+      description: No description
       words:
         max: 500
     - id: appendix
-      description: An appendix section - TODO needs official notes
+      description: No description
 
   options:
     - id: page_numbers
       type: bool
-      description: TODO needs official notes
+      description: No description
       default: true
       required: true
