@@ -39,19 +39,24 @@ config:
   tagged:
     - id: abstract
       required: true
-      description: An abstract - TODO needs official notes and word limit
-      words:
-        min: 50
-        max: 500
+      description: |
+        A good Abstract will begin with a short description of the problem being addressed, briefly describe the new data or analyses, then briefly states the main conclusion(s) and how they are supported and uncertainties.
     - id: summary
       required: false
-      description: A plain language summary - TODO needs official notes and word limit
-      words:
-        min: 50
-        max: 500
+      description: |
+        The Plain Language Summary should be written for a broad audience, including journalists and the science-interested public, that will not have a background in your field.
+        A Plain Language Summary is required in GRL, JGR: Planets, JGR: Biogeosciences, JGR: Oceans, G-Cubed, Reviews of Geophysics, and JAMES.
+        see http://sharingscience.agu.org/creating-plain-language-summary/)
     - id: acknowledgements
       required: false
-      description: TODO needs official notes
+      description: |
+        The acknowledgments must list:
+          - A statement that indicates to the reader where the data supporting the conclusions can be obtained (for example, in the references, tables, supporting information, and other databases).
+          - All funding sources related to this work from all authors
+          - Any real or perceived financial conflicts of interests for any author
+          - Other affiliations for any author that may be perceived as having a conflict of interest with respect to the results of this paper.
+        It is also the appropriate place to thank colleagues and other contributors.
+        AGU does not normally allow dedications.
 
   options:
     - type: choice
@@ -82,6 +87,9 @@ config:
     - id: corresponding_author
       type: corresponding_author
       required: true
+      multiple: true
+      description: |
+        Include name and email addresses of the corresponding author.  More than one corresponding author is allowed in this LaTeX file and for publication; but only one corresponding author is allowed in our editorial system.)
     - type: bool
       id: draft
-      description: Mark the document as draft - TODO add notes on what draft is in this format
+      description: Mark the document as draft
