@@ -37,9 +37,16 @@ config:
     citestyle: false
 
   tagged:
-    abstract:
+    - id: abstract
       required: true
-    acknowledgements:
-      required: false
+      description: No description
+      words:
+        max: 500
+    - id: acknowledgements
+      description: No description
 
-  options: {}
+  options:
+    - id: corresponding_author
+      type: corresponding_author
+      description: No description
+      required: true
