@@ -58,4 +58,4 @@ config:
     - id: keywords
       type: keywords
       description: |
-        Add from 3 to 10 keywords that describe your article
+        Add 3 to 10 keywords that describe your article
