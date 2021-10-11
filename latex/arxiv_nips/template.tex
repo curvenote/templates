@@ -23,10 +23,14 @@ anchorcolor = black}
 \date{}
 [# endif #]
 
+\makeatletter
+\let\@fnsymbol\@arabic
+\makeatother
+
 \author{[# for author in doc.authors #]
-[-author.name-]\\
-[# if author.affiliation #][-author.affiliation-]\\[# endif #]
-[# if author.location #][-author.location-]\\[# endif #]
+[-author.name-][# if author.is_corresponding #]\footnotemark[1][# endif #]\\
+[# if options.affiliation and author.affiliation #][-author.affiliation-]\\[# endif #]
+[# if options.location and author.location #][-author.location-]\\[# endif #]
 [# if not loop.last #]
 \and
 [# endif #]
@@ -38,9 +42,9 @@ anchorcolor = black}
 %\renewcommand{\undertitle}{Technical Report}
 \renewcommand{\shorttitle}{[-doc.short_title-]}
 
-%%% Add PDF metadata to help others organize their library
-%%% Once the PDF is generated, you can check the metadata with
-%%% $ pdfinfo template.pdf
+%% Add PDF metadata to help others organize their library
+%% Once the PDF is generated, you can check the metadata with
+%% $ pdfinfo template.pdf
 \hypersetup{
 pdftitle={\@title},
 pdfsubject={[-doc.description-]},
@@ -50,29 +54,28 @@ pdfkeywords={[-doc.tags-]},
 
 \begin{document}
 \maketitle
+[# if options.corresponding_author #]
+\footnotetext[1]{Correspondence to: [-options.corresponding_author[0].email-]}
+[# endif #]
 
 [# if tagged.abstract #]
 \begin{abstract}
 [-tagged.abstract-]
 \end{abstract}
-
 [# endif #]
 
-
-[# if doc.tags #]
-\keywords{[-", ".join(doc.tags)-]}
-
-[# endif #]
-
-[# if options.backlink #]
-\footnotesize
-\href{[-doc.oxalink-]}{View online on Curvenote}
-
-\normalsize
+[# if options.keywords #]
+\keywords{[-", ".join(options.keywords)-]}
 [# endif #]
 
 [-CONTENT-]
 
+[# if options.backlink #]
+\section*{Original article}
+\footnotesize
+This article is available online at the following URL: \href{[-doc.oxalink-]}{[-doc.oxalink-]}
+\normalsize
+[# endif #]
 
 \bibliographystyle{unsrtnat}
 \bibliography{main}
