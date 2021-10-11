@@ -41,9 +41,12 @@ config:
   tagged:
     - id: abstract
       required: true
-      description: No description
+      description: |
+        Keep it short — abstracts longer than 1920 characters will not be accepted; abridge your abstract if necessary
+      words:
+        max: 800
     - id: acknowledgements
-      description: No description
+      description: Free form acknowledgements section will be include at the end of the article
 
   options:
     - id: corresponding_author
