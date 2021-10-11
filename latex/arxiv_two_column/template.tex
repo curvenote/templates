@@ -76,12 +76,13 @@ anchorcolor = black}
 \renewcommand*{\Authfont}{\bfseries}
 
 % TODO add ORCID IDs
-% TODO add corresponding author \thanks{\tt{asmith@college.edu}}
 [# for author in doc.authors #]
 \author[[-loop.index-]]{[-author.name-][# if author.orcid #]\orcid[-ALPHA[loop.index]-]{}[# endif #]}
 [# endfor #]
 [# for author in doc.authors #]
-\affil[[-loop.index-]]{[-author.affiliation-]}
+[# if options.affiliation or options.corresponding_author#]
+\affil[[-loop.index-]]{[# if options.affiliation #][-author.affiliation-] [# endif #][# if options.corresponding_author and author.is_corresponding #]([-author.email-])[# endif #]}
+[# endif #]
 [# endfor #]
 
 %%%%%%%%%%%%%%    Front matter    %%%%%%%%%%%%%%
@@ -98,8 +99,8 @@ anchorcolor = black}
 \end{abstract}
 [# endif #]
 
-[# if doc.tags #]
-\keywords{[-", ".join(doc.tags)-]}
+[# if options.keywords #]
+\keywords{[-", ".join(options.keywords)-]}
 [# endif #]
 
 \vspace{0.5cm}
@@ -108,24 +109,21 @@ anchorcolor = black}
 ] % Method A for two-column formatting
 
 %%%%%%%%%%%%%%%  Main text   %%%%%%%%%%%%%%%
-[# if options.line_numbers #]\linenumbers[# endif #]
-
-[# if options.backlink #]
-\footnotesize
-\href{[-doc.oxalink-]}{View online on Curvenote}
-
-\normalsize
-[# endif #]
-
 
 [-CONTENT-]
 
 [# if tagged.acknowledgments #]
 %%%%%%%%%%%%% Acknowledgements %%%%%%%%%%%%%
-\footnotesize
 \section*{Acknowledgements}
+\footnotesize
 [- tagged.acknowledgments -]
+\normalsize
+[# endif #]
 
+[# if options.backlink #]
+\section*{Original article}
+\footnotesize
+This article is available online at the following URL: \href{[-doc.oxalink-]}{[-doc.oxalink-]}
 \normalsize
 [# endif #]
 

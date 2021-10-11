@@ -10,6 +10,7 @@ pdftitle={\@title},
 pdfsubject={[-doc.description-]},
 pdfauthor={\@author},
 pdfkeywords={[-doc.tags-]},
+addtopdfcreator={Written in Curvenote}
 }
 
 \usepackage[oxalink=[-doc.oxalink-]]{curvenote_default}
@@ -29,8 +30,6 @@ pdfkeywords={[-doc.tags-]},
 [# endif #]
 [# endfor #]
 }
-
-[# if options.page_numbers #]\pagestyle{plain}[# else #]\pagestyle{empty}[# endif #]
 
 \begin{document}
 

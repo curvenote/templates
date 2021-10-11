@@ -42,18 +42,26 @@ config:
     - id: abstract
       required: true
       description: No description
-      words:
-        min: 50
-        max: 500
     - id: acknowledgements
       description: No description
 
   options:
     - id: corresponding_author
       type: corresponding_author
-      description: No description
+      description: Provide an email address for the corresponding author
       required: true
+    - id: affiliation
+      type: bool
+      required: true
+      default: true
+      description: Include the authors's affiliation from their Curvenote profile
+    - id: backlink
+      type: bool
+      required: true
+      default: true
+      description: |
+        Include a link back to the article on curvenote.com. The link will be placed inline at the end of all content, before the bibliography section.
     - id: show_date
       type: bool
-      description: No description
       default: true
+      description: Show the date on the manuscript. This will be the date of the version being exported, as set in Curvenote

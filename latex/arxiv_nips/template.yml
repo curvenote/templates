@@ -42,9 +42,6 @@ config:
     - id: abstract
       required: true
       description: No Description
-      words:
-        min: 50
-        max: 500
 
   options:
     - id: corresponding_author
