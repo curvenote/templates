@@ -50,17 +50,14 @@ config:
       description: No Description
     - id: affiliation
       type: bool
-      required: true
       default: true
       description: Include the authors's affiliation from their Curvenote profile
     - id: location
       type: bool
-      required: true
       default: true
       description: Include author's location from their Curvenote profile
     - id: backlink
       type: bool
-      required: true
       default: true
       description: |
         Include a link back to the article on curvenote.com. The link will be placed inline at the end of all content, before the bibliography section.
