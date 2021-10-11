@@ -51,10 +51,6 @@ config:
         projects. This section will be places towards the end of the article with a subtitle - Acknowledgments.
 
   options:
-    - id: corresponding_author
-      type: corresponding_author
-      description: |
-        Select a corresponding author and provide an email address for them
     - id: keywords
       type: keywords
       description: |
