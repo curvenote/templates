@@ -18,3 +18,5 @@ A list of changes made when porting the original tex and styles to the Curvenote
 - Added `arxiv.sty` to root folder
 - created `content.tex` with main content from `example.tex`
 - Added optional `\usepackage{lipsum}` for testing purposes as example content in original uses it
+- removed default fonts setting to allow compilation from xelatex and loaded lmodern
+- added supported user defined options

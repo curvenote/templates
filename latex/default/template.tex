@@ -5,16 +5,22 @@
 
 % colors for hyperlinks
 \hypersetup{colorlinks=true, allcolors=blue}
+\hypersetup{
+pdftitle={\@title},
+pdfsubject={[-doc.description-]},
+pdfauthor={\@author},
+pdfkeywords={[-doc.tags-]},
+addtopdfcreator={Written in Curvenote}
+}
 
 \usepackage[oxalink=[-doc.oxalink-]]{curvenote_default}
 
 %# the main title #%
 \title{[-doc.title-]}
 
-
-
 \newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
 \date{\displaydate{articleDate}}
+
 
 \author{[# for author in doc.authors #]
 [-author.name-]\\
@@ -25,27 +31,21 @@
 [# endfor #]
 }
 
-[# if options.page_numbers #]\pagestyle{plain}[# else #]\pagestyle{empty}[# endif #]
-
 \begin{document}
 
 \maketitle
 
-[# if doc.tags #]
-\keywords{[-", ".join(doc.tags)-]}
-
-[# endif #]
-
 [# if tagged.abstract #]
 \begin{abstract}
-  [-tagged.abstract-]
+Abstract: [-tagged.abstract-]
 \end{abstract}
-
 [# endif #]
 
+[# if options.keywords #]
+\keywords{[-", ".join(options.keywords)-]}
+[# endif #]
 
 [-CONTENT-]
-
 
 \bibliography{main}
 \end{document}
