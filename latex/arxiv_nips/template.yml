@@ -41,16 +41,31 @@ config:
   tagged:
     - id: abstract
       required: true
-      description: No Description
+      description: |
+        Keep it short — abstracts longer than 1920 characters will not be accepted; abridge your abstract if necessary
       words:
-        min: 50
-        max: 500
+        max: 800
+    - id: acknowledgements
+      description: Free form acknowledgements section will be include at the end of the article
 
   options:
     - id: corresponding_author
       type: corresponding_author
       required: true
       description: No Description
+    - id: affiliation
+      type: bool
+      default: true
+      description: Include the authors's affiliation from their Curvenote profile
+    - id: location
+      type: bool
+      default: true
+      description: Include author's location from their Curvenote profile
+    - id: backlink
+      type: bool
+      default: true
+      description: |
+        Include a link back to the article on curvenote.com. The link will be placed inline at the end of all content, before the bibliography section.
     - id: show_date
       type: bool
       default: true
