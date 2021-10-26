@@ -43,7 +43,7 @@ config:
       description: No description
       words:
         max: 500
-    - id: acknowledgements
+    - id: acknowledgments
       description: No description
 
   options:
