@@ -42,7 +42,7 @@ config:
       required: true
       description: |
         No description
-    - id: acknowledgements
+    - id: acknowledgments
       required: false
       description: |
         No description

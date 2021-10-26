@@ -47,7 +47,7 @@ config:
         The Plain Language Summary should be written for a broad audience, including journalists and the science-interested public, that will not have a background in your field.
         A Plain Language Summary is required in GRL, JGR: Planets, JGR: Biogeosciences, JGR: Oceans, G-Cubed, Reviews of Geophysics, and JAMES.
         see http://sharingscience.agu.org/creating-plain-language-summary/)
-    - id: acknowledgements
+    - id: acknowledgments
       required: false
       description: |
         The acknowledgments must list:
