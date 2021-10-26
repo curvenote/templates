@@ -1,7 +1,7 @@
 metadata:
-  title: MDPI Energies Journal
-  description: A template for the MDPI Energies Journal
-  version: 1.0.0
+  title: MDPI Journal
+  description: A template for the MDPI range of Journals
+  version: 1.0.1
   license: CC-BY-4.0
   author:
     name: Multidisciplinary Digital Publishing Institute
@@ -108,7 +108,7 @@ config:
       description: >
         Name of the MDPI Journal being submitted to
       required: true
-      default: energies
+      default: earth
       options:
         - acoustics
         - actuators
@@ -395,6 +395,7 @@ config:
         - pollutants
         - polymers
         - polysaccharides
+        - preprints
         - proceedings
         - processes
         - prosthesis
@@ -464,6 +465,61 @@ config:
         - wevj
         - women
         - world
+    - id: manuscript_type
+      type: choice
+      description: >
+        The type of manuscript to create
+      required: true
+      default: article
+      options:
+        - abstract
+        - addendum
+        - article
+        - book
+        - bookreview
+        - briefreport
+        - casereport
+        - comment
+        - commentary
+        - communication
+        - conferenceproceedings
+        - correction
+        - conferencereport
+        - entry
+        - expressionofconcern
+        - extendedabstract
+        - datadescriptor
+        - editorial
+        - essay
+        - erratum
+        - hypothesis
+        - interestingimages
+        - obituary
+        - opinion
+        - projectreport
+        - reply
+        - retraction
+        - review
+        - perspective
+        - protocol
+        - shortnote
+        - studyprotocol
+        - supfile
+        - systematicreview
+        - technicalnote
+        - viewpoint
+        - guidelines
+        - registeredreport
+        - tutorial
+    - id: manuscript_status
+      type: choice
+      description: >
+        Choose the status of the manuscript
+      required: true
+      default: submit
+      options:
+        - submit
+        - accept
     - id: corresponding_author
       type: corresponding_author
       description: >

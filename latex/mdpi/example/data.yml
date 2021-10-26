@@ -65,3 +65,5 @@ options:
   lsid: "http://lsid.org/qwerty123"
   corresponding_author: true
   journal_name: acoustics
+  manuscript_type: article
+  manuscript_status: submit
