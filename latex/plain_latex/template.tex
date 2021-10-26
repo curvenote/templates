@@ -13,23 +13,25 @@
 
 \title{[-doc.title-]}
 
-\author{
-[# for author in doc.authors #]
-[-author.name-][# if not loop.last #] \and [# endif #]
-[# endfor #]
-}
+\author{[-doc.authors|map(attribute="name")|join(" \\and ")-]}
 
 \newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
 \date{\displaydate{articleDate}}
-[# if options.footnote_link #]
-% Optional footnote with a link back to the online version of your article
-\footnote{Online version of this article available at: \href{[-doc.oxalink-]}{[-doc.oxalink-]}}
-[# endif #]
 
 \begin{document}
 \maketitle
 [# if tagged.abstract #]\begin{abstract}[-tagged.abstract-]\end{abstract}[# endif #]
 \begin{center}\logo\end{center}
+
+[# if options.footnote_link #]
+% Optional footnote with a link back to the online version of your article
+\newcommand{\documentnote}[1]{{%
+  \let\thempfn\relax% Remove footnote number printing mechanism
+  \footnotetext[0]{\emph{#1}}% Print footnote text
+}}
+\documentnote{Online at: \href{[-doc.oxalink-]}{[-doc.oxalink-]}}
+[# endif #]
+
 [-CONTENT-]
 \bibliography{main}
 \end{document}
