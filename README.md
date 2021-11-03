@@ -10,7 +10,7 @@ We're developing a template mini-language based on Jinja that allows us to creat
 - define tags that can be used to assign content to specific parts of the template like `abstract` or `appendix`
 - expose user options in the Curvenote UI to allow an end user to configure the template on export
 
-The min-language is still in beta but we'll publish a link to docs here soon. In the meantime, if you want to add a template open and issue or let us know on the Curvenote [Community Slack](http://slack.curvenote.dev) and we'll configure it for you!
+The mini-language is still in beta but we'll publish a link to docs here soon. In the meantime, if you want to add a template open and issue or let us know on the Curvenote [Community Slack](http://slack.curvenote.dev) and we'll configure it for you!
 
 # Building a Compatible Template
 
