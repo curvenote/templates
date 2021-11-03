@@ -21,7 +21,9 @@
 \begin{document}
 \maketitle
 [# if tagged.abstract #]\begin{abstract}[-tagged.abstract-]\end{abstract}[# endif #]
+[# if options.curvenote_logo_with_link #]
 \begin{center}\logo\end{center}
+[# endif #]
 
 [# if options.footnote_link #]
 % Optional footnote with a link back to the online version of your article
