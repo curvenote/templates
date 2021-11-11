@@ -18,7 +18,7 @@
 [# if options.draft #]
 \documentclass[draft]{agujournal2019}
 [# else #]
-\documentclass[draft]{agujournal2019}
+\documentclass{agujournal2019}
 [# endif #]
 [# if lipsum #]
 \usepackage{lipsum}
@@ -40,8 +40,9 @@
 %
 % complete documentation is here: http://trackchanges.sourceforge.net/
 %%%%%%%
-
+[# if not options.draft #]
 \draftfalse
+[# endif #]
 
 %% Enter journal name below.
 %% Choose from this list of Journals:

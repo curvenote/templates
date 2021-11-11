@@ -34,6 +34,6 @@ tagged:
   plain_language_summary: >
     Phase is a useful underlying property of the analytic trace model of seismic data that can be used as both an interpretation aid and a means to calibrate and check interpretations on a given seismic dataset. We introduce the analytical trace model and demonstrate some of its usages. We provide working code in python for computation of the Hilbert Transform using a robust FFT-based method and explore 2 use cases for such computed quantities. Jupyter notebooks used for computation and generation of the figures are included in this project.
 options:
-  draft: true
+  draft: false
   corresponding_author: true
   journal_name: Reviews of Geophysics
