@@ -7,6 +7,10 @@ doc:
       affiliation: Curvenote
       location: Address, City, Country
       curvenote: http://curvenote.com/@curvenote
+    - name: A. N Other
+      affiliation: Curvenote
+      location: Address, City, Country
+      curvenote: http://curvenote.com/@another
   date:
     year: 2021
     month: 08
@@ -19,3 +23,6 @@ doc:
 tagged:
   abstract: >
     Write, share and communicate interactive scientific content in a collaborative environment.
+options:
+  footnote_link: true
+  curvenote_logo_with_link: true

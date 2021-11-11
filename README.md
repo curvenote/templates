@@ -1,67 +1,31 @@
 <img src="https://curvenote.dev/images/logo.png" width="200" />
 
-# templates
+# Open Community Templates
 
-A community curated collection of Curvenote compatible LaTeX templates.
+A community curated collection of Curvenote compatible templates.
 
-We're developing a template mini-language based on Jinja that allows us to create templates that can be used with Curvenote articles and notebooks, allowing a Template Creator to:
+These templates allow us to export Articles and Notebooks in Curvenote as typeset and formatted documents. This means we can export to PDF and LaTeX formats while complying with an original source template, that would have been provided by a particular journal, conference organizer or university.
 
-- control Curvenote's package loading and configuration relative to template specific packages
-- define tags that can be used to assign content to specific parts of the template like `abstract` or `appendix`
-- expose user options in the Curvenote UI to allow an end user to configure the template on export
+The templates here can also be browsed on the [Curvenote website](https://curvenote.com/templates).
 
-The mini-language is still in beta but we'll publish a link to docs here soon. In the meantime, if you want to add a template open and issue or let us know on the Curvenote [Community Slack](http://slack.curvenote.dev) and we'll configure it for you!
+Currently, all templates are LaTeX based but as of October'21, Curvenote can now [export to Microsoft Word](https://curvenote.com/blog/curvenote-microsoft-word-export). As this beta feature progresses, MS Word templates will appear here too.
 
-# Building a Compatible Template
+## Contributing
 
-Template folders should be placed in the `latex/` folder. The contents of a template folder should be:
+Curvenote templates are LaTeX documents that have been marked up with a template syntax allowing them to be dynamically turned into documents with unique content and data.
 
-- `template.yml` - The template specification file
-- `template.tex` - The main template file with Curvenote template directives
-- `example/` - contents of this folder are used to test pdf builds against the template
-- `example/doc.yml` - Example DocModel data used to populate the template
-- `example/content.tex` - Example content, usually taken from the original template
-- `example/refs.bib` - Example bibligraphy, usually taken from the original template
+Writing your own template from scratch should be easy if you know LaTeX or given a LaTeX template from your university or a publisher, it should be relatively easy to turn that template into a Curvenote template.
 
-## template specification (template.yml)
+Once a new template is committed to the `main` branch in this repository, Curvenote will automatically add it to the list of available templates for export. 🧙🏼
 
-### metadata
+There are a couple of different ways to get a template added to this repository:
 
-The following are valid fields. Descriptions provided where needed.
+- 📝 [open an issue](https://github.com/curvenote/templates/issues) - tell us about the template you'd like added. Provide a link to the template if it's online, or attach the files if you have them.
+- 🏋🏽‍♀️ [open a PR](https://github.com/curvenote/templates/pulls) - with a port of the template. Even if it's partial or barely started we'll help test and get it over the line.
 
-- `title` (required)
-- `description` (required)
-- `author` (required) - details the person who contributed the Curvenote port of this template
-  - `name` (required)
-  - `github` - github username
-  - `twitter` - twitter handle
-  - `affiliation`
-- `source` - the name of the original source of the template, possibly a publishing body
-- `version` (required) - freeform semantic version of the port of the template
-- `license` (required) - a recognized license name e.g. MIT, CC-BY, CC-BY-SA
-- `tag` (required) - a list of tags
-  - `tagname` (required)
-  - `tagname`
-- `links` (required)
-  - `source` - a download link to the source of the original tex, class, styles
+Templates in this repo can be tested and used in conjunction with [curvenote-template](https://github.com/curvenote/curvenote-template) a python based command line tool.
+You'll need `python >= 3.6` to use it but you'll not need to write any code.
 
-### tagged
+The README in that repository has plently of details on the basic templating syntax we use (which is based on our own custom Jinja environment) and how to run the tool.
 
-- abstract
-- appendix
-- acknowledgements
-
-### options
-
-#### builtins
-
-- doc_class
-- start_page
-- page_numbers
-- backlink
-
-## Development - for project maintainers
-
-- Branch off `main` in order to make changes or add a template
-- Once you are ready, test in the Curvenote development environment by pushing your branch and opening a PR against `dev-test`
-- New and changed templates will be deployed automatically to the Curvenote development servers
+For more details on contributing, learning about the structure of Curvenote templates specifically and how to build one. See the [Contributors Guide](CONTRIBUTING.md).
