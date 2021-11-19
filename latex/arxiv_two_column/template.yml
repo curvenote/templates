@@ -43,8 +43,8 @@ config:
       required: true
       description: |
         Keep it short — abstracts longer than 1920 characters will not be accepted; abridge your abstract if necessary
-      words:
-        max: 800
+      chars:
+        max: 1920
     - id: acknowledgments
       description: Free form acknowledgments section will be include at the end of the article
 
