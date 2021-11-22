@@ -73,7 +73,7 @@ config:
     - id: start_page
       title: Start Page
       type: str
-      description: Set the starting page number
+      description: Set the starting page number, only used when page numbers are enabled
       default: 1
     - id: backlink
       title: Backlink
