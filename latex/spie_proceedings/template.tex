@@ -1,4 +1,8 @@
-\documentclass[ [-options.doc_class-] ]{spie}  %>>> use for US letter paper
+[# if options.paper_size == "usletter" #]
+\documentclass[[-options.nocompress-] ]{spie}  %>>> use for US letter paper
+[# else #]
+\documentclass[[-options.paper_size-][# if options.nocompress #], nocompress[# endif #]]{spie}  %>>> use for US letter paper
+[# endif #]
 %\documentclass[a4paper]{spie}  %>>> use this instead for A4 paper
 %\documentclass[nocompress]{spie}  %>>> to avoid compression of citations
 
@@ -6,7 +10,12 @@
 
 \input{curvenote.def}
 
-\renewcommand{\baselinestretch}{1.0} % Change to 1.65 for double spacing
+[# if options.double_spacing #]
+ % Change to 1.65 for double spacing
+\renewcommand{\baselinestretch}{1.65}
+[# else #]
+\renewcommand{\baselinestretch}{1.0}
+[# endif #]
 
 \title{[-doc.title-]}
 
