@@ -61,7 +61,7 @@ config:
         Include a list of keywords after the abstract (minimum 3)
       required: true
     - id: double_spacing
-      title: Enable double line spacing
+      title: Double line spacing
       type: bool
       description: Enable double line spacing
       default: false
@@ -74,7 +74,7 @@ config:
       title: Start Page
       type: str
       description: Set the starting page number
-      default: false
+      default: 1
     - id: backlink
       title: Backlink
       type: bool
