@@ -46,4 +46,3 @@ config:
       type: bool
       description: No description
       default: true
-      required: true
