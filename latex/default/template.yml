@@ -60,3 +60,4 @@ config:
       type: bool
       description: |
         Add a visible link to the article on Curvenote as a footnote on the first page
+      default: true
