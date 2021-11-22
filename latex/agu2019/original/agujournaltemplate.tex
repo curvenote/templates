@@ -151,7 +151,7 @@
 % uncertainties.
 
 % The Plain Language Summary should be written for a broad audience,
-% including journalists and the science-interested public, that will not have
+% including journalists and the science-interested public, that will not have 
 % a background in your field.
 %
 % A Plain Language Summary is required in GRL, JGR: Planets, JGR: Biogeosciences,
@@ -254,26 +254,29 @@
 %
 % ---------------
 % EXAMPLE TABLE
+% Please do NOT include vertical lines in tables
+% if the paper is accepted, Wiley will replace vertical lines with white space
+% the CLS file modifies table padding and vertical lines may not display well
 %
-% \begin{table}
-% \caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
-% \centering
-% \begin{tabular}{l c}
-% \hline
-%  Run  & Time (min)  \\
-% \hline
-%   $l1$  & 260   \\
-%   $l2$  & 300   \\
-%   $l3$  & 340   \\
-%   $h1$  & 270   \\
-%   $h2$  & 250   \\
-%   $h3$  & 380   \\
-%   $r1$  & 370   \\
-%   $r2$  & 390   \\
-% \hline
-% \multicolumn{2}{l}{$^{a}$Footnote text here.}
-% \end{tabular}
-% \end{table}
+ \begin{table}
+ \caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
+ \centering
+ \begin{tabular}{l c}
+ \hline
+  Run  & Time (min)  \\
+ \hline
+   $l1$  & 260   \\
+   $l2$  & 300   \\
+   $l3$  & 340   \\
+   $h1$  & 270   \\
+   $h2$  & 250   \\
+   $h3$  & 380   \\
+   $r1$  & 370   \\
+   $r2$  & 390   \\
+ \hline
+ \multicolumn{2}{l}{$^{a}$Footnote text here.}
+ \end{tabular}
+ \end{table}
 
 %% SIDEWAYS FIGURE and TABLE
 % AGU prefers the use of {sidewaystable} over {landscapetable} as it causes fewer problems.
@@ -362,11 +365,7 @@
 %
 %  ACKNOWLEDGMENTS
 %
-% The acknowledgments must list:
-%
-% >>>>	A statement that indicates to the reader where the data
-% 	supporting the conclusions can be obtained (for example, in the
-% 	references, tables, supporting information, and other databases).
+% The acknowledgments should list:
 %
 % 	All funding sources related to this work from all authors
 %
@@ -377,13 +376,25 @@
 % 	having a conflict of interest with respect to the results of this
 % 	paper.
 %
-%
-% It is also the appropriate place to thank colleagues and other contributors.
-% AGU does not normally allow dedications.
+%   It is also the appropriate place to thank colleagues and other contributors.
+%   AGU does not normally allow dedications.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Open Research}
+
+%Open Research
+% AGU requires an Availability Statement for the underlying data needed to understand, evaluate, and build upon the reported research at the time of peer review and publication.
+
+%Additionally, authors should include an Availability Statement for the software that has a significant impact on the research. Details and templates are in the Availability Statement section of the Data & Software for Authors Guidance:
+% https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#availability
+
+%For physical samples, use the IGSN persistent identifier, see the International Geo Sample Numbers section:
+https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#IGSN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \acknowledgments
-Enter acknowledgments, including your data availability statement, here.
+This section is optional. Include any Acknowledgments here.
 
 
 %% ------------------------------------------------------------------------ %%
@@ -394,6 +405,10 @@ Enter acknowledgments, including your data availability statement, here.
 % \bibliography{<name of your .bib file>} don't specify the file extension
 %
 % don't specify bibliographystyle
+
+% In the References section, cite the data/software described in the Availability Statement (this includes primary and processed data used for your research). For details on data/software citation as well as examples, see the Data & Software Citation section of the Data & Software for Authors guidance
+% https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#citation
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bibliography{ enter your bibtex bibliography filename here }
@@ -417,8 +432,11 @@ Enter acknowledgments, including your data availability statement, here.
 %...has been shown by \cite <e.g.,>[and others]{lewin76}.
 %
 % apacite uses < > for prenotes and [ ] for postnotes
-% DO NOT use other cite commands (e.g., \citet, \citep, \citeyear, \nocite, \citealp, etc.).
+% DO NOT use other cite commands (e.g., \citet, \citep, \citeyear, \citealp, etc.).
+% \nocite is okay to use to add references from your Supporting Information
 %
+
+
 
 \end{document}
 

@@ -41,6 +41,14 @@ config:
       required: true
       description: |
         A good Abstract will begin with a short description of the problem being addressed, briefly describe the new data or analyses, then briefly states the main conclusion(s) and how they are supported and uncertainties.
+    - id: availability_statement
+      required: true
+      description: |
+        AGU requires an Availability Statement for the underlying data needed to understand, evaluate, and build upon the reported research at the time of peer review and publication.
+        Additionally, authors should include an Availability Statement for the software that has a significant impact on the research. Details and templates are in the Availability Statement section of the Data & Software for Authors Guidance:
+        https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#availability
+        For physical samples, use the IGSN persistent identifier, see the International Geo Sample Numbers section:
+        https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#IGSN
     - id: summary
       required: false
       description: |
