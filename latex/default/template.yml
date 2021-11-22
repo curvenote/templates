@@ -56,3 +56,7 @@ config:
       type: keywords
       description: |
         Choose between 3 and 10 keywords that relate to the article
+    - id: footnote_link
+      type: bool
+      description: |
+        Add a visible link to the article on Curvenote as a footnote on the first page
