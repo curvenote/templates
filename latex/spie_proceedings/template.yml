@@ -8,7 +8,7 @@ metadata:
   contributor:
     name: Curvenote
     affiliation: curvenote
-  version: 3.40.0
+  version: 3.40.1
   license: CC-BY-4.0
   tags:
     - paper
@@ -35,14 +35,48 @@ config:
   tagged:
     - id: abstract
       required: true
-      description: No description
-      words:
-        max: 500
+      description: |
+        An abstract is a short summary of your research paper or report. A good abstract will prepare readers for
+        the detailed information to follow, communicate the essence of the article and help readers take away and
+        remember key points.
     - id: appendix
-      description: No description
+      description: Include one of more blocks in the appendix section, rendered after the main body of the article but before the bibliography.
+    - id: acknowledgments
+      description: |
+        This unnumbered section is used to identify those who have aided the authors in understanding or accomplishing the work presented and to acknowledge sources of funding.
 
   options:
-    - id: page_numbers
+    - id: paper_size
+      title: Paper Size
+      type: choice
+      description: Set the paper size for the document
+      required: true
+      default: usletter
+      options:
+        - usletter
+        - a4paper
+    - id: keywords
+      type: keywords
+      description: |
+        Include a list of keywords after the abstract (minimum 3)
+      required: true
+    - id: double_spacing
+      title: Enable double line spacing
       type: bool
-      description: No description
+      description: Enable double line spacing
+      default: false
+    - id: page_numbers
+      title: Page Numbers
+      type: bool
+      description: Enable page numbers
+      default: false
+    - id: start_page
+      title: Start Page
+      type: str
+      description: Set the starting page number
+      default: false
+    - id: backlink
+      title: Backlink
+      type: bool
+      description: Include a link back to the version of the article online in Curvenote.
       default: true
