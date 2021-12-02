@@ -1,0 +1,32 @@
+doc:
+  title: Reproducible Biomedical Modeling
+  authors:
+    - name: O. Pen Science
+      affiliation: University of Reproducibility
+      location: 123 Address Lane, Canada
+      orcid: 0000-0000-0000-0001
+      is_corresponding: true
+      email: openscience@example.com
+  date:
+    year: 2021
+    month: 08
+    day: 3
+oxalink: https://curvenote.com/@curvenote
+tagged:
+  abstract: |
+    Physiome publishes articles describing physiological models which demonstrate that the mathematical model, model implementation, and simulation results are consistent and reproducible. Physiome articles must be linked to primary papers published in or accepted to a peer-reviewed physiology, bioengineering or biophysics journal.
+options:
+  keywords:
+    - Physiome Journal
+    - Reproducibility
+    - Open Science
+  lineno: true
+  articletype: Original
+  published: true
+  publicationdate: 30 Sept 2020
+  editor: Editor
+  curator: Chief
+  submitteddate: 4 May 2020
+  accepteddate: 15 Sept 2020
+  citethisas: First and Second (2020) Example Article Title. Physiome 00(0).
+  doi: 000.0000/a00000

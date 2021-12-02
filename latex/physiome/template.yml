@@ -1,34 +1,33 @@
 metadata:
   title: Physiome Journal
-  description: TODO
+  description: |
+    Physiome publishes articles describing physiological models which demonstrate that the mathematical model, model implementation, and simulation results are consistent and reproducible. Physiome articles must be linked to primary papers published in or accepted to a peer-reviewed physiology, bioengineering or biophysics journal.
   author:
-    name: TODO
-    github: TODO
-    twitter: TODO
-    affiliation: TODO
+    name: Physiome Journal
+    github: physiome
+    twitter: physiomeproject
+    affiliation: Physiome Journal
   contributor:
     name: Curvenote
     github: curvenote
     twitter: curvenote
     affiliation: Curvenote
-  version: 0.2.1
+  version: 1.0.0
   license: CC-BY-4.0
   tags:
     - article
     - paper
   links:
-    github: https://github.com/curvenote/templates/tree/main/latex/default
+    github: https://github.com/curvenote/templates/tree/main/latex/physiome
     source: http://curvenote.com
 
 # options that can be offered to users to customise how this template is rendered
 config:
   build:
     layout: compact
+    vanilla: true
 
-  schema:
-    aside: marginpar
-    callout: framed
-    code: verbatim
+  schema: {}
 
   tagged:
     - id: abstract
@@ -44,6 +43,7 @@ config:
 
   options:
     - id: articletype
+      title: Article Type
       type: choice
       default: Original
       options:
@@ -52,30 +52,69 @@ config:
         - Review
         - Letter
       description: |
-        TODO
-    - id: published
+        See author instructions at: https://journal.physiomeproject.org/instructions-to-authors.html
+
+    - id: lineno
+      title: Enable Line Numbers
       type: bool
       default: false
-      description: TODO
+      description: Show line numbers on the document
+
+    - id: published
+      description: Is this submission published?
+      type: bool
+      default: false
+
     - id: publicationdate
       title: Publication Date
-      description: TODO
+      description: Use the form "4 May 2020"
       type: str
-      required: true
       condition:
         option: published
         value: true
+
     - id: editor
-      description: TODO
+      description: Physiome Journal Editor
       type: str
-      required: true
       condition:
         option: published
         value: true
+
     - id: curator
-      description: TODO
+      description: Physiome Journal Curator
       type: str
-      required: true
+      condition:
+        option: published
+        value: true
+
+    - id: submitteddate
+      title: Submission Date
+      description: Use the form "4 May 2020"
+      type: str
+      condition:
+        option: published
+        value: true
+
+    - id: accepteddate
+      title: Accepted Date
+      description: Use the form "4 May 2020"
+      type: str
+      condition:
+        option: published
+        value: true
+
+    - id: citethisas
+      title: Submission Citation
+      description: First and Second (2020) Example Article Title. Physiome 00(0).
+      type: str
+      condition:
+        option: published
+        value: true
+
+    - id: doi
+      title: Submission DOI
+      description: The DOI (Digital Object Identifier) of the final publication.
+      type: str
       condition:
         option: published
         value: true

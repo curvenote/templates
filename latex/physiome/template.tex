@@ -1,56 +1,57 @@
-\documentclass[fleqn,10pt]{physiome}
-% Use option lineno for line numbers
-
-\input{curvenote.def}
-
-%# \articletype{Original} #%
-\articletype{[-options.articletype-]}
+\documentclass[fleqn,10pt[# if options.lineno #],lineno[# endif #]]{physiome}
+%% \articletype{Original}
 %% Choose from Original, Retrospective, Review, Letter
-
+\articletype{[-options.articletype-]}
 \title{[-doc.title-]}
 
-%# \author[1][corr.author@xyz.ac.mm]{First Author} #%
-%# \author[2]{Second Author} #%
-%# \affil[1]{Address of first author} #%
-%# \affil[2]{Address of second author} #%
-[# for author in doc.author #]
+%% \author[1][corr.author@xyz.ac.mm]{First Author}
+%% \author[2]{Second Author}
+%% \affil[1]{Address of first author}
+%% \affil[2]{Address of second author}
+[# for author in doc.authors #]
 [# if author.is_corresponding #]
 \author[[-loop.index-]][[-author.email-]]{[-author.name-]}
 [# else #]
 \author[[-loop.index-]]{[-author.name-]}
 [# endif #]
 [# endfor #]
-[# for author in doc.author #]
-\affil[[-loop.index-]]{author.location}
+[# for author in doc.authors #]
+\affil[[-loop.index-]]{[-author.location-]}
 [# endfor #]
 
-
-%% The following lines can be omitted when submitting;
-%% information will be added by editors
-%# \publicationdate{30 Sept 2020} #%
 [# if options.published #]
 \publicationdate{[-options.publicationdate-]}
 \editor{[-options.editor-]}
 \curator{[-options.curator-]}
-\submitteddate{4 May 2020} % TODO!!!
-\accepteddate{15 Sept 2020}
+\submitteddate{[-options.submitteddate-]}
+\accepteddate{[-options.accepteddate-]}
+\citethisas{[-options.citethisas-]}{[-options.doi-]}
+[# else #]
+% The following information will be added by editors:
+\publicationdate{Publication Date}
+\editor{A Physiome Editor}
+\curator{The Chief Editor}
+\submitteddate{Submision Date}
+\accepteddate{Accepted Date}
 \citethisas{First and Second (2020) Example Article Title. Physiome 00(0).}{000.0000/a00000}
 [# endif #]
-\begin{document}
 
+\begin{document}
 \maketitle
 
 \begin{abstract}
 [-tagged.abstract-]
-  %# Please provide an abstract of no more than 300 words. Your abstract should explain the main contributions of your article, and should not contain any material that is not included in the main text. #%
 \end{abstract}
 
-\keywords{Keyword1, Keyword2, Keyword3}
+[# if options.keywords #]
+\keywords{[-", ".join(options.keywords)-]}
+[# endif #]
 
-\primarypubs[10.1037a0000000]{sample}{Aivazian917,Bloss029983}
+% TODO:
+\primarypubs[10.1037a0000000]{main}{Aivazian917,Bloss029983}
 
 [-CONTENT-]
 
-\bibliography{sample}
+\bibliography{main}
 
 \end{document}
