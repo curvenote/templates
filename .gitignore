@@ -5,3 +5,14 @@ __pycache__/
 env/
 .vscode
 tmp/
+temp/
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.bbl
+*.blg
+*.synctex.gz
+*.out
+*.ignore
