@@ -1,0 +1,59 @@
+\documentclass[fleqn,10pt[# if options.lineno #],lineno[# endif #]]{physiome}
+%% \articletype{Original}
+%% Choose from Original, Retrospective, Review, Letter
+\articletype{[-options.articletype-]}
+\title{[-doc.title-]}
+
+%% \author[1][corr.author@xyz.ac.mm]{First Author}
+%% \author[2]{Second Author}
+%% \affil[1]{Address of first author}
+%% \affil[2]{Address of second author}
+[# for author in doc.authors #]
+[# if author.is_corresponding #]
+\author[[-loop.index-]][[-author.email-]]{[-author.name-]}
+[# else #]
+\author[[-loop.index-]]{[-author.name-]}
+[# endif #]
+[# endfor #]
+[# for author in doc.authors #]
+%% Note: this should likely be affiliation_address or something?
+\affil[[-loop.index-]]{[-author.affiliation-]}
+[# endfor #]
+
+[# if options.published #]
+\publicationdate{[-options.publicationdate-]}
+\editor{[-options.editor-]}
+\curator{[-options.curator-]}
+\submitteddate{[-options.submitteddate-]}
+\accepteddate{[-options.accepteddate-]}
+\citethisas{[-options.citethisas-]}{[-options.doi-]}
+[# else #]
+% The following information will be added by editors:
+\publicationdate{Publication Date}
+\editor{A Physiome Editor}
+\curator{The Chief Editor}
+\submitteddate{Submision Date}
+\accepteddate{Accepted Date}
+\citethisas{First and Second (2020) Example Article Title. Physiome 00(0).}{000.0000/a00000}
+[# endif #]
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+[-tagged.abstract-]
+\end{abstract}
+
+[# if options.keywords #]
+\keywords{[-", ".join(options.keywords)-]}
+[# endif #]
+
+[# if options.primarypubs #]
+\primarypubs[[-options.primarydoi-]]{main}{[-options.primarypubs-]}
+[# endif #]
+
+[-CONTENT-]
+
+\bibliography{main}
+
+\end{document}
