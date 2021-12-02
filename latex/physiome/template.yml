@@ -68,7 +68,7 @@ config:
       type: str
 
     - id: primarydoi
-      title: Primary Publication DOI
+      title: Primary Publication DOI (e.g. "10.1037a0000000")
       description: DOI of the primary publication
       type: str
 
