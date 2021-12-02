@@ -36,16 +36,13 @@ config:
       words:
         max: 300
       required: true
-    - id: acknowledgments
-      description: |
-        You can this section to highlight support such as; collaborations, data sources, funding sources, broader
-        projects. This section will be places towards the end of the article with a subtitle - Acknowledgments.
 
   options:
     - id: articletype
       title: Article Type
       type: choice
       default: Original
+      required: true
       options:
         - Original
         - Retrospective
@@ -53,6 +50,11 @@ config:
         - Letter
       description: |
         See author instructions at: https://journal.physiomeproject.org/instructions-to-authors.html
+
+    - id: keywords
+      type: keywords
+      description: |
+        Choose between 3 and 10 keywords that relate to the article
 
     - id: lineno
       title: Enable Line Numbers
@@ -118,8 +120,3 @@ config:
       condition:
         option: published
         value: true
-
-    - id: keywords
-      type: keywords
-      description: |
-        Choose between 3 and 10 keywords that relate to the article

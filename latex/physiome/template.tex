@@ -16,7 +16,8 @@
 [# endif #]
 [# endfor #]
 [# for author in doc.authors #]
-\affil[[-loop.index-]]{[-author.location-]}
+%% Note: this should likely be affiliation_address or something?
+\affil[[-loop.index-]]{[-author.affiliation-]}
 [# endfor #]
 
 [# if options.published #]
