@@ -62,6 +62,16 @@ config:
       default: false
       description: Show line numbers on the document
 
+    - id: primarypubs
+      title: Primary Publications
+      description: A comma-seperated list of bibtex keys
+      type: str
+
+    - id: primarydoi
+      title: Primary Publication DOI
+      description: DOI of the primary publication
+      type: str
+
     - id: published
       description: Is this submission published?
       type: bool

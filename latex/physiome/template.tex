@@ -48,8 +48,9 @@
 \keywords{[-", ".join(options.keywords)-]}
 [# endif #]
 
-% TODO:
-\primarypubs[10.1037a0000000]{main}{Aivazian917,Bloss029983}
+[# if options.primarypubs #]
+\primarypubs[[-options.primarydoi-]]{main}{[-options.primarypubs-]}
+[# endif #]
 
 [-CONTENT-]
 
