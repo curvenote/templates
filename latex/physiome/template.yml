@@ -1,0 +1,86 @@
+metadata:
+  title: Physiome Journal
+  description: TODO
+  author:
+    name: TODO
+    github: TODO
+    twitter: TODO
+    affiliation: TODO
+  contributor:
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
+  version: 0.2.1
+  license: CC-BY-4.0
+  tags:
+    - article
+    - paper
+  links:
+    github: https://github.com/curvenote/templates/tree/main/latex/default
+    source: http://curvenote.com
+
+# options that can be offered to users to customise how this template is rendered
+config:
+  build:
+    layout: compact
+
+  schema:
+    aside: marginpar
+    callout: framed
+    code: verbatim
+
+  tagged:
+    - id: abstract
+      description: |
+        Please provide an abstract of no more than 300 words. Your abstract should explain the main contributions of your article, and should not contain any material that is not included in the main text.
+      words:
+        max: 300
+      required: true
+    - id: acknowledgments
+      description: |
+        You can this section to highlight support such as; collaborations, data sources, funding sources, broader
+        projects. This section will be places towards the end of the article with a subtitle - Acknowledgments.
+
+  options:
+    - id: articletype
+      type: choice
+      default: Original
+      options:
+        - Original
+        - Retrospective
+        - Review
+        - Letter
+      description: |
+        TODO
+    - id: published
+      type: bool
+      default: false
+      description: TODO
+    - id: publicationdate
+      title: Publication Date
+      description: TODO
+      type: str
+      required: true
+      condition:
+        option: published
+        value: true
+    - id: editor
+      description: TODO
+      type: str
+      required: true
+      condition:
+        option: published
+        value: true
+    - id: curator
+      description: TODO
+      type: str
+      required: true
+      condition:
+        option: published
+        value: true
+
+    - id: keywords
+      type: keywords
+      description: |
+        Choose between 3 and 10 keywords that relate to the article
