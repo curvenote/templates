@@ -1,11 +1,10 @@
 metadata:
   title: Physiome Journal
-  description: |
-    Physiome publishes articles describing physiological models which demonstrate that the mathematical model, model implementation, and simulation results are consistent and reproducible. Physiome articles must be linked to primary papers published in or accepted to a peer-reviewed physiology, bioengineering or biophysics journal.
+  description: Physiome publishes articles describing physiological models which demonstrate that the mathematical model, model implementation, and simulation results are consistent and reproducible. Physiome articles must be linked to primary papers published in or accepted to a peer-reviewed physiology, bioengineering or biophysics journal.
   author:
     name: Physiome Journal
-    github: physiome
-    twitter: physiomeproject
+    github: https://github.com/physiome
+    twitter: https://twitter.com/physiomeproject
     affiliation: Physiome Journal
   contributor:
     name: Curvenote
