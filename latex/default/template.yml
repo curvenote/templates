@@ -45,7 +45,6 @@ config:
       words:
         min: 50
         max: 500
-      plain: true
     - id: acknowledgments
       description: |
         You can this section to highlight support such as; collaborations, data sources, funding sources, broader
