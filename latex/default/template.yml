@@ -26,9 +26,9 @@ config:
     layout: compact
 
   schema:
-    aside: callout
+    aside: framed
     callout: callout
-    code: highlight
+    code: verbatim
     raggedbottom: true
     sloppy: true
     hidelinks: false
