@@ -47,6 +47,11 @@ Abstract: [-tagged.abstract-]
 
 [-CONTENT-]
 
+[# if tagged.acknowledgments #]
+\section*{Acknowledgments}
+[-tagged.acknowledgments-]
+[# endif #]
+
 [# if options.footnote_link #]
 % Optional footnote with a link back to the online version of your article
 \newcommand{\documentnote}[1]{{%
@@ -56,5 +61,6 @@ Abstract: [-tagged.abstract-]
 \documentnote{Available online at:\\ \href{[-doc.oxalink-]}{[-doc.oxalink-]}}
 [# endif #]
 
+\clearpage
 \bibliography{main}
 \end{document}

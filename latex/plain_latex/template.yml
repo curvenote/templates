@@ -25,7 +25,6 @@ metadata:
 config:
   build:
     layout: compact
-    vanilla: true
 
   schema:
     aside: marginpar
