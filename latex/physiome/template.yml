@@ -24,9 +24,11 @@ metadata:
 config:
   build:
     layout: compact
-    vanilla: true
 
-  schema: {}
+  schema:
+    aside: framed
+    callout: framed
+    code: verbatim
 
   tagged:
     - id: abstract
