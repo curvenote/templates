@@ -118,7 +118,7 @@ def main(repo_path: str):
     all = []
     for tmpl in all_templates:
       options = get_local_options(latex_path, tmpl)
-      all.append(dict(id=tmpl, commit=gitsha, **options['metadata']))
+      all.append(dict(id=tmpl, kind='tex', commit=gitsha, **options['metadata']))
 
     # update listings and lastrun commit hash
     logging.info(f"Logging this run with current git sha {gitsha}")
