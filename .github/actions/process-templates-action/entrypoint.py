@@ -123,7 +123,7 @@ def main(repo_path: str):
     # update listings and lastrun commit hash
     logging.info(f"Logging this run with current git sha {gitsha}")
     storage.push_listing({
-      "all": all,
+      "items": all,
       "lastrun": { "commit": gitsha }
     })
 
