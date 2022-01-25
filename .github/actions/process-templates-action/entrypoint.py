@@ -76,15 +76,15 @@ def main(repo_path: str):
 
       move_folders(['original','example'], tmp_folder, path.join(latex_path, tmpl))
 
-      options_json_filepath = path.join(tmp_folder, tmpl, 'options.json')
+      options_json_filepath = path.join(tmp_folder, tmpl, 'template.json')
       options = get_local_options(latex_path, tmpl)
       with open(options_json_filepath, 'w') as ojson:
         json.dump(options, ojson, indent=4)
-      logging.info(f"created options.json {zip_filepath}")
+      logging.info(f"created template.json {zip_filepath}")
 
       template_assets = TemplateAssets(tmpl)
       template_assets.append(Asset(zip_filepath, 'template.latex.zip', 'application/zip'))
-      template_assets.append(Asset(options_json_filepath, 'options.json', 'application/json'))
+      template_assets.append(Asset(options_json_filepath, 'template.json', 'application/json'))
       thumbnail_filepath = path.join(latex_path, tmpl, 'thumbnail.png')
       if path.exists(thumbnail_filepath):
         template_assets.append(Asset(thumbnail_filepath, 'thumbnail.png', 'image/png'))
