@@ -21,8 +21,8 @@ def get_local_options(latex_path: str, tmpl: str):
     return yaml.load(oyml, Loader=yaml.FullLoader)
 
 def scope_options_metadata(options: Dict[str, Any], template_id: str) -> Dict[str, Any]:
-  metadata = options["metadata"]
-  return dict(**metadata, id=f"public/{template_id}", owner='public', kind='tex', is_private=False)
+  metadata = dict(**options["metadata"], id=f"public/{template_id}", owner='public', kind='tex', is_private=False)
+  return dict(**options, metadata=metadata)
 
 def move_folders(folders: List[str], src: str, dest: str):
   for folder in folders:
