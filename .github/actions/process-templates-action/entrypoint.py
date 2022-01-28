@@ -10,7 +10,7 @@ from TemplateStorage import TemplateStorage
 from TemplateAssets import TemplateAssets, Asset
 import subprocess
 from google.cloud import storage as gcp_storage
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 import logging
@@ -19,6 +19,10 @@ logging.getLogger().setLevel(logging.INFO)
 def get_local_options(latex_path: str, tmpl: str):
   with open(path.join(latex_path, tmpl, 'template.yml')) as oyml:
     return yaml.load(oyml, Loader=yaml.FullLoader)
+
+def scope_options_metadata(options: Dict[str, Any], template_id: str) -> Dict[str, Any]:
+  options["metadata"] = dict(**options["metadata"], id=f"public/{template_id}", owner='public', kind='tex', is_private=False)
+  return options
 
 def move_folders(folders: List[str], src: str, dest: str):
   for folder in folders:
@@ -63,29 +67,30 @@ def main(repo_path: str):
     # process assets ready for update
     logging.info("Start processing...")
     processed_assets: List[TemplateAssets] = []
-    for tmpl in to_process:
+    for template_id in to_process:
     # run procesing steps on each template; zip
-      logging.info(f"processing: {tmpl}")
-      mkdir(path.join(tmp_folder, tmpl))
+      logging.info(f"processing: {template_id}")
+      mkdir(path.join(tmp_folder, template_id))
 
-      move_folders(['original','example'], path.join(latex_path, tmpl), tmp_folder)
+      move_folders(['original','example'], path.join(latex_path, template_id), tmp_folder)
 
       zip_filepath = make_archive(
-        path.join(tmp_folder, tmpl, 'latex.template'), 'zip', path.join(latex_path, tmpl))
+        path.join(tmp_folder, template_id, 'latex.template'), 'zip', path.join(latex_path, template_id))
       logging.info(f"created zipfile {zip_filepath}")
 
-      move_folders(['original','example'], tmp_folder, path.join(latex_path, tmpl))
+      move_folders(['original','example'], tmp_folder, path.join(latex_path, template_id))
 
-      options_json_filepath = path.join(tmp_folder, tmpl, 'options.json')
-      options = get_local_options(latex_path, tmpl)
+      options_json_filepath = path.join(tmp_folder, template_id, 'template.json')
+      options = get_local_options(latex_path, template_id)
+      options = scope_options_metadata(options, template_id)
       with open(options_json_filepath, 'w') as ojson:
         json.dump(options, ojson, indent=4)
-      logging.info(f"created options.json {zip_filepath}")
+      logging.info(f"created template.json {zip_filepath}")
 
-      template_assets = TemplateAssets(tmpl)
+      template_assets = TemplateAssets(template_id)
       template_assets.append(Asset(zip_filepath, 'template.latex.zip', 'application/zip'))
-      template_assets.append(Asset(options_json_filepath, 'options.json', 'application/json'))
-      thumbnail_filepath = path.join(latex_path, tmpl, 'thumbnail.png')
+      template_assets.append(Asset(options_json_filepath, 'template.json', 'application/json'))
+      thumbnail_filepath = path.join(latex_path, template_id, 'thumbnail.png')
       if path.exists(thumbnail_filepath):
         template_assets.append(Asset(thumbnail_filepath, 'thumbnail.png', 'image/png'))
 
@@ -103,9 +108,9 @@ def main(repo_path: str):
     if len(to_remove_from_bucket):
       logging.info("Removing deleted templates...")
       # delete removed templates
-      for tmpl in to_remove_from_bucket:
-        logging.info(f"Removing {tmpl}")
-        storage.delete_template_asset(tmpl)
+      for template_id in to_remove_from_bucket:
+        logging.info(f"Removing {template_id}")
+        storage.delete_template_asset(template_id)
       logging.info("Removal complete")
 
     # TODO: commit to git - if needed
@@ -116,14 +121,15 @@ def main(repo_path: str):
 
     # update listings and refresh metadata
     all = []
-    for tmpl in all_templates:
-      options = get_local_options(latex_path, tmpl)
-      all.append(dict(id=tmpl, commit=gitsha, **options['metadata']))
+    for template_id in all_templates:
+      options = get_local_options(latex_path, template_id)
+      options = scope_options_metadata(options, template_id)
+      all.append(dict(commit=gitsha, **options['metadata']))
 
     # update listings and lastrun commit hash
     logging.info(f"Logging this run with current git sha {gitsha}")
     storage.push_listing({
-      "all": all,
+      "items": all,
       "lastrun": { "commit": gitsha }
     })
 
