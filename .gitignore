@@ -16,3 +16,4 @@ temp/
 *.synctex.gz
 *.out
 *.ignore
+*.DS_Store
