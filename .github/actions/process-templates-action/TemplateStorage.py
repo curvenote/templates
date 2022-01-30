@@ -11,7 +11,7 @@ class TemplateStorage():
     to managing LaTeX template assets
   """
   def __init__(self, client: Client, bucket_name: str, tmp_folder: str):
-    self.storage_path_base = "public"
+    self.storage_path_base = "public/tex"
     self.listing_storage_path = f"{self.storage_path_base}/listing.json"
 
     logging.info(f"Initialising Template Storage Class")
