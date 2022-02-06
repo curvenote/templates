@@ -217,15 +217,11 @@
     \@toptitlebar
     \centering
     {\LARGE\sc \@title\par}
-    \def\And{%
-      \end{tabular}\hfil\linebreak[0]\hfil%
-      \begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
-    }
     \def\AND{%
-      \end{tabular}\hfil\linebreak[4]\hfil%
-      \begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
+      \end{minipage}\end{tabular}\hfil\linebreak[4]\hfil%
+      \begin{tabular}[t]{c}\rule{\z@}{24\p@}\begin{minipage}[t]{0.95\textwidth}\centering\ignorespaces%
     }
-    \begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\@author\end{tabular}%
+    \begin{tabular}[t]{c}\rule{\z@}{24\p@}\begin{minipage}[tc]{0.95\textwidth}\centering\@author\end{minipage}\end{tabular}%
     \vskip 0.2in
     \center{\@date}
     \begin{flushright}
