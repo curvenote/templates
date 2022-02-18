@@ -63,7 +63,8 @@ config:
     - id: reference_format
       type: choice
       description: >
-        Name of the MDPI Journal being submitted to
+        Harvard Referencing Style (Author-Date) or Vancouver Reference Style (Numbered)
+        For Frontiers Reference Styles by Journal see https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
       required: true
       default: Harvard
       options:
