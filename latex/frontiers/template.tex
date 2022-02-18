@@ -20,7 +20,11 @@
 \usepackage{framed}
 \usepackage{adjustbox}
 
+[# if options.line_numbers #]
 \linenumbers
+[# else #]
+% \linenumbers
+[# endif #]
 
 \def\keyFont{\fontsize{8}{11}\helveticabold}
 %% \def\Authors{First Author\,$^{1,*}$, Co-Author\,$^{2}$ and Co-Author\,$^{1,2}$}

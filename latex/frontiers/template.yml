@@ -62,7 +62,7 @@ config:
   options:
     - id: corresponding_author
       type: corresponding_author
-      description: The Corresponding Author's email
+      description: The corresponding author's email
       required: true
     - type: keywords
       id: keywords
@@ -79,3 +79,8 @@ config:
       options:
         - Harvard
         - Vancouver
+    - id: line_numbers
+      type: bool
+      default: true
+      required: true
+      description: Turn line numbers on in the PDF
