@@ -60,7 +60,10 @@
 \begin{abstract}
 \section{}
 [-tagged.abstract-]
-\keyFont{ \section{Keywords:} [-doc.tags|join(", ")-]}
+
+[# if options.keywords #]
+\keyFont{ \section{Keywords:} [-options.keywords|join(", ")-]}
+[# endif #]
 \end{abstract}
 [# endif #]
 

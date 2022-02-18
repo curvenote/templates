@@ -60,6 +60,15 @@ config:
         The datasets [GENERATED/ANALYZED] for this study can be found in the [NAME OF REPOSITORY] [LINK].
       required: false
   options:
+    - id: corresponding_author
+      type: corresponding_author
+      description: The Corresponding Author's email
+      required: true
+    - type: keywords
+      id: keywords
+      description: >
+        All article types: you may provide up to 8 keywords; at least 5 are mandatory.
+      required: true
     - id: reference_format
       type: choice
       description: >
