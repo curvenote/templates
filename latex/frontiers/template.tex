@@ -20,7 +20,11 @@
 \usepackage{framed}
 \usepackage{adjustbox}
 
+[# if options.line_numbers #]
 \linenumbers
+[# else #]
+% \linenumbers
+[# endif #]
 
 \def\keyFont{\fontsize{8}{11}\helveticabold}
 %% \def\Authors{First Author\,$^{1,*}$, Co-Author\,$^{2}$ and Co-Author\,$^{1,2}$}
@@ -94,8 +98,15 @@
 % \section*{Supplemental Data}
 %  \href{http://home.frontiersin.org/about/author-guidelines#SupplementaryMaterial}{Supplementary Material} should be uploaded separately on submission, if there are Supplementary Figures, please include the caption in the same file as the figure. LaTeX Supplementary Material templates can be found in the Frontiers LaTeX folder.
 
-\bibliographystyle{Frontiers-Harvard} %  Many Frontiers journals use the Harvard referencing system (Author-date), to find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal. For Humanities and Social Sciences articles please include page numbers in the in-text citations
-%\bibliographystyle{Frontiers-Vancouver} % Many Frontiers journals use the numbered referencing system, to find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
+% To find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
+% For Humanities and Social Sciences articles please include page numbers in the in-text citations
+[# if options.journal_name == "Vancouver" #]
+\bibliographystyle{Frontiers-Vancouver}
+% \bibliographystyle{Frontiers-Harvard}
+[# else #]
+\bibliographystyle{Frontiers-Harvard}
+% \bibliographystyle{Frontiers-Vancouver}
+[# endif #]
 \bibliography{main.bib}
 
 % \section*{Figure captions}

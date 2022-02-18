@@ -2,7 +2,7 @@ metadata:
   title: Volcanica
   description: A template for submissions to the Volcanica journal
   version: 1.0.0
-  license: ""
+  license: ''
   author:
     name: Volcanica
     website: https://jvolcanica.org
@@ -56,26 +56,23 @@ config:
         No description
 
   options:
-    - id: draft
-      type: bool
-      default: false
-      required: false
-      description: |
-        Mark the paper as draft
-    - id: line_numbers
-      type: bool
-      default: true
-      required: true
-      description: |
-        No description
-    - id: blind
-      type: bool
-      default: false
-      required: false
-      description: |
-        No description
     - id: corresponding_author
       type: corresponding_author
       required: true
       description: |
         No description
+    - id: draft
+      type: bool
+      default: false
+      required: false
+      description: Mark the paper as draft and include a watermark
+    - id: line_numbers
+      type: bool
+      default: true
+      required: false
+      description: Turn line numbers on
+    - id: blind
+      type: bool
+      default: false
+      required: false
+      description: Do not include author information
