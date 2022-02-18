@@ -55,5 +55,5 @@ The following are valid fields. Descriptions provided where needed.
 ### Development - for project maintainers
 
 - Branch off `main` in order to make changes or add a template
-- Once you are ready, test in the Curvenote development environment by pushing your branch and opening a PR against `dev-test`
+- Once you are ready, test in the Curvenote development environment by pushing your branch and opening a PR against `dev`
 - New and changed templates will be deployed automatically to the Curvenote development servers

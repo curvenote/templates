@@ -3,11 +3,11 @@ on:
   push:
     branches:
       - main
-      - dev-test
+      - dev
       - ci-setup*
   pull_request:
     branches:
-      - dev-test
+      - dev
 
 jobs:
   process_templates:

@@ -1,0 +1,72 @@
+metadata:
+  title: Frontiers
+  description: A template for the Forntiers In range of Journals
+  version: 1.0.1
+  license: Copyright Frontiers
+  author:
+    name: Frontiers
+    website: https://www.frontiersin.org/
+    affiliation: Frontiers
+  contributor:
+    name: Curvenote
+    github: curvenote
+    twitter: curvenote
+    affiliation: Curvenote
+  tags:
+    - paper
+    - journal
+  links:
+    source: https://www.frontiersin.org/about/author-guidelines
+
+config:
+  build:
+    layout: compact
+
+  schema: {}
+
+  tagged:
+    - id: abstract
+      description: >
+        As a primary goal, the abstract should render the general significance and conceptual advance of the work clearly accessible to a broad readership.
+        References should not be cited in the abstract.
+        Leave the Abstract empty if your article does not require one, please see http://www.frontiersin.org/about/AuthorGuidelines#SummaryTable for details according to article type.
+      required: false
+    - id: acknowledgments
+      description: >
+        This is a short text to acknowledge the contributions of specific colleagues, institutions, or agencies that aided the efforts of the authors.
+      required: false
+    - id: conflicts
+      description: >
+        All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement:
+
+        The authors declare that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.
+      required: false
+    - id: author_contributions
+      description: >
+        The Author Contributions section is mandatory for all articles, including articles by sole authors.
+        If an appropriate statement is not provided on submission, a standard one will be inserted during the production process.
+        The Author Contributions statement must describe the contributions of individual authors referred to by their initials and, in doing so, all authors agree to be accountable for the content of the work.
+        Please see https://www.frontiersin.org/about/policies-and-publication-ethics#AuthorshipAuthorResponsibilities for full authorship criteria.
+      required: false
+    - id: funding
+      description: >
+        Details of all funding sources should be provided, including grant numbers if applicable.
+        Please ensure to add all necessary funding information, as after publication this is no longer possible.
+      required: false
+    - id: data_availability
+      description: >
+        Please see the availability of data guidelines for more information, at https://www.frontiersin.org/about/author-guidelines#AvailabilityofData
+
+        The datasets [GENERATED/ANALYZED] for this study can be found in the [NAME OF REPOSITORY] [LINK].
+      required: false
+  options:
+    - id: reference_format
+      type: choice
+      description: >
+        Harvard Referencing Style (Author-Date) or Vancouver Reference Style (Numbered)
+        For Frontiers Reference Styles by Journal see https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
+      required: true
+      default: Harvard
+      options:
+        - Harvard
+        - Vancouver
