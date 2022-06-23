@@ -1,0 +1,139 @@
+metadata:
+  title: EGU Copernicus
+  description: A template based on the the Copernicus Publications LaTeX Macro Package
+  author:
+    name: Copernicus Publications (Copernicus GmbH)
+    affiliation: SPIE
+    website: https://www.spie.org/
+  contributor:
+    name: Curvenote
+    affiliation: curvenote
+  version: '6.8'
+  license: Unknown
+  tags:
+    - paper
+    - journal
+  links:
+    source: https://www.soil-journal.net/Copernicus_LaTeX_Package.zip
+
+# options that can be offered to users to customise how this template is rendered
+config:
+  build:
+    layout: compact
+
+  schema:
+    aside: framed
+    callout: framed
+    code: verbatim
+
+  tagged:
+    - id: abstract
+      required: true
+      description: |
+        the abstract should be intelligible to the general reader without reference to the text. 
+        After a brief introduction of the topic, the summary recapitulates the key points of the 
+        article and mentions possible directions for prospective research. Reference citations 
+        should not be included in this section, unless urgently required, and abbreviations should 
+        not be included without explanations. An abstract should be short, clear, concise, and written 
+        in English with correct spelling and good sentence structure.
+    - id: author_contribution
+      required: true
+      description: this section is mandatory
+    - id: competing_interests
+      required: true
+      description: this section is mandatory even if you declare that no competing interests are present
+    - id: disclaimer
+      description: this is an optional section
+    - id: acknowledgments
+      description: optional acknowledgments section
+    - id: code_availability
+      description: use this section when having only software code available
+    - id: data_availability
+      description: use this section when having only data sets available
+    - id: code_data_availability
+      description: use this section when having data sets and software code available
+    - id: sample_availability
+      description: use this section when having geoscientific samples available
+    - id: video_supplement
+      description: use this section when having video supplements available
+    - id: appendix
+      description: the main appendix section
+    - id: appendix_figures
+      description: a figures appendix section
+    - id: appendix_tables
+      description: a tables appendix section
+
+  options:
+    - id: journal_name
+      type: choice
+      description: >
+        Name of the MDPI Journal being submitted to
+      required: true
+      default: soil
+      options:
+        - adgeo
+        - ars
+        - asr
+        - ascmo
+        - angeo
+        - aab
+        - acp
+        - amt
+        - bg
+        - cp
+        - deuquasp
+        - dwes
+        - esurf
+        - esd
+        - essd
+        - egqsj
+        - egusphere
+        - ejm
+        - fr
+        - gchron
+        - gh
+        - gc
+        - gi
+        - gmd
+        - hgss
+        - hess
+        - jbji
+        - jm
+        - jsss
+        - mr
+        - ms
+        - nhess
+        - npg
+        - os
+        - polf
+        - pb
+        - piahs
+        - sand
+        - sd
+        - soil
+        - se
+        - tc
+        - wcd
+        - we
+        - wes
+    - id: proof
+      title: Proof
+      type: bool
+      description: Mark as proof
+      required: false
+      default: false
+    - id: running_title
+      title: Running Title
+      type: str
+      description: Set a shorter running version of the title
+      default: ''
+    - id: running_author
+      title: Running Author
+      type: str
+      description: Set a short running author string
+      default: ''
+    - id: copyright
+      title: Copyright Statement
+      type: str
+      description: Usually set by EGU, this is optional and can be used for copyright transfers
+      default: ''
