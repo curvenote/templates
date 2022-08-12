@@ -9,7 +9,7 @@ metadata:
     name: Curvenote
     affiliation: curvenote
   version: '6.8'
-  license: Unknown
+  license: CC-BY-4.0
   tags:
     - paper
     - journal
