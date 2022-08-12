@@ -12,6 +12,55 @@
 \documentclass[[-options.journal_name-], [# if options.proof #]proof[# else #]manuscript[# endif #]]{copernicus}
 
 
+% Curvenote Pass Options Section
+\PassOptionsToPackage{normalem}{ulem}
+\PassOptionsToPackage{utf8}{inputenc}
+
+% Curvenote Use Package Section
+% base
+\usepackage{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{nicefrac}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{datetime}
+\usepackage{xkeyval}
+\usepackage{framed}
+\usepackage{pdflscape}
+\usepackage{booktabs}
+\usepackage{longtable}
+% template
+\usepackage{fancyvrb}
+
+% Curvenote Setup Section
+% base
+\graphicspath{{.}}
+% template
+\newenvironment{callout}{\begin{framed}}{\end{framed}}
+\newfloat{code}{thp}{loc}
+\floatname{code}{Program}
+\newenvironment{aside}{\begin{framed}}{\end{framed}}
+
+% colors for hyperlinks
+\hypersetup{colorlinks=true, allcolors=blue}
+\hypersetup{
+pdftitle={\@title},
+pdfsubject={[-doc.description-]},
+pdfauthor={\@author},
+pdfkeywords={[-doc.tags-]},
+addtopdfcreator={Written in Curvenote}
+}
+
 %% Journal abbreviations (please use the same for preprints and final revised papers)
 
 % Advances in Geosciences (adgeo)
@@ -198,16 +247,14 @@
 [# endif #]
 
 [# if tagged.acknowledgments #]
-\begin{acknowledgments}
-[-tagged.acknowledgments-]
-\end{acknowledgments}
+\acknowledgments{[-tagged.acknowledgments-]}
 [# endif #]
 
 
 %% REFERENCES
 
 \bibliographystyle{copernicus}
-\bibliography{example.bib}
+\bibliography{main}
 
 %% The reference list is compiled as follows:
 
