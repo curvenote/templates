@@ -15,7 +15,7 @@ jobs:
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "The repository is located at ${{ github.workspace }}"
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@v0
         with:
           project_id: ${{ secrets.PROD_GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.PROD_GCP_SA_KEY }}
