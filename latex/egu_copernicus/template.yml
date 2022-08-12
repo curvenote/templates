@@ -116,22 +116,24 @@ config:
         - wcd
         - we
         - wes
+    - id: running_title
+      title: Running Title
+      type: str
+      required: true
+      description: Set a shorter running version of the title
+      default: ''
+    - id: running_author
+      title: Running Author
+      type: str
+      required: true
+      description: Set a short running author string
+      default: ''
     - id: proof
       title: Proof
       type: bool
       description: Mark as proof
       required: false
       default: false
-    - id: running_title
-      title: Running Title
-      type: str
-      description: Set a shorter running version of the title
-      default: ''
-    - id: running_author
-      title: Running Author
-      type: str
-      description: Set a short running author string
-      default: ''
     - id: copyright
       title: Copyright Statement
       type: str
