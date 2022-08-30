@@ -2,7 +2,7 @@ metadata:
   title: AGU Journal
   description: The offical 2019 AGU Journal template
   version: 1.0.0
-  license: "GPL-3"
+  license: 'GPL-3'
   author:
     name: American Geophysical Union
     website: https://agu.org
@@ -70,14 +70,14 @@ config:
     - type: choice
       id: journal_name
       title: AGU Journal Name
-      options:
-        - "JGR: Atmospheres"
-        - "JGR: Biogeosciences"
-        - "JGR: Earth Surface"
-        - "JGR: Oceans"
-        - "JGR: Planets"
-        - "JGR: Solid Earth"
-        - "JGR: Space Physics"
+      choices:
+        - 'JGR: Atmospheres'
+        - 'JGR: Biogeosciences'
+        - 'JGR: Earth Surface'
+        - 'JGR: Oceans'
+        - 'JGR: Planets'
+        - 'JGR: Solid Earth'
+        - 'JGR: Space Physics'
         - Global Biogeochemical Cycles
         - Geophysical Research Letters
         - Paleoceanography and Paleoclimatology
@@ -92,12 +92,6 @@ config:
         - Earth and Space Science
         - Geohealth
       required: true
-    - id: corresponding_author
-      type: corresponding_author
-      required: true
-      multiple: true
-      description: |
-        Include name and email addresses of the corresponding author.  More than one corresponding author is allowed in this LaTeX file and for publication; but only one corresponding author is allowed in our editorial system.)
     - type: bool
       id: draft
       description: Mark the document as draft
