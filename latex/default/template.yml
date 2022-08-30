@@ -51,10 +51,6 @@ config:
         projects. This section will be places towards the end of the article with a subtitle - Acknowledgments.
 
   options:
-    - id: keywords
-      type: keywords
-      description: |
-        Choose between 3 and 10 keywords that relate to the article
     - id: footnote_link
       type: bool
       description: |
