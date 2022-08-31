@@ -13,7 +13,7 @@ pdfkeywords={[-doc.tags-]},
 addtopdfcreator={Written in Curvenote}
 }
 
-\usepackage[oxalink=[-doc.oxalink-]]{curvenote_default}
+\usepackage[oxalink=[-doc.oxalink or ""-]]{curvenote_default}
 
 %# the main title #%
 \title{[-doc.title-]}
@@ -52,7 +52,7 @@ Abstract: [-tagged.abstract-]
 [-tagged.acknowledgments-]
 [# endif #]
 
-[# if options.footnote_link #]
+[# if options.footnote_link and doc.oxalink #]
 % Optional footnote with a link back to the online version of your article
 \newcommand{\documentnote}[1]{{%
   \let\thempfn\relax% Remove footnote number printing mechanism
