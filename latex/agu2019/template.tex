@@ -111,11 +111,19 @@
 % Example: \authors{A. B. Author\affil{1}\thanks{Current address, Antartica}, B. C. Author\affil{2,3}, and D. E.
 % Author\affil{3,4}\thanks{Also funded by Monsanto.}}
 
-[# set count=[1] #]
 \authors{
-[# for author in doc.authors #]
-[-author.name-][# if author.affiliation #]\affil{[-count|length-]}[# set __ = count.append(1) #][# endif #][# if not loop.last #],[# endif #]
-[# endfor #]
+[#- for author in doc.authors -#]
+[-- author.name --]
+[#- if author.affiliations -#]
+\affil{
+[#- for affiliation in author.affiliations -#]
+[-- affiliation.index --]
+[#- if not loop.last #],[# endif -#]
+[#- endfor -#]
+}
+[#- endif -#]
+[#- if not loop.last #], [# endif -#]
+[#- endfor -#]
 }
 
 % \affiliation{1}{First Affiliation}
@@ -123,9 +131,8 @@
 % \affiliation{3}{Third Affiliation}
 % \affiliation{4}{Fourth Affiliation}
 
-[# set count = [1] #]
-[# for author in doc.authors #]
-[# if author.affiliation #]\affiliation{[-count|length-]}{[-author.affiliation-]}[# set __ = count.append(1) #][# endif #]
+[# for affiliation in doc.affiliations #]
+\affiliation{[-affiliation.index-]}{affiliation.name}
 [# endfor #]
 %(repeat as many times as is necessary)
 
@@ -139,8 +146,10 @@
 
 % Example: \correspondingauthor{First and Last Name}{email@address.edu}
 
-[# for author in doc.corresponding #]
+[# for author in doc.authors #]
+[# if author.corresponding #]
 \correspondingauthor{[-author.name-]}{[-author.email-]}
+[# endif #]
 [# endfor #]
 
 %% Keypoints, final entry on title page.
@@ -201,9 +210,9 @@
 \end{abstract}
 [# endif #]
 
-[# if tagged.plain_language_summary #]
+[# if tagged.summary #]
 \section*{Plain Language Summary}
-[-tagged.plain_language_summary-]
+[-tagged.summary-]
 [# endif #]
 
 %% ------------------------------------------------------------------------ %%

@@ -22,13 +22,13 @@ addtopdfcreator={Written in Curvenote}
 \date{\displaydate{articleDate}}
 
 
-\author{[# for author in doc.authors #]
+\author{[# for author in doc.authors -#]
 \bfseries [-author.name-]\mdseries\\
-[# if author.affiliation #][-author.affiliation-]\\[# endif #]
-[# if not loop.last #]
+[#- if author.affiliations #][- author.affiliations[0].name -]\\[# endif -#]
+[#- if not loop.last -#]
 \AND
-[# endif #]
-[# endfor #]
+[#- endif -#]
+[#- endfor -#]
 }
 
 \begin{document}
@@ -42,7 +42,7 @@ Abstract: [-tagged.abstract-]
 [# endif #]
 
 [# if doc.keywords #]
-\keywords{[-", ".join(doc.keywords)-]}
+\keywords{[-doc.keywords|join(", ")-]}
 [# endif #]
 
 [-CONTENT-]
