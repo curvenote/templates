@@ -3,6 +3,8 @@
 
 \input{curvenote.def}
 
+[-IMPORTS-]
+
 % colors for hyperlinks
 \hypersetup{colorlinks=true, allcolors=blue}
 \hypersetup{
@@ -13,14 +15,12 @@ pdfkeywords={[-doc.tags-]},
 addtopdfcreator={Written in Curvenote}
 }
 
-\usepackage[oxalink=[-doc.oxalink-]]{curvenote_default}
+\usepackage[oxalink=[-doc.oxalink or ""-]]{curvenote_default}
 
-%# the main title #%
 \title{[-doc.title-]}
 
 \newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
 \date{\displaydate{articleDate}}
-
 
 \author{[# for author in doc.authors -#]
 \bfseries [-author.name-]\mdseries\\
@@ -34,35 +34,36 @@ addtopdfcreator={Written in Curvenote}
 \begin{document}
 
 \maketitle
-
-[# if tagged.abstract #]
+[#- if tagged.abstract -#]
 \begin{abstract}
 Abstract: [-tagged.abstract-]
 \end{abstract}
-[# endif #]
-
-[# if doc.keywords #]
+[#- endif -#]
+[#- if doc.keywords -#]
 \keywords{[-doc.keywords|join(", ")-]}
-[# endif #]
+[#- endif -#]
 
 [-CONTENT-]
 
-[# if tagged.acknowledgments #]
+[#- if tagged.acknowledgments -#]
 \section*{Acknowledgments}
 [-tagged.acknowledgments-]
-[# endif #]
+[#- endif -#]
 
-[# if options.footnote_link #]
+[#- if options.footnote_link and doc.oxalink -#]
 % Optional footnote with a link back to the online version of your article
 \newcommand{\documentnote}[1]{{%
   \let\thempfn\relax% Remove footnote number printing mechanism
   \footnotetext[0]{\emph{#1}}% Print footnote text
 }}
 \documentnote{Available online at:\\ \href{[-doc.oxalink-]}{[-doc.oxalink-]}}
-[# endif #]
+[#- endif -#]
+
+[# if doc.bibliography #]
+
 
 \clearpage
-[# if has_references #]
-\bibliography{main}
+\bibliography{[- doc.bibliography | join(", ") -]}
 [# endif #]
+
 \end{document}
