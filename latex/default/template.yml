@@ -51,8 +51,16 @@ config:
         projects. This section will be places towards the end of the article with a subtitle - Acknowledgments.
 
   options:
-    - id: footnote_link
-      type: bool
+    - id: title
+      type: frontmater
+      required: true
+    - id: authors
+      type: frontmater
+      required: true
+    - id: keywords
+      type: frontmater
+      required: true
+    - id: link
+      type: str
       description: |
-        Add a visible link to the article on Curvenote as a footnote on the first page
-      default: true
+        Link to the article on Curvenote as a footnote on the first page

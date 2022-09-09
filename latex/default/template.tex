@@ -24,7 +24,7 @@ addtopdfcreator={Written in Curvenote}
 
 \author{[# for author in doc.authors -#]
 \bfseries [-author.name-]\mdseries\\
-[#- if author.affiliations #][- author.affiliations[0].name -]\\[# endif -#]
+[#- if author.affiliations #][- author.affiliations|join(", ", "value") -]\\[# endif -#]
 [#- if not loop.last -#]
 \AND
 [#- endif -#]
@@ -50,13 +50,13 @@ Abstract: [-tagged.abstract-]
 [-tagged.acknowledgments-]
 [#- endif -#]
 
-[#- if options.footnote_link and doc.oxalink -#]
+[#- if options.link -#]
 % Optional footnote with a link back to the online version of your article
 \newcommand{\documentnote}[1]{{%
   \let\thempfn\relax% Remove footnote number printing mechanism
   \footnotetext[0]{\emph{#1}}% Print footnote text
 }}
-\documentnote{Available online at:\\ \href{[-doc.oxalink-]}{[-doc.oxalink-]}}
+\documentnote{Available online at:\\ \href{[-options.link-]}{[-options.link-]}}
 [#- endif -#]
 
 [# if doc.bibliography #]
