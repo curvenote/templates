@@ -70,11 +70,7 @@
 %
 % ie, \journalname{Water Resources Research}
 
-[# if options.journal_name#]
 \journalname{[-options.journal_name-]}
-[# else #]
-\journalname{Geophysical Research Letters}
-[# endif #]
 
 \begin{document}
 
@@ -116,10 +112,7 @@
 [-- author.name --]
 [#- if author.affiliations -#]
 \affil{
-[#- for affiliation in author.affiliations -#]
-[-- affiliation.index --]
-[#- if not loop.last #],[# endif -#]
-[#- endfor -#]
+[-- author.affiliations|join(",", "index") --]
 }
 [#- endif -#]
 [#- if not loop.last #], [# endif -#]
@@ -132,7 +125,7 @@
 % \affiliation{4}{Fourth Affiliation}
 
 [# for affiliation in doc.affiliations #]
-\affiliation{[-affiliation.index-]}{affiliation.name}
+\affiliation{[-affiliation.index-]}{[-affiliation.value-]}
 [# endfor #]
 %(repeat as many times as is necessary)
 
@@ -165,19 +158,15 @@
 % \item	Each must be 140 characters or fewer with no special characters or punctuation and must be complete sentences
 % \end{keypoints}
 
-[# if tagged.keypoints #]
 \begin{keypoints}
-[# for keypoint in tagged.keypoints #]
-  \item [-keypoint-]
-[# endfor #]
-\end{keypoints}
-[# else #]
-\begin{keypoints}
-  \item enter point 1 here
-  \item enter point 2 here
-  \item enter point 3 here
-\end{keypoints}
+  \item [-options.keypoint_1-]
+[# if options.keypoint_2 #]
+  \item [-options.keypoint_2-]
 [# endif #]
+[# if options.keypoint_3 #]
+  \item [-options.keypoint_3-]
+[# endif #]
+\end{keypoints}
 
 %% ------------------------------------------------------------------------ %%
 %

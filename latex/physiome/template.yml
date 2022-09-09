@@ -44,7 +44,7 @@ config:
       type: choice
       default: Original
       required: true
-      options:
+      choices:
         - Original
         - Retrospective
         - Review
@@ -52,8 +52,15 @@ config:
       description: |
         See author instructions at: https://journal.physiomeproject.org/instructions-to-authors.html
 
+    - id: title
+      type: frontmatter
+      required: true
+    - id: authors
+      type: frontmatter
+      required: true
     - id: keywords
-      type: keywords
+      type: frontmatter
+      required: true
       description: |
         Choose between 3 and 10 keywords that relate to the article
 
@@ -83,21 +90,21 @@ config:
       description: Use the form "4 May 2020"
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
     - id: editor
       description: Physiome Journal Editor
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
     - id: curator
       description: Physiome Journal Curator
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
     - id: submitteddate
@@ -105,7 +112,7 @@ config:
       description: Use the form "4 May 2020"
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
     - id: accepteddate
@@ -113,7 +120,7 @@ config:
       description: Use the form "4 May 2020"
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
     - id: citethisas
@@ -121,7 +128,7 @@ config:
       description: First and Second (2020) Example Article Title. Physiome 00(0).
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
     - id: doi
@@ -129,5 +136,5 @@ config:
       description: The DOI (Digital Object Identifier) of the final publication.
       type: str
       condition:
-        option: published
+        id: published
         value: true

@@ -12,7 +12,17 @@
 [# if option.blind #]
 \newcommand{\Author}{}
 [# else #]
-\newcommand{\Author}{[-doc.authors[0].name-][# if len(doc.authors) > 1 #] et al.[# endif #]\xspace} % First author goes here. Leave blank if opting for blind review.
+\newcommand{\Author}{
+[#- set etal=" et al." #]
+[#- for author in doc.authors #]
+[#- if loop.first #]
+[-- author.name-]
+[#- else #]
+[- etal-]
+[#- set etal="" #]
+[#- endif #]
+[#- endfor -#]
+\xspace} % First author goes here. Leave blank if opting for blind review.
 [# endif #]
 \newcommand{\Year}{[-doc.date.year-]} % Year goes here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,11 +100,12 @@
 \author{}
 [# else #]
 \author{
-[# for author in doc.authors #]
-[-author.name-][# if author.affiliation #]\thanks{[-author.affiliation-]}[# endif #][# if author.is_corresponding #] \thanks{Corresponding author: {\texttt{[-author.email-]}}}[# endif #]
-
-[# if not loop.last #], and [# endif #]
-[# endfor #]
+[#- for author in doc.authors #]
+[-- author.name-]
+[#- if author.affiliations #] \thanks{[-author.affiliations|join(", ", "value")-]}[# endif #]
+[#- if author.corresponding #] \thanks{Corresponding author: {\texttt{[-author.email-]}}}[# endif #]
+[#- if not loop.last #], and [# endif #]
+[#- endfor -#]
 }
 [# endif #]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

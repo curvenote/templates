@@ -43,30 +43,27 @@ config:
       required: true
       description: |
         Keep it short — abstracts longer than 1920 characters will not be accepted; abridge your abstract if necessary
-      chars:
-        max: 1920
+      max_chars: 1920
     - id: acknowledgments
       description: Free form acknowledgments section will be include at the end of the article
 
   options:
-    - id: corresponding_author
-      type: corresponding_author
+    - id: title
+      type: frontmatter
       required: true
-      description: No Description
-    - id: affiliation
-      type: bool
-      default: true
-      description: Include the authors's affiliation from their Curvenote profile
-    - id: location
-      type: bool
-      default: true
-      description: Include author's location from their Curvenote profile
-    - id: backlink
-      type: bool
-      default: true
-      description: |
-        Include a link back to the article on curvenote.com. The link will be placed inline at the end of all content, before the bibliography section.
+    - id: authors
+      type: frontmatter
+      required: true
+    - id: keywords
+      type: frontmatter
+      required: true
+    - id: short_title
+      type: frontmatter
+      required: true
     - id: show_date
       type: bool
       default: true
-      description: No Description
+    - id: link
+      type: str
+      description: |
+        Include a link back to the article on curvenote.com. This link will be placed inline at the end of all content, before the bibliography section.

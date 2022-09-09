@@ -10,15 +10,13 @@
 %% \affil[1]{Address of first author}
 %% \affil[2]{Address of second author}
 [# for author in doc.authors #]
-[# if author.is_corresponding #]
-\author[[-loop.index-]][[-author.email-]]{[-author.name-]}
-[# else #]
-\author[[-loop.index-]]{[-author.name-]}
-[# endif #]
+\author[[-author.index-]]
+[#- if author.corresponding #][[-author.email-]][# endif -#]
+{[-author.name-]}
 [# endfor #]
 [# for author in doc.authors #]
 %% Note: this should likely be affiliation_address or something?
-\affil[[-loop.index-]]{[-author.affiliation-]}
+\affil[[-author.index-]]{[-author.affiliations|join(", ", "value")-]}
 [# endfor #]
 
 [# if options.published #]
@@ -46,7 +44,7 @@
 \end{abstract}
 
 [# if options.keywords #]
-\keywords{[-", ".join(options.keywords)-]}
+\keywords{[-doc.keywords|join(", ")-]}
 [# endif #]
 
 [# if options.primarypubs #]

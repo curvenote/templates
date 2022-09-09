@@ -57,7 +57,7 @@
 pdftitle={\@title},
 pdfsubject={[-doc.description-]},
 pdfauthor={\@author},
-pdfkeywords={[-doc.tags-]},
+pdfkeywords={[-doc.keywords-]},
 addtopdfcreator={Written in Curvenote}
 }
 
@@ -134,14 +134,14 @@ addtopdfcreator={Written in Curvenote}
 % \Author[]{}{}
 % \Author[]{}{}
 [# for author in doc.authors #]
-\Author[[-loop.index-]]{[-author.name.split(' ')[0]-]}{[-' '.join(author.name.split(' ')[1:])-]}
+\Author[[-author.index-]]{[-author.given_name-]}{[-author.surname-]}
 [# endfor #]
 
 %\affil[]{ADDRESS}
 %\affil[]{ADDRESS}
 [# for author in doc.authors #]
 %% Note: this should likely be affiliation_address or something?
-\affil[[-loop.index-]]{[-author.affiliation-]}
+\affil[[-author.index-]]{[-author.affiliations|join(", ", "value")-]}
 [# endfor #]
 
 %% The [] brackets identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted.
@@ -151,12 +151,12 @@ addtopdfcreator={Written in Curvenote}
 %% If authors contributed equally, please mark the respective author names with an asterisk, e.g. "\Author[2,*]{Anton}{Smith}" and "\Author[3,*]{Bradley}{Miller}" and add a further affiliation: "\affil[*]{These authors contributed equally to this work.}".
 
 [# for author in doc.authors #]
-[# if author.is_corresponding #]
-\correspondence{[-author.name-] (author.email)}
+[# if author.corresponding #]
+\correspondence{[-author.name-] ([-author.email-])}
 [# endif #]
 [# endfor #]
 
-\runningtitle{[-options.running_title-]}
+\runningtitle{[-doc.short_title-]}
 
 \runningauthor{[-options.running_author-]}
 

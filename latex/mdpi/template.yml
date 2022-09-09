@@ -55,7 +55,7 @@ config:
         The breakthroughs or highlights of the manuscript. Authors can write one or two sentences to describe the most important part of the paper.
       required: true
       condition:
-        option: journal_name
+        id: journal_name
         value: toxins
     - id: acknowledgments
       description: >
@@ -100,19 +100,27 @@ config:
     - id: feature_application
       description: >
         Authors are encouraged to provide a concise description of the specific application or a potential application of the work. This section is not mandatory.
-      required: false
+      required: true
       condition:
-        option: journal_name
-        value: appliedsciences
+        id: journal_name
+        value: applsci
 
   options:
+    - id: title
+      type: frontmatter
+      required: true
+    - id: keywords
+      type: frontmatter
+      description: >
+        Include from three to ten pertinent keywords specific to the article; yet reasonably common within the subject discipline.
+      required: true
     - id: journal_name
       type: choice
       description: >
         Name of the MDPI Journal being submitted to
       required: true
       default: earth
-      options:
+      choices:
         - acoustics
         - actuators
         - addictions
@@ -474,7 +482,7 @@ config:
         The type of manuscript to create
       required: true
       default: article
-      options:
+      choices:
         - abstract
         - addendum
         - article
@@ -520,41 +528,29 @@ config:
         Choose the status of the manuscript
       required: true
       default: submit
-      options:
+      choices:
         - submit
         - accept
-    - id: corresponding_author
-      type: corresponding_author
-      description: >
-        Author to mark as corresponding via email
-      required: true
-      multiple: true
-    - type: keywords
-      id: keywords
-      description: >
-        Include from three to ten pertinent keywords specific to the article; yet reasonably common within the subject discipline.
-      required: true
     - type: str
       id: entry_link
       description: >
         Link to the entry in the online Encyclopedia platform
-      required: true
       condition:
-        option: journal_name
+        id: journal_name
         value: encyclopedia
     - type: str
       id: dataset
       description: >
         DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.
       condition:
-        option: journal_name
+        id: journal_name
         value: data
     - type: str
       id: dataset_license
       description: >
         license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)
       condition:
-        option: journal_name
+        id: journal_name
         value: data
     - type: str
       id: lsid
@@ -562,7 +558,7 @@ config:
         Life Science Identifier url
       required: false
       condition:
-        option: journal_name
+        id: journal_name
         value: diversity
     - type: bool
       id: chicago

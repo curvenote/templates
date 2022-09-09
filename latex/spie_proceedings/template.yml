@@ -52,11 +52,17 @@ config:
       description: Set the paper size for the document
       required: true
       default: usletter
-      options:
+      choices:
         - usletter
         - a4paper
+    - id: title
+      type: frontmatter
+      required: true
+    - id: authors
+      type: frontmatter
+      required: true
     - id: keywords
-      type: keywords
+      type: frontmatter
       description: |
         Include a list of keywords after the abstract (minimum 3)
       required: true
@@ -74,9 +80,7 @@ config:
       title: Start Page
       type: str
       description: Set the starting page number, only used when page numbers are enabled
-      default: 1
-    - id: backlink
-      title: Backlink
-      type: bool
-      description: Include a link back to the version of the article online in Curvenote.
-      default: true
+      default: '1'
+    - id: link
+      type: str
+      description: Link to curvenote article

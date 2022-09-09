@@ -47,7 +47,19 @@ config:
       description: No description
 
   options:
-    - id: corresponding_author
-      type: corresponding_author
-      description: No description
+    - id: title
+      type: frontmatter
       required: true
+    - id: authors
+      type: frontmatter
+      required: true
+    - id: keywords
+      type: frontmatter
+      required: true
+    - id: line_numbers
+      type: bool
+      default: true
+    - id: link
+      type: str
+      description: |
+        Include a link back to the article on curvenote.com. This link will be placed inline at the end of all content, before the bibliography section.
