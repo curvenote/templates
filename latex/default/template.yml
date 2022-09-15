@@ -52,13 +52,13 @@ config:
 
   options:
     - id: title
-      type: frontmater
+      type: frontmatter
       required: true
     - id: authors
-      type: frontmater
+      type: frontmatter
       required: true
     - id: keywords
-      type: frontmater
+      type: frontmatter
       required: true
     - id: link
       type: str

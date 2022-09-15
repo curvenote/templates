@@ -1,119 +1,117 @@
-metadata:
-  title: AGU Journal
-  description: The offical 2019 AGU Journal template
-  version: 1.0.0
-  license: 'GPL-3'
-  author:
-    name: American Geophysical Union
+jtex: v1
+title: AGU Journal
+description: The offical 2019 AGU Journal template
+version: 1.0.0
+license: 'GPL-3.0-OR-LATER'
+authors:
+  - name: American Geophysical Union
     website: https://agu.org
-    affiliation: American Geophysical Union
-  contributor:
-    name: Curvenote
+    affiliations:
+      - American Geophysical Union
+  - name: Curvenote
     github: curvenote
     twitter: curvenote
-    affiliation: Curvenote
-  tags:
-    - paper
-    - journal
-    - geoscience
-    - earthscience
-  links:
-    source: https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Text-requirements
+    affiliations:
+      - Curvenote
+tags:
+  - paper
+  - journal
+  - geoscience
+  - earthscience
+source: https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Text-requirements
 
 # options that can be offered to users to customise how this template is rendered
-config:
-  build:
-    layout: compact
+build:
+  layout: compact
 
-  schema:
-    aside: framed
-    callout: framed
-    code: verbatim
-    raggedbottom: false
-    sloppy: false
-    hidelinks: false
-    natbib: false
-    bibstyle: false
-    citestyle: false
+schema:
+  aside: framed
+  callout: framed
+  code: verbatim
+  raggedbottom: false
+  sloppy: false
+  hidelinks: false
+  natbib: false
+  bibstyle: false
+  citestyle: false
 
-  tagged:
-    - id: abstract
-      required: true
-      description: |
-        A good Abstract will begin with a short description of the problem being addressed, briefly describe the new data or analyses, then briefly states the main conclusion(s) and how they are supported and uncertainties.
-    - id: availability
-      required: true
-      description: |
-        AGU requires an Availability Statement for the underlying data needed to understand, evaluate, and build upon the reported research at the time of peer review and publication.
-        Additionally, authors should include an Availability Statement for the software that has a significant impact on the research. Details and templates are in the Availability Statement section of the Data & Software for Authors Guidance:
-        https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#availability
-        For physical samples, use the IGSN persistent identifier, see the International Geo Sample Numbers section:
-        https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#IGSN
-    - id: summary
-      required: false
-      description: |
-        The Plain Language Summary should be written for a broad audience, including journalists and the science-interested public, that will not have a background in your field.
-        A Plain Language Summary is required in GRL, JGR: Planets, JGR: Biogeosciences, JGR: Oceans, G-Cubed, Reviews of Geophysics, and JAMES.
-        see http://sharingscience.agu.org/creating-plain-language-summary/)
-    - id: acknowledgments
-      required: false
-      description: |
-        The acknowledgments must list:
-          - A statement that indicates to the reader where the data supporting the conclusions can be obtained (for example, in the references, tables, supporting information, and other databases).
-          - All funding sources related to this work from all authors
-          - Any real or perceived financial conflicts of interests for any author
-          - Other affiliations for any author that may be perceived as having a conflict of interest with respect to the results of this paper.
-        It is also the appropriate place to thank colleagues and other contributors.
-        AGU does not normally allow dedications.
+parts:
+  - id: abstract
+    required: true
+    description: |
+      A good Abstract will begin with a short description of the problem being addressed, briefly describe the new data or analyses, then briefly states the main conclusion(s) and how they are supported and uncertainties.
+  - id: availability
+    required: true
+    description: |
+      AGU requires an Availability Statement for the underlying data needed to understand, evaluate, and build upon the reported research at the time of peer review and publication.
+      Additionally, authors should include an Availability Statement for the software that has a significant impact on the research. Details and templates are in the Availability Statement section of the Data & Software for Authors Guidance:
+      https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#availability
+      For physical samples, use the IGSN persistent identifier, see the International Geo Sample Numbers section:
+      https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#IGSN
+  - id: summary
+    required: false
+    description: |
+      The Plain Language Summary should be written for a broad audience, including journalists and the science-interested public, that will not have a background in your field.
+      A Plain Language Summary is required in GRL, JGR: Planets, JGR: Biogeosciences, JGR: Oceans, G-Cubed, Reviews of Geophysics, and JAMES.
+      see http://sharingscience.agu.org/creating-plain-language-summary/)
+  - id: acknowledgments
+    required: false
+    description: |
+      The acknowledgments must list:
+        - A statement that indicates to the reader where the data supporting the conclusions can be obtained (for example, in the references, tables, supporting information, and other databases).
+        - All funding sources related to this work from all authors
+        - Any real or perceived financial conflicts of interests for any author
+        - Other affiliations for any author that may be perceived as having a conflict of interest with respect to the results of this paper.
+      It is also the appropriate place to thank colleagues and other contributors.
+      AGU does not normally allow dedications.
+doc:
+  - id: title
+    required: true
+  - id: authors
+    required: true
 
-  options:
-    - id: title
-      type: frontmatter
-      required: true
-    - id: authors
-      type: frontmatter
-      required: true
-    - type: choice
-      id: journal_name
-      required: true
-      description: AGU Journal name selection
-      choices:
-        - 'JGR: Atmospheres'
-        - 'JGR: Biogeosciences'
-        - 'JGR: Earth Surface'
-        - 'JGR: Oceans'
-        - 'JGR: Planets'
-        - 'JGR: Solid Earth'
-        - 'JGR: Space Physics'
-        - Global Biogeochemical Cycles
-        - Geophysical Research Letters
-        - Paleoceanography and Paleoclimatology
-        - Radio Science
-        - Reviews of Geophysics
-        - Tectonics
-        - Space Weather
-        - Water Resources Research
-        - Geochemistry, Geophysics, Geosystems
-        - Journal of Advances in Modeling Earth Systems (JAMES)
-        - Earth's Future
-        - Earth and Space Science
-        - Geohealth
-    - type: bool
-      id: draft
-      description: Mark the document as draft
-    - type: str
-      id: keypoint_1
-      description: |
-        First of up to three key points (at least one is required)
-        Key Points summarize the main points and conclusions of the article
-        Each must be 140 characters or fewer with no special characters or punctuation and must be complete sentences
-      required: true
-      max_chars: 140
-    - type: str
-      id: keypoint_2
-      description: Second key point
-      max_chars: 140
-    - type: str
-      id: keypoint_3
-      description: Third key point
-      max_chars: 140
+options:
+  - type: choice
+    id: journal_name
+    required: true
+    description: AGU Journal name selection
+    choices:
+      - 'JGR: Atmospheres'
+      - 'JGR: Biogeosciences'
+      - 'JGR: Earth Surface'
+      - 'JGR: Oceans'
+      - 'JGR: Planets'
+      - 'JGR: Solid Earth'
+      - 'JGR: Space Physics'
+      - Global Biogeochemical Cycles
+      - Geophysical Research Letters
+      - Paleoceanography and Paleoclimatology
+      - Radio Science
+      - Reviews of Geophysics
+      - Tectonics
+      - Space Weather
+      - Water Resources Research
+      - Geochemistry, Geophysics, Geosystems
+      - Journal of Advances in Modeling Earth Systems (JAMES)
+      - Earth's Future
+      - Earth and Space Science
+      - Geohealth
+  - type: boolean
+    id: draft
+    description: Mark the document as draft
+  - type: string
+    id: keypoint_1
+    description: |
+      First of up to three key points (at least one is required)
+      Key Points summarize the main points and conclusions of the article
+      Each must be 140 characters or fewer with no special characters or punctuation and must be complete sentences
+    required: true
+    max_chars: 140
+  - type: string
+    id: keypoint_2
+    description: Second key point
+    max_chars: 140
+  - type: string
+    id: keypoint_3
+    description: Third key point
+    max_chars: 140
