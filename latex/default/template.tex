@@ -1,3 +1,5 @@
+[-doc.oxa-]
+
 \documentclass{article}
 \PassOptionsToPackage{short, nodayofweek}{datetime}
 
@@ -17,7 +19,7 @@ addtopdfcreator={Written in Curvenote}
 
 \usepackage[oxalink=[-doc.oxalink or ""-]]{curvenote_default}
 
-\title{[-doc.title-]}
+\title{if !options.title [-doc.title-] else options.title}
 
 \newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
 \date{\displaydate{articleDate}}
@@ -34,9 +36,9 @@ addtopdfcreator={Written in Curvenote}
 \begin{document}
 
 \maketitle
-[#- if tagged.abstract -#]
+[#- if parts.abstract -#]
 \begin{abstract}
-Abstract: [-tagged.abstract-]
+Abstract: [-parts.abstract-]
 \end{abstract}
 [#- endif -#]
 [#- if doc.keywords -#]
@@ -45,9 +47,9 @@ Abstract: [-tagged.abstract-]
 
 [-CONTENT-]
 
-[#- if tagged.acknowledgments -#]
+[#- if parts.acknowledgments -#]
 \section*{Acknowledgments}
-[-tagged.acknowledgments-]
+[-parts.acknowledgments-]
 [#- endif -#]
 
 [#- if options.link -#]

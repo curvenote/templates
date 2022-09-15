@@ -189,9 +189,9 @@
 
 %% \begin{abstract} starts the second page
 
-[# if tagged.abstract #]
+[# if parts.abstract #]
 \begin{abstract}
-  [-tagged.abstract-]
+  [-parts.abstract-]
 \end{abstract}
 [# else #]
 \begin{abstract}
@@ -199,9 +199,9 @@
 \end{abstract}
 [# endif #]
 
-[# if tagged.summary #]
+[# if parts.summary #]
 \section*{Plain Language Summary}
-[-tagged.summary-]
+[-parts.summary-]
 [# endif #]
 
 %% ------------------------------------------------------------------------ %%
@@ -222,18 +222,18 @@
 %For physical samples, use the IGSN persistent identifier, see the International Geo Sample Numbers section:
 % https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#IGSN
 
-[# if tagged.availability #]
+[# if parts.availability #]
 \section*{Open Research}
-[-tagged.availability-]
+[-parts.availability-]
 [# endif #]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-[# if tagged.acknowledgments #]
+[# if parts.acknowledgments #]
 \acknowledgments
 % This section is optional. Include any Acknowledgments here.
-[-tagged.acknowledgments-]
+[-parts.acknowledgments-]
 [# endif #]
 
 %% ------------------------------------------------------------------------ %%

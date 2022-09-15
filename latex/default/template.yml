@@ -36,7 +36,7 @@ config:
     bibstyle: true
     citestyle: true
 
-  tagged:
+  parts:
     - id: abstract
       description: |
         An abstract is a short summary of your research paper or report. A good abstract will prepare readers for
@@ -50,16 +50,15 @@ config:
         You can this section to highlight support such as; collaborations, data sources, funding sources, broader
         projects. This section will be places towards the end of the article with a subtitle - Acknowledgments.
 
-  options:
+  doc:
     - id: title
-      type: frontmatter
       required: true
     - id: authors
-      type: frontmatter
       required: true
     - id: keywords
-      type: frontmatter
       required: true
+
+  options:
     - id: link
       type: str
       description: |
