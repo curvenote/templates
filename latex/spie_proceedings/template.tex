@@ -29,7 +29,7 @@
 % \authorinfo{Further author information: your@emaildomain.com}
 [# for author in doc.authors #]
 [# if author.corresponding #]
-\authorinfo{Further author information: 
+\authorinfo{Further author information:
 [#- if author.userId #]
  http://curvenote.com/@[-author.userId-]
 [#- else #]
@@ -68,7 +68,7 @@
 % Include acknowledgments
 [# if tagged.acknowledgments or options.link#]
 \acknowledgments
-[# if tagged.acknowledgements #][-tagged.acknowledgments-][# endif #]
+[# if tagged.acknowledgments #][-tagged.acknowledgments-][# endif #]
 [# if options.link #]\href{[-options.link-]}{View this paper online.}[# endif #]
 [# endif #]
 
