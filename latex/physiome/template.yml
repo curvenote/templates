@@ -1,11 +1,10 @@
 metadata:
   title: Physiome Journal
-  description: |
-    Physiome publishes articles describing physiological models which demonstrate that the mathematical model, model implementation, and simulation results are consistent and reproducible. Physiome articles must be linked to primary papers published in or accepted to a peer-reviewed physiology, bioengineering or biophysics journal.
+  description: Physiome publishes articles describing physiological models which demonstrate that the mathematical model, model implementation, and simulation results are consistent and reproducible. Physiome articles must be linked to primary papers published in or accepted to a peer-reviewed physiology, bioengineering or biophysics journal.
   author:
     name: Physiome Journal
-    github: physiome
-    twitter: physiomeproject
+    github: https://github.com/physiome
+    twitter: https://twitter.com/physiomeproject
     affiliation: Physiome Journal
   contributor:
     name: Curvenote
@@ -35,17 +34,16 @@ config:
     - id: abstract
       description: |
         Please provide an abstract of no more than 300 words. Your abstract should explain the main contributions of your article, and should not contain any material that is not included in the main text.
-      words:
-        max: 300
+      max_words: 300
       required: true
 
   options:
-    - id: articletype
+    - id: article_type
       title: Article Type
       type: choice
       default: Original
       required: true
-      options:
+      choices:
         - Original
         - Retrospective
         - Review
@@ -53,8 +51,17 @@ config:
       description: |
         See author instructions at: https://journal.physiomeproject.org/instructions-to-authors.html
 
+    - id: title
+      type: frontmatter
+      required: true
+
+    - id: authors
+      type: frontmatter
+      required: true
+
     - id: keywords
-      type: keywords
+      type: frontmatter
+      required: true
       description: |
         Choose between 3 and 10 keywords that relate to the article
 
@@ -64,12 +71,12 @@ config:
       default: false
       description: Show line numbers on the document
 
-    - id: primarypubs
+    - id: primary_pubs
       title: Primary Publications
       description: A comma-seperated list of bibtex keys
       type: str
 
-    - id: primarydoi
+    - id: primary_doi
       title: Primary Publication DOI (e.g. "10.1037a0000000")
       description: DOI of the primary publication
       type: str
@@ -79,50 +86,50 @@ config:
       type: bool
       default: false
 
-    - id: publicationdate
+    - id: publication_date
       title: Publication Date
       description: Use the form "4 May 2020"
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
     - id: editor
       description: Physiome Journal Editor
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
     - id: curator
       description: Physiome Journal Curator
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
-    - id: submitteddate
+    - id: submitted_date
       title: Submission Date
       description: Use the form "4 May 2020"
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
-    - id: accepteddate
+    - id: accepted_date
       title: Accepted Date
       description: Use the form "4 May 2020"
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
-    - id: citethisas
+    - id: cite_as
       title: Submission Citation
       description: First and Second (2020) Example Article Title. Physiome 00(0).
       type: str
       condition:
-        option: published
+        id: published
         value: true
 
     - id: doi
@@ -130,5 +137,5 @@ config:
       description: The DOI (Digital Object Identifier) of the final publication.
       type: str
       condition:
-        option: published
+        id: published
         value: true

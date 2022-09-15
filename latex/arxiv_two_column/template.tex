@@ -6,6 +6,7 @@
 \PassOptionsToPackage{T1}{fontenc} % use 8-bit T1 fonts
 
 \input{curvenote.def}
+[-IMPORTS-]
 
 % colors for hyperlinks
 \hypersetup{colorlinks = true,
@@ -47,14 +48,6 @@ anchorcolor = black}
 	\end{tikzpicture}
 	\hspace{-2mm}
 }
-[# set ALPHA=" ABCDEFGHIJKLMNOPQRSTRUVWXYZ" #]
-\foreach \x in {A, ..., Z}{\expandafter\xdef\csname orcid\x\endcsname{\noexpand\href{https://orcid.org/\csname orcidauthor\x\endcsname}
-			{\noexpand\orcidicon}}
-}
-% Define the ORCID iD command for each author separately. Here done for two authors.
-[# for author in doc.authors #]
-[# if author.orcid #]\newcommand{\orcidauthor[-ALPHA[loop.index]-]}{[-author.orcid-]}[# endif #]
-[# endfor #]
 
 %%%%%%%%%%%%%%%%   Title   %%%%%%%%%%%%%%%%
 \title{[-doc.title-]}
@@ -77,11 +70,11 @@ anchorcolor = black}
 
 % TODO add ORCID IDs
 [# for author in doc.authors #]
-\author[[-loop.index-]]{[-author.name-][# if author.orcid #]\orcid[-ALPHA[loop.index]-]{}[# endif #]}
+\author[[-author.index-]]{[-author.name-][# if author.orcid #]\href{https://orcid.org/[-author.orcid-]}{\orcidicon}[# endif #]}
 [# endfor #]
 [# for author in doc.authors #]
-[# if options.affiliation or options.corresponding_author#]
-\affil[[-loop.index-]]{[# if options.affiliation #][-author.affiliation-] [# endif #][# if options.corresponding_author and author.is_corresponding #]([-author.email-])[# endif #]}
+[# if author.affiliations or author.corresponding#]
+\affil[[-author.index-]]{[# if author.affiliations #][-author.affiliations|join(", ", "value")-] [# endif #][# if author.corresponding #]([-author.email-])[# endif #]}
 [# endif #]
 [# endfor #]
 
@@ -99,8 +92,8 @@ anchorcolor = black}
 \end{abstract}
 [# endif #]
 
-[# if options.keywords #]
-\keywords{[-", ".join(options.keywords)-]}
+[# if doc.keywords #]
+\keywords{[-doc.keywords|join(", ")-]}
 [# endif #]
 
 \vspace{0.5cm}
@@ -120,10 +113,10 @@ anchorcolor = black}
 \normalsize
 [# endif #]
 
-[# if options.backlink #]
+[# if options.link #]
 \section*{Original article}
 \footnotesize
-This article is available online at the following URL: \href{[-doc.oxalink-]}{[-doc.oxalink-]}
+This article is available online at the following URL: \href{[-options.link-]}{[-options.link-]}
 \normalsize
 [# endif #]
 

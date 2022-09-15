@@ -19,17 +19,25 @@
 
 \title{[-doc.title-]}
 
-[# set alphabet=' abcdefghijklmnopqrstuvwxyz' #]
-
 [# for author in doc.authors #]
-\author[[-alphabet[loop.index]-]]{[-author.name-]}
+\author[[-author.letter|lower-]]{[-author.name-]}
 [# endfor #]
 [# for author in doc.authors #]
-\affil[[-alphabet[loop.index]-]]{[-author.affiliation-]}
+\affil[[-author.letter|lower-]]{[-author.affiliations|join(", ", "value")-]}
 [# endfor #]
 
 % \authorinfo{Further author information: your@emaildomain.com}
-\authorinfo{Further author information: http://curvenote.com/@[-doc.authors[0].username-]}
+[# for author in doc.authors #]
+[# if author.corresponding #]
+\authorinfo{Further author information:
+[#- if author.userId #]
+ http://curvenote.com/@[-author.userId-]
+[#- else #]
+ [-author.email-]
+[#- endif -#]
+}
+[# endif #]
+[# endfor #]
 
 % Option to view page numbers
 % \pagestyle{empty} or \pagestyle{plain} to show page numbers
@@ -45,7 +53,7 @@
 
 % Include a list of keywords after the abstract
 % \keywords{Manuscript format, template, SPIE Proceedings, LaTeX}
-[# if doc.tags #]\keywords{[-", ".join(doc.tags)-]}[# endif #]
+\keywords{[-doc.keywords|join(", ")-]}
 
 
 [-CONTENT-]
@@ -58,10 +66,10 @@
 [# endif #]
 
 % Include acknowledgments
-[# if tagged.acknowledgments or options.backlink#]
+[# if tagged.acknowledgments or options.link#]
 \acknowledgments
-[-tagged.acknowledgments-]
-[# if options.backlink #]\href{[-doc.oxalink-]}{View this paper online.}[# endif #]
+[# if tagged.acknowledgments #][-tagged.acknowledgments-][# endif #]
+[# if options.link #]\href{[-options.link-]}{View this paper online.}[# endif #]
 [# endif #]
 
 % References

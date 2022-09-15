@@ -56,11 +56,12 @@ config:
         No description
 
   options:
-    - id: corresponding_author
-      type: corresponding_author
+    - id: title
+      type: frontmatter
       required: true
-      description: |
-        No description
+    - id: authors
+      type: frontmatter
+      required: true
     - id: draft
       type: bool
       default: false

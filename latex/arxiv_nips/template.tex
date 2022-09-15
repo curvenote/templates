@@ -28,9 +28,11 @@ anchorcolor = black}
 \makeatother
 
 \author{[# for author in doc.authors #]
-[-author.name-][# if author.is_corresponding #]\footnotemark[1][# endif #]\\
-[# if options.affiliation and author.affiliation #][-author.affiliation-]\\[# endif #]
-[# if options.location and author.location #][-author.location-]\\[# endif #]
+[--author.name--]
+[# if author.corresponding #]
+\footnotemark[[-author.corresponding.index-]]
+[#- endif #]\\
+[# if author.affiliation #][--author.affiliation.value--]\\[# endif #]
 [# if not loop.last #]
 \AND
 [# endif #]
@@ -49,15 +51,17 @@ anchorcolor = black}
 pdftitle={\@title},
 pdfsubject={[-doc.description-]},
 pdfauthor={\@author},
-pdfkeywords={[-options.keywords-]},
+pdfkeywords={[-doc.keywords-]},
 addtopdfcreator={Written in Curvenote}
 }
 
 \begin{document}
 \maketitle
-[# if options.corresponding_author #]
-\footnotetext[1]{Correspondence to: [-options.corresponding_author[0].email-]}
+[# for author in doc.authors #]
+[# if author.corresponding #]
+\footnotetext[[-author.corresponding.index-]]{Correspondence to: [-author.email-]}
 [# endif #]
+[# endfor #]
 
 [# if tagged.abstract #]
 \begin{abstract}
@@ -66,7 +70,7 @@ addtopdfcreator={Written in Curvenote}
 [# endif #]
 
 [# if options.keywords #]
-\keywords{[-", ".join(options.keywords)-]}
+\keywords{[-doc.keywords|join(", ")-]}
 [# endif #]
 
 [-CONTENT-]
@@ -76,10 +80,10 @@ addtopdfcreator={Written in Curvenote}
 [-tagged.acknowledgments-]
 [# endif #]
 
-[# if options.backlink #]
+[# if options.link #]
 \section*{Original article}
 \footnotesize
-This article is available online at the following URL: \href{[-doc.oxalink-]}{[-doc.oxalink-]}
+This article is available online at the following URL: \href{[-options.link-]}{[-options.link-]}
 \normalsize
 [# endif #]
 

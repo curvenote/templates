@@ -46,15 +46,6 @@ anchorcolor = black}
 	\end{tikzpicture}
 	\hspace{-2mm}
 }
-[# set ALPHA=" ABCDEFGHIJKLMNOPQRSTRUVWXYZ" #]
-\foreach \x in {A, ..., Z}{\expandafter\xdef\csname orcid\x\endcsname{\noexpand\href{https://orcid.org/\csname orcidauthor\x\endcsname}
-			{\noexpand\orcidicon}}
-}
-% Define the ORCID iD command for each author separately. Here done for two authors.
-[# for author in doc.authors #]
-[# if author.orcid #]\newcommand{\orcidauthor[-ALPHA[loop.index]-]}{[-author.orcid-]}[# endif #]
-[# endfor #]
-
 %%%%%%%%%%%%%%%%   Title   %%%%%%%%%%%%%%%%
 \title{[-doc.title-]}
 
@@ -77,10 +68,10 @@ anchorcolor = black}
 % TODO add ORCID IDs
 % TODO add corresponding author \thanks{\tt{asmith@college.edu}}
 [# for author in doc.authors #]
-\author[[-loop.index-]]{[-author.name-][# if author.orcid #]\orcid[-ALPHA[loop.index]-]{}[# endif #]}
+\author[[-author.index-]]{[-author.name-][# if author.orcid #]\href{https://orcid.org/[-author.orcid-]}{\orcidicon}[# endif #]}
 [# endfor #]
 [# for author in doc.authors #]
-\affil[[-loop.index-]]{[-author.affiliation-]}
+\affil[[-author.index-]]{[-author.affiliations|join(", ", "value")-]}
 [# endfor #]
 
 %%%%%%%%%%%%%%    Front matter    %%%%%%%%%%%%%%
@@ -94,8 +85,8 @@ anchorcolor = black}
 \end{abstract}
 [# endif #]
 
-[# if doc.tags #]
-\keywords{[-", ".join(doc.tags)-]}
+[# if doc.keywords #]
+\keywords{[-doc.keywords|join(", ")-]}
 [# endif #]
 
 \vspace{0.35cm}
@@ -103,9 +94,9 @@ anchorcolor = black}
 %%%%%%%%%%%%%%%  Main text   %%%%%%%%%%%%%%%
 [# if options.line_numbers #]\linenumbers[# endif #]
 
-[# if options.backlink #]
+[# if options.link #]
 \footnotesize
-\href{[-doc.oxalink-]}{View online on Curvenote}
+\href{[-options.link-]}{View online on Curvenote}
 
 \normalsize
 [# endif #]

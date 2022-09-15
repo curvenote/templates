@@ -60,12 +60,17 @@ config:
         The datasets [GENERATED/ANALYZED] for this study can be found in the [NAME OF REPOSITORY] [LINK].
       required: false
   options:
-    - id: corresponding_author
-      type: corresponding_author
-      description: The corresponding author's email
+    - id: title
+      type: frontmatter
       required: true
-    - type: keywords
-      id: keywords
+    - id: short_title
+      type: frontmatter
+      required: true
+    - id: authors
+      type: frontmatter
+      required: true
+    - id: keywords
+      type: frontmatter
       description: >
         All article types: you may provide up to 8 keywords; at least 5 are mandatory.
       required: true
@@ -76,7 +81,7 @@ config:
         For Frontiers Reference Styles by Journal see https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
       required: true
       default: Harvard
-      options:
+      choices:
         - Harvard
         - Vancouver
     - id: line_numbers

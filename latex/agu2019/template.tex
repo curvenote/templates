@@ -20,14 +20,13 @@
 [# else #]
 \documentclass{agujournal2019}
 [# endif #]
-[# if lipsum #]
-\usepackage{lipsum}
-[# endif #]
+
 \usepackage{lineno}
 \usepackage[inline]{trackchanges} %for better track changes. final new option will compile document with changes incorporated.
 \usepackage{soul}
 \linenumbers
-\input{curvenote.def}
+
+[- IMPORTS -]
 %%%%%%%
 % As of 2018 we recommend use of the TrackChanges package to mark revisions.
 % The trackchanges package adds five new LaTeX commands:
@@ -70,11 +69,7 @@
 %
 % ie, \journalname{Water Resources Research}
 
-[# if options.journal_name#]
 \journalname{[-options.journal_name-]}
-[# else #]
-\journalname{Geophysical Research Letters}
-[# endif #]
 
 \begin{document}
 
@@ -111,11 +106,16 @@
 % Example: \authors{A. B. Author\affil{1}\thanks{Current address, Antartica}, B. C. Author\affil{2,3}, and D. E.
 % Author\affil{3,4}\thanks{Also funded by Monsanto.}}
 
-[# set count=[1] #]
 \authors{
-[# for author in doc.authors #]
-[-author.name-][# if author.affiliation #]\affil{[-count|length-]}[# set __ = count.append(1) #][# endif #][# if not loop.last #],[# endif #]
-[# endfor #]
+[#- for author in doc.authors -#]
+[-- author.name --]
+[#- if author.affiliations -#]
+\affil{
+[-- author.affiliations|join(",", "index") --]
+}
+[#- endif -#]
+[#- if not loop.last #], [# endif -#]
+[#- endfor -#]
 }
 
 % \affiliation{1}{First Affiliation}
@@ -123,9 +123,8 @@
 % \affiliation{3}{Third Affiliation}
 % \affiliation{4}{Fourth Affiliation}
 
-[# set count = [1] #]
-[# for author in doc.authors #]
-[# if author.affiliation #]\affiliation{[-count|length-]}{[-author.affiliation-]}[# set __ = count.append(1) #][# endif #]
+[# for affiliation in doc.affiliations #]
+\affiliation{[-affiliation.index-]}{[-affiliation.value-]}
 [# endfor #]
 %(repeat as many times as is necessary)
 
@@ -140,7 +139,7 @@
 % Example: \correspondingauthor{First and Last Name}{email@address.edu}
 
 [# for author in doc.authors #]
-[# if author.is_corresponding #]
+[# if author.corresponding #]
 \correspondingauthor{[-author.name-]}{[-author.email-]}
 [# endif #]
 [# endfor #]
@@ -158,19 +157,15 @@
 % \item	Each must be 140 characters or fewer with no special characters or punctuation and must be complete sentences
 % \end{keypoints}
 
-[# if tagged.keypoints #]
 \begin{keypoints}
-[# for keypoint in tagged.keypoints #]
-  \item [-keypoint-]
-[# endfor #]
-\end{keypoints}
-[# else #]
-\begin{keypoints}
-  \item enter point 1 here
-  \item enter point 2 here
-  \item enter point 3 here
-\end{keypoints}
+  \item [-options.keypoint_1-]
+[# if options.keypoint_2 #]
+  \item [-options.keypoint_2-]
 [# endif #]
+[# if options.keypoint_3 #]
+  \item [-options.keypoint_3-]
+[# endif #]
+\end{keypoints}
 
 %% ------------------------------------------------------------------------ %%
 %
@@ -193,26 +188,20 @@
 
 %% \begin{abstract} starts the second page
 
-[# if tagged.abstract #]
+[# if parts.abstract #]
 \begin{abstract}
-  [-tagged.abstract-]
+[-parts.abstract-]
 \end{abstract}
 [# else #]
 \begin{abstract}
-  enter your Abstract here
+  Your abstract here!
 \end{abstract}
 [# endif #]
 
-[# if tagged.plain_language_summary #]
+[# if parts.summary #]
 \section*{Plain Language Summary}
-[-tagged.plain_language_summary-]
+[-parts.summary-]
 [# endif #]
-
-%% ------------------------------------------------------------------------ %%
-%
-%  TEXT
-%
-%% ------------------------------------------------------------------------ %%
 
 [-CONTENT-]
 
@@ -226,18 +215,18 @@
 %For physical samples, use the IGSN persistent identifier, see the International Geo Sample Numbers section:
 % https://www.agu.org/Publish-with-AGU/Publish/Author-Resources/Data-and-Software-for-Authors#IGSN
 
-[# if tagged.availability #]
+[# if parts.availability #]
 \section*{Open Research}
-[-tagged.availability-]
+[-parts.availability-]
 [# endif #]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-[# if tagged.acknowledgments #]
+[# if parts.acknowledgments #]
 \acknowledgments
 % This section is optional. Include any Acknowledgments here.
-[-tagged.acknowledgments-]
+[-parts.acknowledgments-]
 [# endif #]
 
 %% ------------------------------------------------------------------------ %%

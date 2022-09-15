@@ -3,7 +3,7 @@
 % When submitting your files, remember to upload this *tex file, the pdf generated with it,
 % the *bib file (if bibliography is not within the *tex) and all the figures.
 
-[# if options.journal_name == "Vancouver" #]
+[# if options.reference_format == "Vancouver" #]
 % \documentclass[utf8]{FrontiersinHarvard} % for articles in journals using the Harvard Referencing Style (Author-Date), for Frontiers Reference Styles by Journal: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
 \documentclass[utf8]{FrontiersinVancouver} % for articles in journals using the Vancouver Reference Style (Numbered), for Frontiers Reference Styles by Journal: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
 [# else #]
@@ -29,16 +29,21 @@
 \def\keyFont{\fontsize{8}{11}\helveticabold}
 %% \def\Authors{First Author\,$^{1,*}$, Co-Author\,$^{2}$ and Co-Author\,$^{1,2}$}
 \def\firstAuthorLast{[- doc.authors[0].name -][# if doc.authors|length > 1#] {et~al.}[# endif #]} %use et al only if is more than 1 author
-\def\Authors{[# for author in doc.authors #][# if loop.index > 1 and not loop.last #], [# endif #][# if loop.last and doc.authors|length > 1#] and [# endif #][-author.name-]\,$^{[- loop.index -][# if author.is_corresponding #],*[# endif #]}$[# endfor #]}
+\def\Authors{
+[#- for author in doc.authors -#]
+[#- if loop.index > 1 and not loop.last -#], [# endif #]
+[#- if loop.last and doc.authors|length > 1#] and [# endif #]
+[-- author.name -]\,$^{[- author.affiliations|join(",", "index") -][# if author.corresponding #],*[# endif #]}$
+[#- endfor #]}
 % Affiliations should be keyed to the author's name with superscript numbers and be listed as follows: Laboratory, Institute, Department, Organization, City, State abbreviation (USA, Canada, Australia), and Country (without detailed address information such as city zip codes or street names).
 % If one of the authors has a change of address, list the new address below the correspondence details using a superscript symbol and use the same symbol to indicate the author in the author list.
-\def\Address{[# for author in doc.authors #]
-[# if author.affiliation #]$^{[-loop.index-]}$ \quad [-author.affiliation-][# if not loop.last #] \\[# endif #][# endif #]
+\def\Address{[# for affiliation in doc.affiliations #]
+$^{[-affiliation.index-]}$ \quad [-affiliation.value-][# if not loop.last #] \\[# endif #]
 [# endfor #]}
 % The Corresponding Author should be marked with an asterisk
 % Provide the exact contact address (this time including street name and city zip code) and email of the corresponding author
 [# for author in doc.authors #]
-[# if author.is_corresponding #]
+[# if author.corresponding #]
 \def\corrAuthor{[- author.name -]}
 \def\corrEmail{[- author.email -]}
 [# endif #]
@@ -65,8 +70,8 @@
 \section{}
 [-tagged.abstract-]
 
-[# if options.keywords #]
-\keyFont{ \section{Keywords:} [-options.keywords|join(", ")-]}
+[# if doc.keywords #]
+\keyFont{ \section{Keywords:} [-doc.keywords|join(", ")-]}
 [# endif #]
 \end{abstract}
 [# endif #]
@@ -100,7 +105,7 @@
 
 % To find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
 % For Humanities and Social Sciences articles please include page numbers in the in-text citations
-[# if options.journal_name == "Vancouver" #]
+[# if options.reference_format == "Vancouver" #]
 \bibliographystyle{Frontiers-Vancouver}
 % \bibliographystyle{Frontiers-Harvard}
 [# else #]

@@ -74,60 +74,59 @@
 % MDPI internal command: Title for citation in the left column
 \TitleCitation{[-doc.title-]}
 
-% Author Orchid ID: enter ID or remove command
-[# set alphabet=' ABCDEFGHIJKLMNOPQRSTUVWXYZ' #]
-[# for author in doc.authors #]
-[# if author.orcid|length > 0 #]
-\newcommand{\orcidauthor[-alphabet[loop.index]-]}{[-author.orcid-]} % Add \orcidA{} behind the author's name
-[# endif #]
-[# endfor #]
-
 % Authors, for the paper (add full first names)
-[# set count=[1] #]
-\Author{[# for author in doc.authors #]
-[# if loop.index > 1 and not loop.last #], [# endif #]
-[# if loop.last #] and [# endif #]
-[-author.name-] [# if author.affiliation #]$^{[-count|length-],}$[# set __ = count.append(1) #][# endif #]
-[# if author.orcid #]\orcid[-alphabet[loop.index]-][# endif #]
-[# endfor #]}
+\Author{
+[#- for author in doc.authors #]
+[#- if loop.index > 1 and not loop.last #], [# endif #]
+[#- if loop.last #] and [# endif #]
+[-- author.name -]
+[#- if author.affiliations #]$^{[- author.affiliations|join(",", "index") -],}$[# endif #]
+[#- if author.orcid #][-author.orcid-][# endif #]
+[#- endfor -#]
+}
 
 % MDPI internal command: Authors, for metadata in PDF
-\AuthorNames{[# for author in doc.authors #][# if loop.index > 1 and not loop.last #], [# endif #][# if loop.last #] and [# endif #][-author.name-][# endfor #]}
+\AuthorNames{
+[#- for author in doc.authors #]
+[#- if loop.index > 1 and not loop.last #], [# endif #]
+[#- if loop.last #] and [# endif #]
+[-- author.name -]
+[#- endfor -#]
+}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{[# if not options.chicago #]
-[# for author in doc.authors #][# set names = author.name.split(' ') #][-names[ -1 ]-], [-names[0][0].upper()-].[# if not loop.last #];[# endif #][# endfor #]
-[# else #]
-[# for author in doc.authors #]
-[# set names = author.name.split(' ') #]
-[# if loop.index == 1 #][-names[ -1 ].capitalize()-], [-" ".join(names[:-1])-][# endif #]
-[# if loop.index > 1 and not loop.last #], [# endif #]
-[# if loop.last #] and [# endif #]
-[# if loop.index > 1 #][-author.name-][# endif #]
-[# endfor #][# endif #]}
+\AuthorCitation{
+[#- for author in doc.authors #]
+[#- if options.chicago #]
+[#- if loop.index == 1 #][- author.surname -], [- author.given_name -][# endif #]
+[#- if loop.index > 1 and not loop.last #], [# endif #]
+[#- if loop.last #] and [# endif #]
+[#- if loop.index > 1 #][- author.name -][# endif #]
+[#- else #]
+[-- author.surname -], [- author.given_name | first -].
+[#- if not loop.last #];[# endif #]
+[#- endif -#]
+[#- endfor -#]
+}
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
-[# set count=[1] #]
-\address{%
-[# for author in doc.authors #]
-[# if author.affiliation #]$^{[-count|length-]}$ \quad [-author.affiliation-][# set __ = count.append(1) #][# if loop.index < doc.authors|selectattr("affiliation")|list|length #]\\
-[# endif #]
-[# endif #]
-[# endfor #]
+\address{
+[#- for affiliation in doc.affiliations -#]
+$^{[- affiliation.index -]}$ \quad [-affiliation.value-]
+[#- if not loop.last #]\\[# endif #]
+[#- endfor -#]
 }
 
 % Contact information of the corresponding author
-[# if options.corresponding_author#]
-[# set count = [1] #]
-[# set total = doc.authors|selectattr("is_corresponding")|list|length #]
-\corres{Correspondence: [# for author in doc.authors #]
-[# set initials = author.name.upper().split(' ')|map("list")|map("first")|join('.')+"." #]
-[# if author.is_corresponding #]
-[-author.email-][# if total > 1 #]; ([-initials-])[# if count|length < total #], [# endif #][# endif #]
-[# set __ = count.append(1) #]
-[# endif #]
-[# endfor #]}
-[# endif #]
+[# set prefix=' ' #]
+\corres{Correspondence:
+[#- for author in doc.authors #]
+[#- if author.corresponding #]
+[-- prefix -][- author.email -] ([- author.given_name | first -]. [- author.surname | first-].)
+[#- set prefix = ", " #]
+[#- endif #]
+[#- endfor -#]
+}
 % Current address and/or shared authorship
 
 % % TODO Notes
@@ -148,7 +147,7 @@
 [# endif #]
 
 % Keywords
-\keyword{[-doc.tags|join("; ")-]}
+\keyword{[-doc.keywords|join("; ")-]}
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}

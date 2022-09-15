@@ -7,13 +7,13 @@
 [# if options.curvenote_logo_with_link #]
 % We've included a Curvenote logo linking back to your online article based on the options you selected
 \newcommand{\logo}{
-  \href{[-doc.oxalink-]}{\includegraphics[width=2cm]{curvenote.png}}
+  \href{[-options.link-]}{\includegraphics[width=2cm]{curvenote.png}}
 }
 [# endif #]
 
 \title{[-doc.title-]}
 
-\author{[-doc.authors|map(attribute="name")|join(" \\and ")-]}
+\author{[-doc.authors|join(" \\and ", "name")-]}
 
 \newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
 \date{\displaydate{articleDate}}
@@ -31,7 +31,7 @@
   \let\thempfn\relax% Remove footnote number printing mechanism
   \footnotetext[0]{\emph{#1}}% Print footnote text
 }}
-\documentnote{Available online at:\\ \href{[-doc.oxalink-]}{[-doc.oxalink-]}}
+\documentnote{Available online at:\\ \href{[-options.link-]}{[-options.link-]}}
 [# endif #]
 
 [-CONTENT-]

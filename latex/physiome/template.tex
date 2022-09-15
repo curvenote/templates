@@ -2,7 +2,7 @@
 
 %% \articletype{Original}
 %% Choose from Original, Retrospective, Review, Letter
-\articletype{[-options.articletype-]}
+\articletype{[-options.article_type-]}
 \title{[-doc.title-]}
 
 %% \author[1][corr.author@xyz.ac.mm]{First Author}
@@ -10,24 +10,22 @@
 %% \affil[1]{Address of first author}
 %% \affil[2]{Address of second author}
 [# for author in doc.authors #]
-[# if author.is_corresponding #]
-\author[[-loop.index-]][[-author.email-]]{[-author.name-]}
-[# else #]
-\author[[-loop.index-]]{[-author.name-]}
-[# endif #]
+\author[[-author.index-]]
+[#- if author.corresponding #][[-author.email-]][# endif -#]
+{[-author.name-]}
 [# endfor #]
 [# for author in doc.authors #]
 %% Note: this should likely be affiliation_address or something?
-\affil[[-loop.index-]]{[-author.affiliation-]}
+\affil[[-author.index-]]{[-author.affiliations|join(", ", "value")-]}
 [# endfor #]
 
 [# if options.published #]
-\publicationdate{[-options.publicationdate-]}
+\publicationdate{[-options.publication_date-]}
 \editor{[-options.editor-]}
 \curator{[-options.curator-]}
-\submitteddate{[-options.submitteddate-]}
-\accepteddate{[-options.accepteddate-]}
-\citethisas{[-options.citethisas-]}{[-options.doi-]}
+\submitteddate{[-options.submitted_date-]}
+\accepteddate{[-options.accepted_date-]}
+\citethisas{[-options.cite_as-]}{[-options.doi-]}
 [# else #]
 % The following information will be added by editors:
 \publicationdate{Publication Date}
@@ -45,12 +43,12 @@
 [-tagged.abstract-]
 \end{abstract}
 
-[# if options.keywords #]
-\keywords{[-", ".join(options.keywords)-]}
+[# if doc.keywords #]
+\keywords{[-doc.keywords|join(", ")-]}
 [# endif #]
 
-[# if options.primarypubs #]
-\primarypubs[[-options.primarydoi-]]{main}{[-options.primarypubs-]}
+[# if options.primary_pubs #]
+\primarypubs[[-options.primary_doi-]]{main}{[-options.primary_pubs-]}
 [# endif #]
 
 [-CONTENT-]
