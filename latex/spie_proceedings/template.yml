@@ -47,10 +47,8 @@ config:
 
   options:
     - id: paper_size
-      title: Paper Size
       type: choice
       description: Set the paper size for the document
-      required: true
       default: usletter
       choices:
         - usletter
@@ -72,12 +70,10 @@ config:
       description: Enable double line spacing
       default: false
     - id: page_numbers
-      title: Page Numbers
       type: bool
       description: Enable page numbers
       default: false
     - id: start_page
-      title: Start Page
       type: str
       description: Set the starting page number, only used when page numbers are enabled
       default: '1'

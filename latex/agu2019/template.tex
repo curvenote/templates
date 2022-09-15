@@ -20,14 +20,13 @@
 [# else #]
 \documentclass{agujournal2019}
 [# endif #]
-[# if lipsum #]
-\usepackage{lipsum}
-[# endif #]
+
 \usepackage{lineno}
 \usepackage[inline]{trackchanges} %for better track changes. final new option will compile document with changes incorporated.
 \usepackage{soul}
 \linenumbers
-\input{curvenote.def}
+
+[- IMPORTS -]
 %%%%%%%
 % As of 2018 we recommend use of the TrackChanges package to mark revisions.
 % The trackchanges package adds five new LaTeX commands:
@@ -191,11 +190,11 @@
 
 [# if parts.abstract #]
 \begin{abstract}
-  [-parts.abstract-]
+[-parts.abstract-]
 \end{abstract}
 [# else #]
 \begin{abstract}
-  enter your Abstract here
+  Your abstract here!
 \end{abstract}
 [# endif #]
 
@@ -203,12 +202,6 @@
 \section*{Plain Language Summary}
 [-parts.summary-]
 [# endif #]
-
-%% ------------------------------------------------------------------------ %%
-%
-%  TEXT
-%
-%% ------------------------------------------------------------------------ %%
 
 [-CONTENT-]
 
