@@ -12,7 +12,7 @@
 [# if option.blind #]
 \newcommand{\Author}{}
 [# else #]
-\newcommand{\Author}{[-doc.authors[0].name-][# if len(doc.authors) > 1 #] et al.[# endif #]\xspace} % First author goes here. Leave blank if opting for blind review.
+\newcommand{\Author}{[-doc.authors[0].name-][# if doc.authors | length > 1 #] et al.[# endif #]\xspace} % First author goes here. Leave blank if opting for blind review.
 [# endif #]
 \newcommand{\Year}{[-doc.date.year-]} % Year goes here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
